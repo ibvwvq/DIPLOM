@@ -1,4 +1,4 @@
-<form [formGroup]="formRegister" class="form-register">
+<form [formGroup]="formRegister" class="form-register" (ngSubmit)="postdata(formRegister)">
     <h3>Зарегистрируйтесь</h3>
     <tui-input formControlName="name" class="m-2" >
         Имя и фамилия
@@ -12,6 +12,11 @@
         Пароль
         <input tuiTextfield type="password" name="Password"/>
     </tui-input>
+    <ng-template [ngIf]="isNotCorrect">
+        <tui-notification status="error" class="error m-2" >
+            Что-то пошло не так, попробуйте еще раз...
+        </tui-notification>    
+    </ng-template>
     <div class="btns-main">
         <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login">
            Назад

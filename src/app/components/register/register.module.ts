@@ -8,6 +8,8 @@ import {TuiButtonModule} from '@taiga-ui/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
 
+import {TuiNotificationModule} from '@taiga-ui/core';
+
 @NgModule({
   declarations: [
     RegisterComponent
@@ -17,7 +19,8 @@ import {TuiInputModule} from '@taiga-ui/kit';
     RegisterRoutingModule,
     TuiInputModule,
     ReactiveFormsModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiNotificationModule
   ]
 })
 export class RegisterModule { }
