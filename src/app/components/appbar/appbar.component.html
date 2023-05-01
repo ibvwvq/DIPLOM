@@ -9,16 +9,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-lg-0">
                 <li class="nav-item m-2">
-                    <tui-avatar  size="m"></tui-avatar>
+                    <tui-avatar new text="alex inkin" size="m" avatarUrl="tuiIconUser" routerLink="/personal-account"
+                        class="nav-link tui-space_vertical-1"></tui-avatar>
                 </li>
                 <li class="nav-item m-2">
-                    <a tuiLink class="nav-link active" aria-current="page" routerLink="catalog">Каталог</a>
+                    <a tuiLink class="nav-link active" aria-current="page" routerLink="/catalog">Каталог</a>
                 </li>
                 <li class="nav-item m-2">
-                    <a tuiLink class="nav-link active" aria-current="page" routerLink="learn">Преподавание</a>
+                    <a tuiLink class="nav-link" aria-current="page" routerLink="learn">Преподавание</a>
                 </li>
                 <li class="nav-item m-2">
-                    <a tuiLink class="nav-link active" aria-current="page" routerLink="/login" (click)="logout()">Выход</a>
+                    <a tuiLink class="nav-link" aria-current="page" (click)="logout()">Выход</a>
                 </li>
             </ul>
         </div>
