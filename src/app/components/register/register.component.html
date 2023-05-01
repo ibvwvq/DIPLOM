@@ -1,0 +1,23 @@
+<form [formGroup]="formRegister" class="form-register">
+    <h3>Зарегистрируйтесь</h3>
+    <tui-input formControlName="name" class="m-2" >
+        Имя и фамилия
+        <input tuiTextfield  type="text" name="name" />
+    </tui-input>
+    <tui-input formControlName="email" class="m-2" name="email">
+        E-mail
+        <input tuiTextfield type="email" name="email" />
+    </tui-input>
+    <tui-input formControlName="password" class="m-2">
+        Пароль
+        <input tuiTextfield type="password" name="Password"/>
+    </tui-input>
+    <div class="btns-main">
+        <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login">
+           Назад
+        </button>
+        <button tuiButton type="submit" appearance="primary" class="position-relative m-2">
+            Зарегистрироваться
+        </button>
+    </div>
+</form>

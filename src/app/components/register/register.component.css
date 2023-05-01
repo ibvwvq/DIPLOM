@@ -1,0 +1,17 @@
+
+.form-register{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 150px;
+}
+.btns-main{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+h3{
+    text-align: center;
+}

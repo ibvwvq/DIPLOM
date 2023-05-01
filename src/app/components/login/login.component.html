@@ -1,0 +1,32 @@
+<form class="form-auth" [formGroup]="formLogin">
+    <h3>Авторизация</h3>
+    <tui-input formControlName="email" class="valueEmail m-2">
+        E-mail
+        <input tuiTextfield type="email" name="email" />
+    </tui-input>
+    <!-- <tui-input formControlName="password" class="valuePassword m-2">
+        Пароль
+        <input tuiTextfield type="password" name="Password" />
+    </tui-input> -->
+
+    <tui-input-password formControlName="password">
+        Пароль
+        <input tuiTextfield name="Password" />
+    </tui-input-password>
+
+    <div class="btns-authpage">
+        <button tuiButton type="submit" class="btn-submit m-2" appearance="primary">
+            Войти
+        </button>
+        <button tuiButton routerLink="/register" type="button" appearance="secondary" class="btn-go_register m-2">
+            Зарегистрироваться
+        </button>
+    </div>
+    <div class="forget-password">
+        <a tuiLink>
+            Забыли пароль?
+        </a>
+    </div>
+</form>
+
+<!-- (ngSubmit)="postdata(angForm)" -->
