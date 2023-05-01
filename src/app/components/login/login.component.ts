@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   isSubmit = false;
 
-  constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router) {
+  constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router,public loginService: LoginService) {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
       password: ['', Validators.required]

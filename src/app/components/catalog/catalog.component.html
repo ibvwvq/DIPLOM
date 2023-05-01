@@ -1,2 +1,44 @@
 <app-appbar></app-appbar>
-<p>catalog works!</p>
+
+<div class="container">
+    <form class="search" class="form-search" [formGroup]="formSearchCourses">
+        <tui-input class="input-search" formControlName="valueName">
+            Название курса
+            <input tuiTextfield type="text" />
+        </tui-input>
+        <button tuiButton type="button" appearance="primary" class="submit-search">
+            Найти
+        </button>
+    </form>
+    <tui-tabs class="tabs-catalog">
+        <button tuiTab class="c-sparp" (click)=" openPageOOP()">
+            ООП
+        </button>
+        <button tuiTab class="php" (click)=" openPageTests()">
+            Тестирование
+        </button>
+        <button tuiTab class="php" (click)=" openPageUnity()">
+            Unity
+        </button>
+        <button tuiTab class="php" (click)=" openPageWeb()">
+            Веб-разработка
+        </button>
+    </tui-tabs>
+
+    <div *ngIf="page1">
+        <span>Скоро...</span>
+    </div>
+
+    <div *ngIf="page2">
+        <span>Скоро...</span>
+    </div>
+
+    <div *ngIf="page3">
+        <span>Скоро...</span>
+    </div>
+
+    <div *ngIf="page4">
+        <span>Скоро...</span>
+    </div>
+
+</div>
