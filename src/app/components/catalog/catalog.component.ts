@@ -43,8 +43,6 @@ export class CatalogComponent {
     this.page2 = false;
   }
 
-
-
   formSearchCourses = new FormGroup({
     valueName: new FormControl(''),
   })
