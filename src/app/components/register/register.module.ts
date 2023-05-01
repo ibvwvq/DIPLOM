@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 
-import {ReactiveFormsModule} from '@angular/forms';
-import {TuiInputModule} from '@taiga-ui/kit';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TUI_INPUT_PASSWORD_DEFAULT_OPTIONS, TUI_INPUT_PASSWORD_OPTIONS, TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/kit';
 
 import {TuiNotificationModule} from '@taiga-ui/core';
 
@@ -17,10 +17,25 @@ import {TuiNotificationModule} from '@taiga-ui/core';
   imports: [
     CommonModule,
     RegisterRoutingModule,
-    TuiInputModule,
-    ReactiveFormsModule,
     TuiButtonModule,
+    ReactiveFormsModule,
+    TuiInputPasswordModule,
+    FormsModule,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
     TuiNotificationModule
-  ]
+  ],
+  providers: [
+    {
+      provide: TUI_INPUT_PASSWORD_OPTIONS,
+      useValue: {
+        ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
+        icons: {
+          hide: 'tuiIconEyeOff',
+          show: 'tuiIconEye',
+        },
+      },
+    },
+  ],
 })
 export class RegisterModule { }

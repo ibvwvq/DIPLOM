@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
-@Injectable({
-  providedIn: 'root'
-})
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

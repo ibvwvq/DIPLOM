@@ -15,3 +15,17 @@
 h3{
     text-align: center;
 }
+
+
+
+.error-name{
+    color: red;
+}
+
+.error-email{
+    color: red;
+}
+
+.error-password{
+    color: red;
+}

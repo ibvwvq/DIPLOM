@@ -4,19 +4,35 @@
         Имя и фамилия
         <input tuiTextfield  type="text" name="name" />
     </tui-input>
+
+    <div *ngIf="f.name.errors && isSubmit">
+        <span class="error-name m-2">Введите корректое имя</span>
+     </div>
+
     <tui-input formControlName="email" class="m-2" name="email">
         E-mail
         <input tuiTextfield type="email" name="email" />
     </tui-input>
-    <tui-input formControlName="password" class="m-2">
+   
+    <div *ngIf="f.email.errors && isSubmit">
+        <span class="error-email m-2">Введите корректый e-mail</span>
+     </div>
+
+    <tui-input-password formControlName="password" class=" m-2">
         Пароль
-        <input tuiTextfield type="password" name="Password"/>
-    </tui-input>
-    <ng-template [ngIf]="isNotCorrect">
+        <input tuiTextfield name="Password" />
+    </tui-input-password>
+
+    <div *ngIf="f.password.errors && isSubmit">
+        <span class="error-password m-2">Введите корректый пароль</span>
+     </div>
+
+    <div *ngIf="isNotCorrect">
         <tui-notification status="error" class="error m-2" >
-            Что-то пошло не так, попробуйте еще раз...
+            Что-то пошло не так
         </tui-notification>    
-    </ng-template>
+    </div>
+
     <div class="btns-main">
         <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login">
            Назад
@@ -26,3 +42,4 @@
         </button>
     </div>
 </form>
+
