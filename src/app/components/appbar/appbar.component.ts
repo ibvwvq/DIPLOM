@@ -10,6 +10,5 @@ export class AppbarComponent {
   constructor(private dataService: ApiService) { }
   logout() {
     this.dataService.deleteToken();
-    window.location.href = window.location.href;
   }
 }
