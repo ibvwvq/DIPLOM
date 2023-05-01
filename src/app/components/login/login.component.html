@@ -5,10 +5,18 @@
         <input tuiTextfield type="email" name="email" />
     </tui-input>
 
+    <div *ngIf="f.email.errors && isSubmit">
+        <span class="error-email m-2">Введите корректый e-mail</span>
+     </div>
+
     <tui-input-password formControlName="password" class="valuePassword m-2">
         Пароль
         <input tuiTextfield name="Password" />
     </tui-input-password>
+
+    <div *ngIf="f.password.errors && isSubmit">
+        <span class="error-password m-2">Введите корректый пароль</span>
+     </div>
 
     <ng-template [ngIf]="isNotCorrect">
         <tui-notification status="error" class="error m-2" >

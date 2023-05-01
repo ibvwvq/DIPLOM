@@ -22,3 +22,11 @@ h3{
     text-align: center;
 
 }
+
+.error-password{
+    color: red;
+}
+
+.error-email{
+    color:red;
+}
