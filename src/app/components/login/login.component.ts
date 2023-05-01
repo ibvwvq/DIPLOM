@@ -12,6 +12,9 @@ import { ApiService } from 'src/app/services/api.service';
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   isNotCorrect = false;
+
+  isSubmit = false;
+
   constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router) {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   postdata(formLogin:FormGroup) {
+    this.isSubmit = true;
     this.dataService.userlogin(formLogin.value.email, formLogin.value.password)
       .pipe(first())
       .subscribe(
@@ -35,5 +39,7 @@ export class LoginComponent implements OnInit {
   }
   get email() { return this.formLogin.get('email'); }
   get password() { return this.formLogin.get('password'); }
+
+  get f() {return this.formLogin.controls}
 }
 
