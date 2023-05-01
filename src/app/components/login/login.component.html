@@ -1,10 +1,10 @@
-<form class="form-auth" [formGroup]="formLogin">
+<form class="form-auth" [formGroup]="formLogin" (ngSubmit)="postdata(formLogin)">
     <h3>Авторизация</h3>
     <tui-input formControlName="email" class="valueEmail m-2">
         E-mail
         <input tuiTextfield type="email" name="email" />
     </tui-input>
-    
+
     <tui-input-password formControlName="password">
         Пароль
         <input tuiTextfield name="Password" />
