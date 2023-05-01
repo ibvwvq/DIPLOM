@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HashLocationStrategy,LocationStrategy } from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
       TuiAlertModule,
       HttpClientModule
     ],
-  providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
+  providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

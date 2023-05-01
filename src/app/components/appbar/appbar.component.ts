@@ -7,10 +7,9 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./appbar.component.css']
 })
 export class AppbarComponent {
-  constructor(private dataService: ApiService){}
-  logout()
-  {
-  this.dataService.deleteToken();
-  window.location.href = window.location.href;
+  constructor(private dataService: ApiService) { }
+  logout() {
+    this.dataService.deleteToken();
+    window.location.href = window.location.href;
   }
 }
