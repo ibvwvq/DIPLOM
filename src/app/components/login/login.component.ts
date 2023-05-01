@@ -13,7 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
-
+  isNotCorrect = false;
   constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router) {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([redirect]);
         },
         error => {
-          alert("User name or password is incorrect")
+          this.isNotCorrect = true;
         });
   }
   get email() { return this.formLogin.get('email'); }

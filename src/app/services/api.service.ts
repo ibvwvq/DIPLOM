@@ -12,7 +12,7 @@ export class ApiService {
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient: HttpClient) { }
   public userlogin(username:any, password:any) {
-    alert(username)
+    // alert(username)
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
       .pipe(map(Users => {
         this.setToken(Users[0].name);

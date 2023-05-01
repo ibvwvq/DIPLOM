@@ -5,10 +5,16 @@
         <input tuiTextfield type="email" name="email" />
     </tui-input>
 
-    <tui-input-password formControlName="password">
+    <tui-input-password formControlName="password" class="valuePassword m-2">
         Пароль
         <input tuiTextfield name="Password" />
     </tui-input-password>
+
+    <ng-template [ngIf]="isNotCorrect">
+        <tui-notification status="error" class="error m-2" >
+            Что-то пошло не так, попробуйте еще раз...
+        </tui-notification>    
+    </ng-template>
 
     <div class="btns-authpage">
         <button tuiButton type="submit" class="btn-submit m-2" appearance="primary">
