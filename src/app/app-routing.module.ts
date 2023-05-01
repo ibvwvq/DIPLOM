@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'register', loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule) }, 
   { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
   { path: 'catalog', loadChildren: () => import('./components/catalog/catalog.module').then(m => m.CatalogModule), canActivate: [AuthguardGuard]},
-  { path: 'appbar', loadChildren: () => import('./components/appbar/appbar.module').then(m => m.AppbarModule) }
+  { path: 'appbar', loadChildren: () => import('./components/appbar/appbar.module').then(m => m.AppbarModule) },
+  { path: 'personal-account', loadChildren: () => import('./components/personal-account/personal-account.module').then(m => m.PersonalAccountModule) }
 ];
 
 @NgModule({
