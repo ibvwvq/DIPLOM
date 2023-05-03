@@ -7,10 +7,9 @@
 }
 
 .btns-authpage{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(190px,auto));
+  grid-gap: 10px;
 }
 
 .forget-password{

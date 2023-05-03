@@ -14,22 +14,24 @@
     <ng-template [ngIf]="isNotCorrect">
         <tui-notification status="error" class="error m-2" >
             Что-то пошло не так, попробуйте еще раз...
-        </tui-notification>    
+        </tui-notification>
     </ng-template>
 
-    <div class="btns-authpage">
-        <button tuiButton type="submit" class="btn-submit m-2" appearance="primary">
-            Войти
-        </button>
-        <button tuiButton routerLink="/register" type="button" appearance="secondary" class="btn-go_register m-2">
-            Зарегистрироваться
-        </button>
-    </div>
-    <div class="forget-password">
-        <a tuiLink>
-            Забыли пароль?
-        </a>
-    </div>
+  <div class="btns-authpage">
+    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="m">
+      Войти
+    </button>
+    <button tuiButton routerLink="/register" type="button" appearance="secondary" class="btn-go_register m-2" size="m">
+      Зарегистрироваться
+    </button>
+  </div>
+  <div class="forget-password">
+    <a tuiLink>
+      Забыли пароль?
+    </a>
+  </div>
+
 </form>
+
 
 <!-- (ngSubmit)="postdata(angForm)" -->

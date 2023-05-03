@@ -2,8 +2,8 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
-import { LoginService } from 'src/app/services/login.service';
+import { ApiService } from 'src/app/services/api/api.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-login',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
           data => {
             this.router.navigate(['login']);
           },
-  
+
           error => {
             this.isNotCorrect = true;
           });
