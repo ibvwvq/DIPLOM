@@ -1,9 +1,13 @@
 .main-personal{
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,auto));
+  grid-gap: 10px;
 }
 
 .title-personal{
   display: flex;
   flex-direction: column;
+  max-width: 400px;
+  min-width: auto;
 }
+
