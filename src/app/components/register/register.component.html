@@ -13,7 +13,7 @@
         E-mail
         <input tuiTextfield type="email" name="email" />
     </tui-input>
-   
+
     <div *ngIf="f.email.errors && isSubmit">
         <span class="error-email m-2">Введите корректый e-mail</span>
      </div>
@@ -30,14 +30,14 @@
     <div *ngIf="isNotCorrect">
         <tui-notification status="error" class="error m-2" >
             Что-то пошло не так
-        </tui-notification>    
+        </tui-notification>
     </div>
 
     <div class="btns-main">
-        <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login">
+        <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login" size="m">
            Назад
         </button>
-        <button tuiButton type="submit" appearance="primary" class="position-relative m-2">
+        <button tuiButton type="submit" appearance="primary" class="position-relative m-2" size="m">
             Зарегистрироваться
         </button>
     </div>

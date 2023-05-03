@@ -7,9 +7,9 @@
     margin-top: 150px;
 }
 .btns-main{
-    margin: auto;
-    display: flex;
-    flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(190px,auto));
+  grid-gap: 10px;
 }
 
 h3{
