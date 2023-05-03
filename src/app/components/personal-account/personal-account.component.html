@@ -1,1 +1,38 @@
-<p>personal-account works!</p>
+<app-appbar></app-appbar>
+<tui-tabs tuiMobileTabs [(activeItemIndex)]="activeItemIndex">
+  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
+    Ваши данные
+  </button>
+  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
+    Курсы
+  </button>
+  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
+    Избранное
+  </button>
+</tui-tabs>
+
+<ng-template [ngIf]="activeItemIndex==0">
+  <tui-island class="main-personal m-2">
+    <tui-avatar
+      new
+      text="alex inkin"
+      size="xl"
+      avatarUrl="tuiIconUser"
+      class="m-4"
+    ></tui-avatar>
+   <div class="title-personal m-5">
+     <h3 class="name">Арина Икрамова</h3>
+     <span class="email">ikramova_arina@mail.ru</span>
+   </div>
+  </tui-island>
+</ng-template>
+
+<ng-template [ngIf]="activeItemIndex==1">
+  <span>cvcvc</span>
+</ng-template>
+
+<ng-template [ngIf]="activeItemIndex==2">
+  <span>nbnb</span>
+</ng-template>
+
+

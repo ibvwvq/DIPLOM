@@ -1,0 +1,9 @@
+.main-personal{
+  display: flex;
+  flex-direction: row;
+}
+
+.title-personal{
+  display: flex;
+  flex-direction: column;
+}

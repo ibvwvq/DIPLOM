@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./personal-account.component.css']
 })
 export class PersonalAccountComponent {
-
+  activeItemIndex = 0;
 }
