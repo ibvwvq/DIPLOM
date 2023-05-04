@@ -1,0 +1,11 @@
+.formCreateCourse{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+}
+
+
+.btn-submit_create-course{
+  max-width: 200px;
+}

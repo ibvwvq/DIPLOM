@@ -3,15 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { CreateCourseRoutingModule } from './create-course-routing.module';
 import { CreateCourseComponent } from './create-course.component';
+import {AppbarModule} from "../appbar/appbar.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
-
+import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiButtonModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     CreateCourseComponent
   ],
   imports: [
     CommonModule,
-    CreateCourseRoutingModule
+    CreateCourseRoutingModule,
+    AppbarModule,
+    ReactiveFormsModule,
+    TuiInputModule,
+    TuiButtonModule
   ]
 })
 export class CreateCourseModule { }

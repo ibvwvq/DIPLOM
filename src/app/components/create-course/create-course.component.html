@@ -1,1 +1,17 @@
-<p>create-course works!</p>
+<app-appbar></app-appbar>
+
+<form class="formCreateCourse" [formGroup]="formCreateCourse">
+  <h5 class="p-2">Создание нового курса</h5>
+  <tui-input formControlName="valueName" class="m-2">
+    Название курса*
+    <input tuiTextfield type="text"/>
+  </tui-input>
+  <tui-input formControlName="valueDescription" class="m-2">
+    Описание курса*
+    <input tuiTextfield type="text"/>
+  </tui-input>
+  <button
+    tuiButton type="submit" appearance="primary" class="m-2 btn-submit_create-course" size="m">
+    Создать
+  </button>
+</form>
