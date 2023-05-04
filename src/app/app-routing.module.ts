@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'catalog', loadChildren: () => import('./components/catalog/catalog.module').then(m => m.CatalogModule), canActivate: [AuthguardGuard]},
   { path: 'personal-account', loadChildren: () => import('./components/personal-account/personal-account.module').then(m => m.PersonalAccountModule) , canActivate: [AuthguardGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'create-promo-course', loadChildren: () => import('./components/create-promo-course/create-promo-course.module').then(m => m.CreatePromoCourseModule) }
+  { path: 'create-promo-course', loadChildren: () => import('./components/create-promo-course/create-promo-course.module').then(m => m.CreatePromoCourseModule) },
+  { path: 'create-course', loadChildren: () => import('./components/create-course/create-course.module').then(m => m.CreateCourseModule) }
 ];
 
 @NgModule({

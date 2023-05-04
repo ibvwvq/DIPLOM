@@ -11,16 +11,16 @@
         </button>
     </form>
     <tui-tabs class="tabs-catalog">
-        <button tuiTab class="c-sparp" (click)=" openPageOOP()">
+        <button tuiTab class="c-sparp_courses p-2" (click)=" openPageOOP()">
             ООП
         </button>
-        <button tuiTab class="php" (click)=" openPageTests()">
+        <button tuiTab class="test_courses p-2" (click)=" openPageTests()">
             Тестирование
         </button>
-        <button tuiTab class="php" (click)=" openPageUnity()">
+        <button tuiTab class="unity_courses p-2" (click)=" openPageUnity()">
             Unity
         </button>
-        <button tuiTab class="php" (click)=" openPageWeb()">
+        <button tuiTab class="web_courses p-2" (click)=" openPageWeb()">
             Веб-разработка
         </button>
     </tui-tabs>
@@ -40,5 +40,4 @@
     <div *ngIf="page4">
         <span>Скоро...</span>
     </div>
-
 </div>
