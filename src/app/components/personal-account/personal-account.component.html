@@ -3,7 +3,7 @@
   <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
     Ваши данные
   </button>
-  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
+  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2" (click)="this.apiService.getUsers()">
     Курсы
   </button>
   <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
@@ -21,8 +21,8 @@
       class="avatar-user tui-space_left-2 tui-space_top-2"
     ></tui-avatar>
     <div class="title-personal tui-space_left-2 tui-space_top-2">
-      <h3 class="name">Арина <br> Икрамова</h3>
-      <span class="email">ikramova_arina@mail.ru</span>
+      <h3 class="name">{{name}}</h3>
+      <span class="email">{{email}}</span>
     </div>
   </tui-island>
 </ng-template>
