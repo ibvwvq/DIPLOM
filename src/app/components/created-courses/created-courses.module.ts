@@ -6,12 +6,15 @@ import { CreatedCoursesComponent } from './created-courses.component';
 
 
 @NgModule({
-  declarations: [
-    CreatedCoursesComponent
-  ],
-  imports: [
-    CommonModule,
-    CreatedCoursesRoutingModule
-  ]
+    declarations: [
+        CreatedCoursesComponent
+    ],
+    exports: [
+        CreatedCoursesComponent
+    ],
+    imports: [
+        CommonModule,
+        CreatedCoursesRoutingModule
+    ]
 })
 export class CreatedCoursesModule { }

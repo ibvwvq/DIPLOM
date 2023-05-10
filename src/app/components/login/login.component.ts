@@ -10,7 +10,9 @@ import { LoginService } from 'src/app/services/login/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+
+
   formLogin: FormGroup;
   isNotCorrect = false;
 
@@ -22,8 +24,9 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  ngOnInit() {
-  }
+
+  qw:any;
+  CURRENT_USER:any;
   postdata(formLogin:FormGroup) {
     this.isSubmit = true;
     this.dataService.userlogin(formLogin.value.email, formLogin.value.password)

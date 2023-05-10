@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./teach.component.css']
 })
 export class TeachComponent {
+  pageCreateCourse = false;
+  pageCreatedCourses = true;
+  openPageCreateCourse(){
+    this.pageCreateCourse = true;
+    this.pageCreatedCourses = false;
+  }
 
+  openPageCreatedCourses(){
+    this.pageCreateCourse = false;
+    this.pageCreatedCourses = true;
+
+  }
 }

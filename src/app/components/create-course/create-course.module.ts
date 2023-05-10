@@ -12,10 +12,12 @@ import {TuiButtonModule} from '@taiga-ui/core';
   declarations: [
     CreateCourseComponent
   ],
+  exports: [
+    CreateCourseComponent
+  ],
   imports: [
     CommonModule,
     CreateCourseRoutingModule,
-    AppbarModule,
     ReactiveFormsModule,
     TuiInputModule,
     TuiButtonModule
