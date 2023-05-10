@@ -14,9 +14,9 @@
                 <li class="nav-item m-2">
                     <a tuiLink class="nav-link" aria-current="page" routerLink="/catalog">Каталог</a>
                 </li>
-              <ng-template [ngIf]="isAdmin == true">
+              <ng-template [ngIf]="isAdmin">
                 <li class="nav-item m-2">
-                  <a tuiLink class="nav-link" aria-current="page" routerLink="/teach">Преподавание</a>
+                  <a tuiLink class="nav-link" aria-current="page" routerLink="/teach" (click)="getPageAdmin()">Преподавание</a>
                 </li>
               </ng-template>
 

@@ -18,8 +18,8 @@ export class ApiService implements OnInit{
   role:any;
 
   redirectUrl: string | undefined;
-  baseUrl: string = "http://localhost:90/Study-App/php";
- // baseUrl: string = "https://education.mk-cloud.ru/php";
+  //baseUrl: string = "http://localhost:90/Study-App/php";
+  baseUrl: string = "https://education.mk-cloud.ru/php";
 
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient: HttpClient,public loginService:LoginService) { }
@@ -98,6 +98,7 @@ export class ApiService implements OnInit{
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('role');
+    localStorage.removeItem('courses');
   }
   isLoggedIn():boolean {
     const usertoken = this.getToken();

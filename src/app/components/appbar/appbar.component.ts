@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
+import { CreatedCoursesService } from 'src/app/services/created-courses/created-courses.service';
 
 @Component({
   selector: 'app-appbar',
@@ -7,7 +8,7 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./appbar.component.css']
 })
 export class AppbarComponent implements OnInit{
-  constructor(private dataService: ApiService) { }
+  constructor(private dataService: ApiService,private createdCourses:CreatedCoursesService) { }
   logout() {
     this.dataService.deleteToken();
   }
@@ -15,16 +16,16 @@ export class AppbarComponent implements OnInit{
   USER:any = '';
   isAdmin:boolean = false;
   ngOnInit():void {
-   this.user = localStorage.getItem('user');
+   this.user = localStorage.getItem('role');
    this.USER = JSON.parse(this.user);
 
-    if(this.USER.idUser == 3){
-      this.isAdmin = false;
-    }
-    if(this.dataService.CURRENT_ROLE == 1){
+    if(this.USER == 1){
       this.isAdmin = true;
     }
   }
 
+  getPageAdmin(){
+    this.createdCourses.getCoursesFromApi();
+  }
 
 }
