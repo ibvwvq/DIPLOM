@@ -40,6 +40,13 @@ export class ApiService implements OnInit{
         return Users;
       }));
   }
+  public userCreateCourse(nameCourse:any,descriptionCourse :any,idUser:number){
+    return this.httpClient.post<any>(this.baseUrl + '/course.php', { nameCourse, descriptionCourse, idUser})
+      .pipe(map(Courses => {
+        return Courses;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);
