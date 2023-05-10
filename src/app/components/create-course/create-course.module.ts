@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import {TuiInputModule} from '@taiga-ui/kit';
 import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiNotificationModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     CreateCourseComponent
@@ -20,7 +21,8 @@ import {TuiButtonModule} from '@taiga-ui/core';
     CreateCourseRoutingModule,
     ReactiveFormsModule,
     TuiInputModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiNotificationModule
   ]
 })
 export class CreateCourseModule { }

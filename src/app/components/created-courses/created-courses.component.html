@@ -1,1 +1,13 @@
-<p class="p-2">Вы пока не создали ни одного курса...</p>
+<div class="conteiner">
+    <div class="cards" *ngFor="let item of CURRENT_COURSES">
+        <a tuiIsland target="_blank" rel="noreferrer" [hoverable]="true" class="info-course">
+            <h3 class="tui-island__title">{{item.name}}</h3>
+            <p class="tui-island__paragraph">{{item.description}}</p>
+            <p class="tui-island__paragraph tui-island__paragraph_button"></p>
+        </a>
+    </div>
+</div>
+
+<ng-template [ngIf]="isEmpty">
+    <p class="p-2">Вы пока не создали ни одного курса...</p>
+</ng-template>

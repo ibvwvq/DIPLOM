@@ -1,17 +1,43 @@
 
 
-<form class="formCreateCourse" [formGroup]="formCreateCourse">
+<form class="formCreateCourse" [formGroup]="formCreateCourse" (ngSubmit)="createCourse(formCreateCourse)">
   <h5 class="m-2">Создание нового курса</h5>
   <tui-input formControlName="valueName" class="m-2">
     Название курса*
     <input tuiTextfield type="text"/>
   </tui-input>
+
+  <div *ngIf="f.valueName.errors && isSubmit">
+    <span class="error-name m-2">Имя не может быть пустым</span>
+  </div>
+
   <tui-input formControlName="valueDescription" class="m-2">
     Описание курса*
     <input tuiTextfield type="text"/>
   </tui-input>
+
+  <div *ngIf="f.valueDescription.errors && isSubmit">
+    <span class="error-description m-2">Описание не может быть пустым</span>
+  </div>
+
+
   <button
     tuiButton type="submit" appearance="primary" class="m-2 btn-submit_create-course" size="m">
     Создать
   </button>
+
+  <ng-template [ngIf]="isCreatedSuccess">
+    <tui-notification status="success" class="success-error-notification m-2">
+      Ваш курс успешно создан!
+    </tui-notification>
+  </ng-template>
+
+  <ng-template [ngIf]="isCreatedUnSuccess">
+    <tui-notification status="error" class="success-error-notification m-2">
+     Что-то пошло не так...Попробуйте еще раз.
+    </tui-notification>
+  </ng-template>
+
 </form>
+
+

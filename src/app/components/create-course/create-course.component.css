@@ -11,3 +11,14 @@
 .btn-submit_create-course{
   max-width: 200px;
 }
+.success-error-notification{
+  max-width: 500px;
+}
+
+.error-name{
+  color: red;
+}
+
+.error-description{
+  color: red;
+}

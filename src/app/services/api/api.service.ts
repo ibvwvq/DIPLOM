@@ -18,7 +18,9 @@ export class ApiService implements OnInit{
   role:any;
 
   redirectUrl: string | undefined;
-  baseUrl: string = "https://education.mk-cloud.ru/php";
+  baseUrl: string = "http://localhost:90/Study-App/php";
+ // baseUrl: string = "https://education.mk-cloud.ru/php";
+
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient: HttpClient,public loginService:LoginService) { }
   user_name:any;
@@ -40,6 +42,23 @@ export class ApiService implements OnInit{
         return Users;
       }));
   }
+  public userCreateCourse(nameCourse:any,descriptionCourse :any,idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/createcourse.php', { nameCourse, descriptionCourse, idUser})
+      .pipe(map(Course => {
+        return Course;
+      }));
+  }
+
+ courses:any[]=[];
+
+
+  public getCourses(idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/OutPutCourses.php', {idUser})
+      .pipe(map(Courses => {
+        this.setCourses(Courses);
+        return Courses;
+      }));
+  }
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);
@@ -47,6 +66,10 @@ export class ApiService implements OnInit{
   //token
   setToken(token: string) {
     localStorage.setItem('token', token);
+  }
+  setCourses(courses:any){
+    localStorage.setItem('courses', JSON.stringify(courses));
+
   }
 
   setLSUser(user:any){

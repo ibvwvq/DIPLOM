@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CreatedCoursesRoutingModule } from './created-courses-routing.module';
 import { CreatedCoursesComponent } from './created-courses.component';
 
+import {TuiIslandModule} from '@taiga-ui/kit';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { CreatedCoursesComponent } from './created-courses.component';
     ],
     imports: [
         CommonModule,
-        CreatedCoursesRoutingModule
+        CreatedCoursesRoutingModule,
+        TuiIslandModule
     ]
 })
 export class CreatedCoursesModule { }
