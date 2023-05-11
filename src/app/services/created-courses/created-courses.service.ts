@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { first } from 'rxjs';
+import { Observable, catchError, first, of, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreatedCoursesService {
 
-  constructor(private dataService: ApiService) { }
+  constructor(private dataService: ApiService, private http: HttpClient) { }
   isEmpty = false;
 
   ngOnInit() {
     this.getCoursesFromApi();
 
-
-    if(this.CURRENT_COURSES.length == 0){
+    if (this.CURRENT_COURSES.length == 0) {
       this.isEmpty = true;
-  }
-   
+    }
+
   }
 
   current_courses: any;
@@ -46,4 +46,6 @@ export class CreatedCoursesService {
           this.isBad = true;
         });
   }
+
 }
+

@@ -1,1 +1,16 @@
-<app-appbar-course></app-appbar-course>
+<app-appbar></app-appbar>
+
+<div *ngIf="course">
+    <tui-tabs tuiMobileTabs>
+        <button tuiTab tuiRipple="var(--tui-text-01)" class="p-2">
+         Описание
+        </button>
+        
+        <button tuiTab tuiRipple="var(--tui-text-01)" class="p-2" routerLink="/course/{{course.idCourse}}/syllabus">
+         Содержание
+        </button>
+      </tui-tabs>
+
+    <h2>{{course.name}}</h2>
+    <span>{{course.description}}</span>
+</div>

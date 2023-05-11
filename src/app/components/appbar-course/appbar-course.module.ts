@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppbarCourseRoutingModule } from './appbar-course-routing.module';
 import { AppbarCourseComponent } from './appbar-course.component';
 
-import { AppbarModule } from '../appbar/appbar.module';
-import {TuiTabsModule} from '@taiga-ui/kit';
+
 @NgModule({
   declarations: [
     AppbarCourseComponent
@@ -13,9 +12,7 @@ import {TuiTabsModule} from '@taiga-ui/kit';
   exports:[AppbarCourseComponent],
   imports: [
     CommonModule,
-    AppbarCourseRoutingModule,
-    TuiTabsModule,
-    AppbarModule
+    AppbarCourseRoutingModule
   ]
 })
 export class AppbarCourseModule { }
