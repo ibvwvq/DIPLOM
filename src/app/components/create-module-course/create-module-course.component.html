@@ -1,10 +1,10 @@
-<form action="" [formGroup]="formCreateModuleCourse">
+<form action="" [formGroup]="formCreateModuleCourse" (ngSubmit)="createModule(formCreateModuleCourse)">
     <tui-input formControlName="valueNameModule" class="valueNameModule m-2">
-        Название модуля
+        Название модуля*
         <input tuiTextfield type="text"/>
     </tui-input>
 
     <button tuiButton  type="submit" appearance="secondary" class="m-2" size="m">
-        Создать*
+        Создать
       </button>
 </form>
