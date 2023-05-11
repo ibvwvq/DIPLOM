@@ -33,7 +33,7 @@ export class LoginComponent {
       .pipe(first())
       .subscribe(
         data => {
-          const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/catalog';
+          const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/personal-account';
           this.router.navigate([redirect]);
         },
         error => {
