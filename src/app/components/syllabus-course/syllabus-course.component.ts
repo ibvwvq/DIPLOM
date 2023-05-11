@@ -29,12 +29,15 @@ export class SyllabusCourseComponent {
     this.dialogCreateModule = true;
   }
 
+  MODULES:any[] = [];
+
+
   getModules(){
       this.dataService.getModules(this.current_course.idCourse)
       .pipe(first())
         .subscribe(
           data => {
-            
+            this.MODULES = data;
           },
 
           error => {

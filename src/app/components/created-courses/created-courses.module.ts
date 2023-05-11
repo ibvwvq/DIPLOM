@@ -5,7 +5,6 @@ import { CreatedCoursesRoutingModule } from './created-courses-routing.module';
 import { CreatedCoursesComponent } from './created-courses.component';
 
 import {TuiIslandModule} from '@taiga-ui/kit';
-import { AppbarModule } from '../appbar/appbar.module';
 
 @NgModule({
     declarations: [

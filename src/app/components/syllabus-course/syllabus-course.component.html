@@ -2,6 +2,16 @@
     <button tuiButton type="button" appearance="primary" class="m-3" size="s" (click)="openPageCreateModule()">
         Новый модуль
     </button>
+
+    <div class="container course-modules">
+        <div class="cards" *ngFor="let item of MODULES; let index = index">
+            <a tuiIsland  [hoverable]="true" class="info-course" routerLink="/course/info/{{item.idCourse}}">
+                <h3 class="tui-island__title">{{index+1}}.  {{item.name}}</h3>
+            
+                <p class="tui-island__paragraph tui-island__paragraph_button"></p>
+            </a>
+        </div>
+    </div>
 </div>
 
     <ng-template [tuiDialogOptions]="{label: 'Создание модуля', size: 'm'}"

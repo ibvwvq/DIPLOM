@@ -1,0 +1,14 @@
+.info-course {
+    max-width: 800px;
+    margin-top: 25px;
+    min-height: 100px;
+}
+
+.info-course:hover{
+    cursor: pointer;
+}
+
+.container{
+    max-width: 1000px;
+   margin: auto;
+}
