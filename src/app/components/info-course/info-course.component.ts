@@ -15,21 +15,32 @@ export class InfoCourseComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.getItem(id);
+    this.getCurrentCourse(id);
+
+    this.user = localStorage.getItem('user');
+    this.USER = JSON.parse(this.user);
+
+    this.current_teacher = this.USER.fullName;
   }
 
-  course: any;
+  current_course: any;
+
+  current_teacher: any;
+
+  user: any;
+  USER: any;
+
   courses: any;
   COURSES: any;
 
-  getItem(id: any) {
+  getCurrentCourse(id: any) {
     this.courses = localStorage.getItem('courses');
     this.COURSES = JSON.parse(this.courses);
 
     for (var i = 0; i < this.COURSES.length; i++) {
       if (this.COURSES[i].idCourse == id) {
         this.infoCourseService.current_course = this.COURSES[i];
-        this.course = this.infoCourseService.current_course;
+        this.current_course = this.infoCourseService.current_course;
       }
     }
   }

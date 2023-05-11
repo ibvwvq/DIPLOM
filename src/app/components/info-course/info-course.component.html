@@ -1,5 +1,21 @@
+<div class="main-info">
+    <div *ngIf="current_course" class="m-3">
+        <h2>{{current_course.name}}</h2>
 
-<div *ngIf="course">
-    <h2>{{course.name}}</h2>
-    <span>{{course.description}}</span>
+        <span>Описание курса: <br> {{current_course.description}}</span>
+        <br> <br>
+        <span>
+            <span><b>Язык:</b> русский</span>
+        </span>
+
+    </div>
 </div>
+
+<tui-island class="teacher-island m-2">
+    <h5 class="tui-island__title">Преподаватель</h5>
+    <div class="tui-island__content">
+        <p class="tui-island__paragraph">
+            {{current_teacher}}
+        </p>
+    </div>
+</tui-island>

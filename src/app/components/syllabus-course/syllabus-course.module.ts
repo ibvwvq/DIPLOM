@@ -11,6 +11,7 @@ import { AppbarCourseModule } from '../appbar-course/appbar-course.module';
   declarations: [
     SyllabusCourseComponent
   ],
+  exports:[SyllabusCourseComponent],
   imports: [
     CommonModule,
     SyllabusCourseRoutingModule,
