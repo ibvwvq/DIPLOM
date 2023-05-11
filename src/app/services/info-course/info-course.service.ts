@@ -9,4 +9,5 @@ export class InfoCourseService {
   constructor() { }
 
 
+  current_course:any;
 }

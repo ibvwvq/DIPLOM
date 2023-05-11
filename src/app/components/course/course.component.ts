@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppbarCourseService } from 'src/app/services/appbar-course/appbar-course.service';
-import { CreatedCoursesService } from 'src/app/services/created-courses/created-courses.service';
 import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
 
 @Component({
-  selector: 'app-appbar-course',
-  templateUrl: './appbar-course.component.html',
-  styleUrls: ['./appbar-course.component.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class AppbarCourseComponent implements OnInit {
-
+export class CourseComponent {
   constructor(private infoCourseService: InfoCourseService,
     private router: Router,
     private appBarCourseService: AppbarCourseService) { }
@@ -19,5 +17,19 @@ export class AppbarCourseComponent implements OnInit {
   activeItemIndex: any = this.appBarCourseService.activeItemIndex;
   ngOnInit() {
     this.current_course = this.infoCourseService.current_course;
+  }
+
+  pageInfoCourse = true;
+  pageSyllabus = false;
+
+  getPageInfoCourse() {
+    this.pageInfoCourse = true;
+    this.pageSyllabus = false;
+    
+  }
+
+  getPageSyllabus(){
+    this.pageSyllabus = true;
+    this.pageInfoCourse = false;
   }
 }

@@ -5,18 +5,17 @@ import { InfoCourseRoutingModule } from './info-course-routing.module';
 import { InfoCourseComponent } from './info-course.component';
 import { AppbarCourseModule } from '../appbar-course/appbar-course.module';
 
-import { AppbarModule } from '../appbar/appbar.module';
 import {TuiTabsModule} from '@taiga-ui/kit';
 @NgModule({
   declarations: [
     InfoCourseComponent
   ],
+  exports: [InfoCourseComponent],
   imports: [
     CommonModule,
     InfoCourseRoutingModule,
     AppbarCourseModule,
-    TuiTabsModule,
-    AppbarModule
+    TuiTabsModule
   ]
 })
 export class InfoCourseModule { }

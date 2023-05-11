@@ -12,10 +12,8 @@ const routes: Routes = [
   { path: 'catalog', loadChildren: () => import('./components/catalog/catalog.module').then(m => m.CatalogModule), canActivate: [AuthguardGuard]},
   { path: 'personal-account', loadChildren: () => import('./components/personal-account/personal-account.module').then(m => m.PersonalAccountModule) , canActivate: [AuthguardGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'created-courses', loadChildren: () => import('./components/created-courses/created-courses.module').then(m => m.CreatedCoursesModule) },
   { path: 'teach', loadChildren: () => import('./components/teach/teach.module').then(m => m.TeachModule) , canActivate: [RoleguardGuard,AuthguardGuard]},
-  { path: 'course/:id/syllabus', loadChildren: () => import('./components/syllabus-course/syllabus-course.module').then(m => m.SyllabusCourseModule) ,canActivate: [RoleguardGuard,AuthguardGuard]},
-  { path: 'course/:id/info-course', loadChildren: () => import('./components/info-course/info-course.module').then(m => m.InfoCourseModule) ,canActivate: [RoleguardGuard,AuthguardGuard]},
+  { path: 'course/info/:id', loadChildren: () => import('./components/course/course.module').then(m => m.CourseModule),canActivate: [RoleguardGuard,AuthguardGuard] },
 ];
 
 @NgModule({
