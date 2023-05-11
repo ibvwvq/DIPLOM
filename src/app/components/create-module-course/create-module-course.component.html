@@ -1,1 +1,10 @@
-<p>create-module-course works!</p>
+<form action="" [formGroup]="formCreateModuleCourse">
+    <tui-input formControlName="valueNameModule" class="valueNameModule m-2">
+        Название модуля
+        <input tuiTextfield type="text"/>
+    </tui-input>
+
+    <button tuiButton  type="submit" appearance="secondary" class="m-2" size="m">
+        Создать*
+      </button>
+</form>
