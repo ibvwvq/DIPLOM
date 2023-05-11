@@ -50,8 +50,6 @@ export class ApiService implements OnInit{
   }
 
  courses:any[]=[];
-
-
   public getCourses(idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/OutPutCourses.php', {idUser})
       .pipe(map(Courses => {
@@ -59,7 +57,6 @@ export class ApiService implements OnInit{
         return Courses;
       }));
   }
-
 
   getUsers(){
     const CURRENT:any = this.current_user;

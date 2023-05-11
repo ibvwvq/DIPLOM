@@ -12,15 +12,16 @@ export class AppbarComponent implements OnInit{
   logout() {
     this.dataService.deleteToken();
   }
-  user:any = '';
-  USER:any = '';
+  role:any = '';
+  ROLE:any = '';
   isAdmin:boolean = false;
   ngOnInit():void {
-   this.user = localStorage.getItem('role');
-   this.USER = JSON.parse(this.user);
+   this.role = localStorage.getItem('role');
+   this.ROLE = JSON.parse(this.role);
 
-    if(this.USER == 1){
-      this.isAdmin = true;
+   if(this.ROLE == 1){
+     this.getPageAdmin();
+     this.isAdmin = true;
     }
   }
 

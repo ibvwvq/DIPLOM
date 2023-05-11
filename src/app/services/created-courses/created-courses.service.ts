@@ -13,8 +13,6 @@ export class CreatedCoursesService {
   ngOnInit() {
     this.getCoursesFromApi();
 
-    this.current_courses = localStorage.getItem('courses');
-    this.CURRENT_COURSES = JSON.parse(this.current_courses);
 
     if(this.CURRENT_COURSES.length == 0){
       this.isEmpty = true;
@@ -33,6 +31,8 @@ export class CreatedCoursesService {
 
     this.CURRENT_USER = JSON.parse(this.current_user);
 
+    this.current_courses = localStorage.getItem('courses');
+    this.CURRENT_COURSES = JSON.parse(this.current_courses);
 
     this.dataService.getCourses(this.CURRENT_USER.idUser)
       .pipe(first())
