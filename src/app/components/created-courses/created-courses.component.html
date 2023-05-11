@@ -1,6 +1,6 @@
 <div class="conteiner">
     <div class="cards" *ngFor="let item of CURRENT_COURSES">
-        <a tuiIsland target="_blank" rel="noreferrer" [hoverable]="true" class="info-course">
+        <a tuiIsland  [hoverable]="true" class="info-course" routerLink="/syllabus/{{item.idCourse}}">
             <h3 class="tui-island__title">{{item.name}}</h3>
             <p class="tui-island__paragraph">{{item.description}}</p>
             <p class="tui-island__paragraph tui-island__paragraph_button"></p>

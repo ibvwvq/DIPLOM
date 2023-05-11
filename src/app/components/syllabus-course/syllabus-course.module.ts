@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SyllabusCourseRoutingModule } from './syllabus-course-routing.module';
 import { SyllabusCourseComponent } from './syllabus-course.component';
-
+import { AppbarModule } from '../appbar/appbar.module';
+import {TuiTabsModule} from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import { SyllabusCourseComponent } from './syllabus-course.component';
   ],
   imports: [
     CommonModule,
-    SyllabusCourseRoutingModule
+    SyllabusCourseRoutingModule,
+    AppbarModule,
+    TuiTabsModule
   ]
 })
 export class SyllabusCourseModule { }

@@ -13,8 +13,9 @@ const routes: Routes = [
   { path: 'personal-account', loadChildren: () => import('./components/personal-account/personal-account.module').then(m => m.PersonalAccountModule) , canActivate: [AuthguardGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'created-courses', loadChildren: () => import('./components/created-courses/created-courses.module').then(m => m.CreatedCoursesModule) },
-  { path: 'teach', loadChildren: () => import('./components/teach/teach.module').then(m => m.TeachModule) , canActivate: [RoleguardGuard]},
-  { path: 'syllabus-course', loadChildren: () => import('./components/syllabus-course/syllabus-course.module').then(m => m.SyllabusCourseModule) }
+  { path: 'teach', loadChildren: () => import('./components/teach/teach.module').then(m => m.TeachModule) , canActivate: [RoleguardGuard,AuthguardGuard]},
+  { path: 'syllabus/:id', loadChildren: () => import('./components/syllabus-course/syllabus-course.module').then(m => m.SyllabusCourseModule) ,canActivate: [RoleguardGuard,AuthguardGuard]},
+  { path: 'info-course', loadChildren: () => import('./components/info-course/info-course.module').then(m => m.InfoCourseModule) }
 ];
 
 @NgModule({
