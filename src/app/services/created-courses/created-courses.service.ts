@@ -26,6 +26,8 @@ export class CreatedCoursesService {
   current_user: any;
   CURRENT_USER: any;
 
+  isBad = false;
+
   getCoursesFromApi() {
     this.current_user = localStorage.getItem('user');
 
@@ -38,10 +40,10 @@ export class CreatedCoursesService {
       .pipe(first())
       .subscribe(
         data => {
-          console.log('Its Ok')
+          this.isBad = false;
         },
         error => {
-          console.log('Its not Ok')
+          this.isBad = true;
         });
   }
 }
