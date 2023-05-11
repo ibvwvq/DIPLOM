@@ -18,8 +18,8 @@ export class ApiService implements OnInit{
   role:any;
 
   redirectUrl: string | undefined;
-  baseUrl: string = "http://localhost:90/Study-App/php";
- // baseUrl: string = "https://education.mk-cloud.ru/php";
+ //baseUrl: string = "http://localhost:90/Study-App/php";
+  baseUrl: string = "https://education.mk-cloud.ru/php";
 
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient: HttpClient,public loginService:LoginService) { }
@@ -42,6 +42,7 @@ export class ApiService implements OnInit{
         return Users;
       }));
   }
+  
   public userCreateCourse(nameCourse:any,descriptionCourse :any,idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/createcourse.php', { nameCourse, descriptionCourse, idUser})
       .pipe(map(Course => {

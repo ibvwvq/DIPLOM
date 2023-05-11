@@ -17,22 +17,34 @@ export class CreateModuleCourseComponent implements OnInit {
     });
   }
   idCourse: any;
+
+
+  isCreatedSuccess = false;
+  isCreatedError = false;
+  isSubmit = false;
+
   ngOnInit(): void {
     this.idCourse = this.infoCoursesService.current_course.idCourse;
   }
 
+
+
   createModule(form: FormGroup) {
-
-    this.dataService.createModule(form.value.valueNameModule, this.idCourse)
-      .pipe(first())
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-
-        error => {
-          console.log(error);
-        });
+    this.isSubmit = true;
+    if (this.formCreateModuleCourse.controls.valueNameModule.valid) {
+      this.dataService.createModule(form.value.valueNameModule, this.idCourse)
+        .pipe(first())
+        .subscribe(
+          data => {
+            this.isCreatedSuccess = true;
+            console.log(data);
+          },
+          error => {
+            this.isCreatedError = true;
+            console.log(error);
+          });
+    }
   }
+  get f() { return this.formCreateModuleCourse.controls }
 }
 

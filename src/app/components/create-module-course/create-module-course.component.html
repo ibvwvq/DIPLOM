@@ -1,10 +1,27 @@
 <form action="" [formGroup]="formCreateModuleCourse" (ngSubmit)="createModule(formCreateModuleCourse)">
     <tui-input formControlName="valueNameModule" class="valueNameModule m-2">
         Название модуля*
-        <input tuiTextfield type="text"/>
+        <input tuiTextfield type="text" />
     </tui-input>
 
-    <button tuiButton  type="submit" appearance="secondary" class="m-2" size="m">
+    <div *ngIf="f.valueNameModule.errors && isSubmit">
+        <span class="error-name m-2">Введите корректое имя</span>
+     </div>
+
+
+    <button tuiButton type="submit" appearance="secondary" class="m-2" size="m">
         Создать
-      </button>
+    </button>
+    <ng-template [ngIf]="isCreatedSuccess">
+        <tui-notification status="success" class="tui-space_top-4">
+           Модуль успешно добавлен
+        </tui-notification>
+    </ng-template>
+
+    <ng-template [ngIf]="isCreatedError">
+        <tui-notification status="error" class="tui-space_top-4">
+            Что-то пошло не так
+        </tui-notification>
+    </ng-template>
+
 </form>
