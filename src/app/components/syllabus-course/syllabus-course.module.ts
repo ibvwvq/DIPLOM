@@ -7,6 +7,8 @@ import { AppbarModule } from '../appbar/appbar.module';
 import {TuiTabsModule} from '@taiga-ui/kit';
 import { AppbarCourseModule } from '../appbar-course/appbar-course.module';
 import {TuiButtonModule} from '@taiga-ui/core';
+import { CreateModuleCourseModule } from '../create-module-course/create-module-course.module';
+import {TuiDialogModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     SyllabusCourseComponent
@@ -18,7 +20,9 @@ import {TuiButtonModule} from '@taiga-ui/core';
     AppbarModule,
     TuiTabsModule,
     AppbarCourseModule,
-    TuiButtonModule
+    TuiButtonModule,
+    CreateModuleCourseModule,
+    TuiDialogModule
   ]
 })
 export class SyllabusCourseModule { }

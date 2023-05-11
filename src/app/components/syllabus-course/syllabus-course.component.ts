@@ -15,4 +15,9 @@ export class SyllabusCourseComponent {
   ngOnInit() {
 
   }
+
+  dialogCreateModule = false;
+  openPageCreateModule(){
+    this.dialogCreateModule = true;
+  }
 }

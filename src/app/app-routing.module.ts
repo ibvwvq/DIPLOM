@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'teach', loadChildren: () => import('./components/teach/teach.module').then(m => m.TeachModule) , canActivate: [RoleguardGuard,AuthguardGuard]},
   { path: 'course/info/:id', loadChildren: () => import('./components/course/course.module').then(m => m.CourseModule),canActivate: [RoleguardGuard,AuthguardGuard] },
+  { path: 'create-module-course', loadChildren: () => import('./components/create-module-course/create-module-course.module').then(m => m.CreateModuleCourseModule) },
 ];
 
 @NgModule({

@@ -1,5 +1,11 @@
 <div class="main-syllabus">
-    <button tuiButton type="button" appearance="primary" class="m-3" size="s">
-        Редактировать содержание
+    <button tuiButton type="button" appearance="primary" class="m-3" size="s" (click)="openPageCreateModule()">
+        Новый модуль
     </button>
 </div>
+
+
+    <ng-template [tuiDialogOptions]="{label: 'Declarative directive', size: 's'}"
+    [(tuiDialog)]="dialogCreateModule" let-observer>
+        <app-create-module-course></app-create-module-course>
+    </ng-template>
