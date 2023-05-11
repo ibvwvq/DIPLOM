@@ -66,6 +66,13 @@ export class ApiService implements OnInit{
     }));
   }
 
+  public getModules(idCourse:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getModules.php', {idCourse})
+      .pipe(map(Modules => {
+        return Modules;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);
