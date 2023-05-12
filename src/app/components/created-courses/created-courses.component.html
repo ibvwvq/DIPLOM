@@ -1,9 +1,11 @@
 <div class="conteiner">
     <div class="cards" *ngFor="let item of CURRENT_COURSES">
-        <a tuiIsland  [hoverable]="true" class="info-course" routerLink="/course/info/{{item.idCourse}}">
+        <a tuiIsland  [hoverable]="true" class="info-course">
             <h3 class="tui-island__title">{{item.name}}</h3>
             <p class="tui-island__paragraph">{{item.description}}</p>
-            <p class="tui-island__paragraph tui-island__paragraph_button"></p>
+            <p class="tui-island__paragraph tui-island__paragraph_button">
+                <a tuiLink routerLink="/course/info/{{item.idCourse}}" >Подробнее</a>
+            </p>
         </a>
     </div>
 </div>

@@ -1,0 +1,12 @@
+<app-appbar></app-appbar>
+
+<div class="container">
+   <button tuiButton type="button" appearance="primary" class="m-2" size="s" (click)="openPageCreateLesson()">
+      Добавить урок
+   </button>
+
+   <ng-template let-observer [tuiDialogOptions]="{label: 'Создать урок в текущий модуль', size: 'm'}" [(tuiDialog)]="open">
+      <app-create-lessons-module></app-create-lessons-module>
+   </ng-template>
+
+</div>
