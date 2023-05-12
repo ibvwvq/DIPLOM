@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { first, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
 import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
@@ -9,7 +9,7 @@ import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
   templateUrl: './syllabus-course.component.html',
   styleUrls: ['./syllabus-course.component.css']
 })
-export class SyllabusCourseComponent {
+export class SyllabusCourseComponent implements OnInit {
 
   constructor(
     private infoCourseService:InfoCourseService,
@@ -32,6 +32,7 @@ export class SyllabusCourseComponent {
   }
 
   MODULES:any[] = [];
+  noneModules:any = false;
 
   current_modules:any;
 
@@ -43,9 +44,14 @@ export class SyllabusCourseComponent {
             this.syllabusService.modules = data;
             this.MODULES = this.syllabusService.modules;
             this.loading = false;
+            if(this.syllabusService.modules.length == 0){
+              this.noneModules = true;
+            }
           },
           error => {
             console.log(error);
           });
+
+          
   }
 }

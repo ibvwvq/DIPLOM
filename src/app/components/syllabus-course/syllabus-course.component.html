@@ -5,11 +5,15 @@
         Новый модуль
     </button>
 
-    <h2 class="p-3">Программа курса</h2>
+    <h2 class="m-2">Программа курса</h2>
 
     <tui-loader class="inline-flex tui-space_right-2" [showLoader]="loading" [inheritColor]="true" [overlay]="true">
        
     </tui-loader>
+
+    <ng-template [ngIf]="noneModules">
+        <p class="m-2">В курсе пока что нет ни одного урока. <br> Добавьте свой первый модуль. </p>
+    </ng-template>
 
     <div class="cards-modules" *ngFor="let item of MODULES; let index = index">
         <div class="card-module">
