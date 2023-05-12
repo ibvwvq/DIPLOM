@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-info-course',
   templateUrl: './info-course.component.html',
@@ -11,7 +11,8 @@ export class InfoCourseComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private infoCourseService: InfoCourseService) { }
+    private infoCourseService: InfoCourseService,
+    private location:Location) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -43,5 +44,9 @@ export class InfoCourseComponent implements OnInit {
         this.current_course = this.infoCourseService.current_course;
       }
     }
+  }
+
+  backLocation(){
+      this.location.back();
   }
 }
