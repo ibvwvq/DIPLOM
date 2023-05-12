@@ -6,4 +6,7 @@ import { InfoCourseService } from '../info-course/info-course.service';
 })
 export class SyllabusService {
 
+ modules:any;
+  
+
 }
