@@ -19,9 +19,10 @@ export class SyllabusCourseComponent {
   current_course:any = this.infoCourseService.current_course;
 
 
-
+  loading = true;
   ngOnInit() {  
-      this.getModules();
+    this.loading = true;
+    this.getModules();
   }
 
   dialogCreateModule = false;
@@ -41,6 +42,7 @@ export class SyllabusCourseComponent {
           data => {
             this.syllabusService.modules = data;
             this.MODULES = this.syllabusService.modules;
+            this.loading = false;
           },
           error => {
             console.log(error);
