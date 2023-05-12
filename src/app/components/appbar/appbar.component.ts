@@ -8,7 +8,9 @@ import { CreatedCoursesService } from 'src/app/services/created-courses/created-
   styleUrls: ['./appbar.component.css']
 })
 export class AppbarComponent implements OnInit{
-  constructor(private dataService: ApiService,private createdCourses:CreatedCoursesService) { }
+  constructor(
+    private dataService: ApiService,
+    private createdCourses:CreatedCoursesService) { }
   logout() {
     this.dataService.deleteToken();
   }

@@ -3,12 +3,14 @@
   <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
     Ваши данные
   </button>
-  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2" (click)="this.apiService.getUsers()">
-    Курсы
-  </button>
-  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
-    Избранное
-  </button>
+  <ng-template [ngIf]="isAdmin == false">
+    <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2" (click)="this.apiService.getUsers()">
+      Курсы
+    </button>
+    <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
+      Избранное
+    </button>
+  </ng-template>
 </tui-tabs>
 
 <ng-template [ngIf]="activeItemIndex==0">

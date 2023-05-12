@@ -9,14 +9,19 @@ import {ApiService} from "../../services/api/api.service";
 })
 export class PersonalAccountComponent implements OnInit{
   activeItemIndex = 0;
-  constructor(public apiService:ApiService) {
+  constructor(
+    public apiService:ApiService) {
   }
   name = this.apiService.CURRENT_USER.fullName;
   email = this.apiService.CURRENT_USER.email;
   id = this.apiService.CURRENT_USER.idContactInformation;
   role = '';
 
+  localeStorageRole:any = '';
+  ROLE:any = '';
+  isAdmin:boolean = false;
   ngOnInit() {
+    
     if(this.apiService.CURRENT_ROLE == 3){
       this.role = 'student';
     }
@@ -26,5 +31,13 @@ export class PersonalAccountComponent implements OnInit{
     else if(this.apiService.CURRENT_ROLE == 1){
       this.role = 'admin';
     }
+
+    this.localeStorageRole = localStorage.getItem('role');
+    this.ROLE = JSON.parse(this.localeStorageRole);
+
+   if(this.ROLE == 1){
+     this.isAdmin = true;
+    }
+
   }
 }
