@@ -18,7 +18,7 @@ export class ApiService implements OnInit{
   role:any;
 
   redirectUrl: string | undefined;
- //baseUrl: string = "http://localhost:90/Study-App/php";
+ // baseUrl: string = "http://localhost:90/Study-App/php";
   baseUrl: string = "https://education.mk-cloud.ru/php";
 
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
@@ -73,12 +73,12 @@ export class ApiService implements OnInit{
       }));
   }
 
-  public createLesson(textTask :any,idModule :AnalyserOptions){
-    return this.httpClient.post<any>(this.baseUrl + '/createLesson.php',{textTask,idModule})
+  public createLesson(text :any,idModule :any){
+    return this.httpClient.post<any>(this.baseUrl + '/createLesson.php',{text,idModule})
     .pipe(map(Lesson=>{
       console.log(Lesson);
       return Lesson;
-    }))
+    }));
   }
 
   getUsers(){

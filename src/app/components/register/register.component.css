@@ -20,12 +20,15 @@ h3{
 
 .error-name{
     color: red;
+    font-size: small;
 }
 
 .error-email{
     color: red;
+    font-size: small;
 }
 
 .error-password{
     color: red;
+    font-size: small;
 }

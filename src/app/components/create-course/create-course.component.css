@@ -17,8 +17,10 @@
 
 .error-name{
   color: red;
+  font-size: small;
 }
 
 .error-description{
   color: red;
+  font-size: small;
 }

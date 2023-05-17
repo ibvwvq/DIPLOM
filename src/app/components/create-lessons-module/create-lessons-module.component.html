@@ -1,9 +1,12 @@
 <form [formGroup]="formCreateLesson">
-    <tui-input formControlName="text" class="valueNameLesson m-2">
+    <tui-input formControlName="valueNameLesson" class="valueNameLesson m-2">
         Название урока
-        <input tuiTextfield type="text"/>
+        <input tuiTextfield type="text" name="text"/>
     </tui-input>
-    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="m">
+    <div *ngIf="f.valueNameLesson.errors && isSubmit">
+        <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>
+    </div>
+    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="m" (click)="createLesson()">
           Создать урок
       </button>
 </form>
