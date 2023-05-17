@@ -5,7 +5,10 @@
       Добавить урок
    </button>
 
-   <ng-template let-observer [tuiDialogOptions]="{label: 'Создать урок в текущий модуль', size: 'm'}" [(tuiDialog)]="open">
+   <h3>Модуль - {{nameCurrentModule}}</h3>
+
+   <ng-template let-observer [tuiDialogOptions]="{label: 'Создать урок в текущий модуль', size: 'm'}"
+      [(tuiDialog)]="open">
       <app-create-lessons-module></app-create-lessons-module>
    </ng-template>
 
