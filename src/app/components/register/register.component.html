@@ -1,13 +1,13 @@
 <form [formGroup]="formRegister" class="form-register" (ngSubmit)="postdata(formRegister)">
     <h3>Зарегистрируйтесь</h3>
-    <tui-input formControlName="name" class="m-2" >
+    <tui-input formControlName="name" class="m-2">
         Имя и фамилия
-        <input tuiTextfield  type="text" name="name" />
+        <input tuiTextfield type="text" name="name" />
     </tui-input>
 
     <div *ngIf="f.name.errors && isSubmit">
         <span class="error-name m-2">Введите корректое имя</span>
-     </div>
+    </div>
 
     <tui-input formControlName="email" class="m-2" name="email">
         E-mail
@@ -16,7 +16,7 @@
 
     <div *ngIf="f.email.errors && isSubmit">
         <span class="error-email m-2">Введите корректый e-mail</span>
-     </div>
+    </div>
 
     <tui-input-password formControlName="password" class=" m-2">
         Пароль
@@ -25,21 +25,25 @@
 
     <div *ngIf="f.password.errors && isSubmit">
         <span class="error-password m-2">Введите корректый пароль</span>
-     </div>
+    </div>
 
     <div *ngIf="isNotCorrect">
-        <tui-notification status="error" class="error m-2" >
+        <tui-notification status="error" class="error m-2">
             E-mail уже зарегистрирован
         </tui-notification>
     </div>
 
     <div class="btns-main">
         <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login" size="m">
-           Назад
+            Назад
         </button>
-        <button tuiButton type="submit" appearance="primary" class="position-relative m-2" size="m">
-            Зарегистрироваться
+
+        <button tuiButton type="submit" appearance="primary" class="m-2" size="m">
+            <tui-loader [showLoader]="loaderRegister" [inheritColor]="true"
+                [overlay]="true">
+                Зарегистрироваться
+            </tui-loader>
         </button>
+
     </div>
 </form>
-

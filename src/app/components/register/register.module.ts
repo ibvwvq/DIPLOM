@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_INPUT_PASSWORD_DEFAULT_OPTIONS, TUI_INPUT_PASSWORD_OPTIONS, TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/kit';
 
 import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLoaderModule} from '@taiga-ui/core';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {TuiNotificationModule} from '@taiga-ui/core';
     FormsModule,
     TuiInputModule,
     TuiTextfieldControllerModule,
-    TuiNotificationModule
+    TuiNotificationModule,
+    TuiLoaderModule
   ],
   providers: [
     {

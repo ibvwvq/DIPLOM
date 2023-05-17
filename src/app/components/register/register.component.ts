@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class RegisterComponent implements OnInit {
   isNotCorrect = false;
+  loaderRegister = false;
   formRegister: FormGroup;
   isSubmit = false;
   constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router) {
@@ -27,6 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
   postdata(formRegister:FormGroup) {
+    this.loaderRegister = true;
     this.isSubmit = true;
     if(this.formRegister.controls.email.valid && this.formRegister.controls.name && this.formRegister.controls.password){
       this.dataService.userregistration(formRegister.value.name, formRegister.value.email, formRegister.value.password)
@@ -34,11 +36,16 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           data => {
             this.router.navigate(['login']);
+            this.loaderRegister = false;
           },
 
           error => {
             this.isNotCorrect = true;
+            this.loaderRegister = false;
           });
+    }
+    else{
+      this.loaderRegister = false;
     }
   }
 
