@@ -1,3 +1,9 @@
-<form action="" formGroup="formCreateLesson">
-   
+<form [formGroup]="formCreateLesson">
+    <tui-input formControlName="text" class="valueNameLesson m-2">
+        Название урока
+        <input tuiTextfield type="text"/>
+    </tui-input>
+    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="m">
+          Создать урок
+      </button>
 </form>

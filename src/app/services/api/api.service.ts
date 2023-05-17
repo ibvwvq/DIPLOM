@@ -73,6 +73,14 @@ export class ApiService implements OnInit{
       }));
   }
 
+  public createLesson(textTask :any,idModule :AnalyserOptions){
+    return this.httpClient.post<any>(this.baseUrl + '/createLesson.php',{textTask,idModule})
+    .pipe(map(Lesson=>{
+      console.log(Lesson);
+      return Lesson;
+    }))
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);
