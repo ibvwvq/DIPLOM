@@ -18,6 +18,8 @@ export class LoginComponent {
 
   isSubmit = false;
 
+  loaderAuth = false;
+
   constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router,public loginService: LoginService) {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
@@ -28,6 +30,7 @@ export class LoginComponent {
   qw:any;
   CURRENT_USER:any;
   postdata(formLogin:FormGroup) {
+    this.loaderAuth = true;
     this.isSubmit = true;
     this.dataService.userlogin(formLogin.value.email, formLogin.value.password)
       .pipe(first())
@@ -35,9 +38,12 @@ export class LoginComponent {
         data => {
           const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/personal-account';
           this.router.navigate([redirect]);
+          this.loaderAuth = false;
         },
         error => {
           this.isNotCorrect = true;
+          this.loaderAuth = false;
+
         });
   }
   get email() { return this.formLogin.get('email'); }

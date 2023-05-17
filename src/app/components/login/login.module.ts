@@ -14,7 +14,7 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
 
 import {TuiNotificationModule} from '@taiga-ui/core';
-
+import {TuiLoaderModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     LoginComponent
@@ -29,7 +29,8 @@ import {TuiNotificationModule} from '@taiga-ui/core';
     FormsModule,
     TuiInputModule,
     TuiTextfieldControllerModule,
-    TuiNotificationModule
+    TuiNotificationModule,
+    TuiLoaderModule
    ],
   providers: [
     {
