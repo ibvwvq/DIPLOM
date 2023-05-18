@@ -1,28 +1,51 @@
-<div class="conteiner">
-    <p class="title_created-courses">Курсы</p>
-
-    <form class="search" class="form-search" [formGroup]="formSearchCourses">
-        <tui-input class="input-search" formControlName="valueName" tuiTextfieldSize="m">
-            Название курса
-            <input tuiTextfield type="text" />
-        </tui-input>
-        <button tuiButton type="button" appearance="primary" class="submit-search" size="m">
-            Найти
-        </button>
-    </form>
 
 
-    <div class="cards" *ngFor="let item of CURRENT_COURSES">
-        <a tuiIsland  [hoverable]="true" class="info-course">
-            <h3 class="tui-island__title">{{item.name}}</h3>
-            <p class="tui-island__paragraph">{{item.description}}</p>
-            <p class="tui-island__paragraph tui-island__paragraph_button">
-                <a tuiLink routerLink="/course/info/{{item.idCourse}}" >Подробнее</a>
-            </p>
-        </a>
+<app-appbar></app-appbar>
+
+<ng-template let-observer [tuiDialogOptions]="{label: 'Создание курса', size: 'm'}"
+  [(tuiDialog)]="pageCreateCourse">
+  <app-create-course></app-create-course>
+</ng-template>
+
+
+<div class="main">
+    <div class="created-courses m-2">
+        <div class="conteiner">
+            <div class="btn-create_title">
+                <p class="title_created-courses">Курсы</p>
+                <div class="btn-create-course">
+                    <button tuiButton class="m-2" (click)="openPageCreateCourse()" size="s" appearance="whiteblock-active">
+                      <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
+                      Новый курс
+                    </button>
+                  </div>
+            </div>
+        
+            <form class="search" class="form-search" [formGroup]="formSearchCourses">
+                <tui-input class="input-search" formControlName="valueName" tuiTextfieldSize="m">
+                    Название курса
+                    <input tuiTextfield type="text" />
+                </tui-input>
+                <button tuiButton type="button" appearance="primary" class="submit-search" size="m">
+                    Найти
+                </button>
+            </form>
+        
+        
+            <div class="cards" *ngFor="let item of CURRENT_COURSES">
+                <a tuiIsland  [hoverable]="true" class="info-course">
+                    <h3 class="tui-island__title">{{item.name}}</h3>
+                    <p class="tui-island__paragraph">{{item.description}}</p>
+                    <p class="tui-island__paragraph tui-island__paragraph_button">
+                        <a tuiLink routerLink="/course/info/{{item.idCourse}}" >Подробнее</a>
+                    </p>
+                </a>
+            </div>
+            <ng-template [ngIf]="isEmpty">
+                <p class="p-2">Вы пока не создали ни одного курса...</p>
+            </ng-template>
+            
+        </div>
     </div>
 </div>
 
-<ng-template [ngIf]="isEmpty">
-    <p class="p-2">Вы пока не создали ни одного курса...</p>
-</ng-template>

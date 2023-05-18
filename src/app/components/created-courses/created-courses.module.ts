@@ -10,6 +10,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import { CreateCourseModule } from '../create-course/create-course.module';
+
+import {AppbarModule} from "../appbar/appbar.module";
+import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiDialogModule} from '@taiga-ui/core';
 
 @NgModule({
     declarations: [
@@ -26,7 +31,11 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/core';
         TuiInputModule,
         ReactiveFormsModule,
         TuiButtonModule,
-        TuiTextfieldControllerModule
+        TuiTextfieldControllerModule,
+        CreateCourseModule,
+        AppbarModule,
+        TuiSvgModule,
+        TuiDialogModule
     ]
 })
 export class CreatedCoursesModule { }

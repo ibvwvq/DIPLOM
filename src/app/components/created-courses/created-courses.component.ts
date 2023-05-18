@@ -12,7 +12,7 @@ export class CreatedCoursesComponent implements OnInit {
   formSearchCourses:FormGroup;
   constructor(private dataService: ApiService,private fb:FormBuilder) { 
     this.formSearchCourses = this.fb.group({
-      
+      valueName:[null]
     })
   }
   isEmpty = false;
@@ -26,4 +26,17 @@ export class CreatedCoursesComponent implements OnInit {
   current_courses: any;
   CURRENT_COURSES: any[] = [];
 
+
+  pageCreateCourse = false;
+  pageCreatedCourses = true;
+  openPageCreateCourse(){
+    this.pageCreateCourse = true;
+    this.pageCreatedCourses = false;
+  }
+
+  openPageCreatedCourses(){
+    this.pageCreateCourse = false;
+    this.pageCreatedCourses = true;
+
+  }
 }
