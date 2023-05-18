@@ -17,6 +17,7 @@ import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiDialogModule} from '@taiga-ui/core';
 import { FilterPipe } from 'src/app/services/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
     declarations: [
         CreatedCoursesComponent,

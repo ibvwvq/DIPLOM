@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
 import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
@@ -13,16 +14,18 @@ export class SyllabusCourseComponent implements OnInit {
 
   constructor(
     private infoCourseService:InfoCourseService,
+    private route:ActivatedRoute,
     private dataService:ApiService,
     private syllabusService:SyllabusService){}
 
-  current_course:any = this.infoCourseService.current_course;
 
 
   loading = true;
   ngOnInit() {  
     this.loading = true;
-     this.getModules();
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+     this.getModules(id);
   }
 
   dialogCreateModule = false;
@@ -34,14 +37,10 @@ export class SyllabusCourseComponent implements OnInit {
   MODULES:any[] = [];
   noneModules:any = false;
 
-  current_modules:any;
 
-  locale_storage_infoCourse:any = localStorage.getItem('infoCourse');
+    getModules(id: any){
 
-  getModules(){
-
-    const infoCourse = JSON.parse(this.locale_storage_infoCourse);
-      this.dataService.getModules(infoCourse.idCourse)
+      this.dataService.getModules(id)
       .pipe(first())
         .subscribe(
           data => {

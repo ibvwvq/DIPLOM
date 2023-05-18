@@ -65,4 +65,5 @@ export class CreatedCoursesComponent implements OnInit {
           this.isBad = true;
         });
   }
+
 }

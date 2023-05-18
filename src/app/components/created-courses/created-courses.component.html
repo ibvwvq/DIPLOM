@@ -14,7 +14,7 @@
             <div class="btn-create_title">
                 <p class="title_created-courses">Курсы</p>
                 <div class="btn-create-course">
-                    <button tuiButton class="m-2" (click)="openPageCreateCourse()" size="s" appearance="whiteblock-active">
+                    <button tuiButton class="m-2" title="Создать новый курс" (click)="openPageCreateCourse()" size="s" appearance="whiteblock-active">
                       <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
                       Новый курс
                     </button>
@@ -34,7 +34,7 @@
                     <h3 class="tui-island__title">{{item.name}}</h3>
                     <p class="tui-island__paragraph">{{item.description}}</p>
                     <p class="tui-island__paragraph tui-island__paragraph_button">
-                        <a tuiLink routerLink="/course/info/{{item.idCourse}}" >Подробнее</a>
+                        <a class="link-card_course" tuiLink routerLink="/course/info/{{item.idCourse}}">Содержание</a>
                     </p>
                 </a>
             </div>
