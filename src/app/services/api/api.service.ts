@@ -54,7 +54,6 @@ export class ApiService implements OnInit{
   public getCourses(idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/OutPutCourses.php', {idUser})
       .pipe(map(Courses => {
-        this.setCourses(Courses);
         return Courses;
       }));
   }
@@ -98,7 +97,6 @@ export class ApiService implements OnInit{
   }
   setCourses(courses:any){
     localStorage.setItem('courses', JSON.stringify(courses));
-
   }
 
   setLSUser(user:any){

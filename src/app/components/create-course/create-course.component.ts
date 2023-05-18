@@ -38,7 +38,7 @@ export class CreateCourseComponent {
         .subscribe(
           data => {
             this.isCreatedSuccess = true;
-            this.createdCourseService.getCoursesFromApi();
+            this.createdCourseService.getCourses();
           },
           error => {
             this.isCreatedUnSuccess = true;

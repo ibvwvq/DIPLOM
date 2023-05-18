@@ -28,7 +28,7 @@ export class AppbarComponent implements OnInit{
   }
 
   getPageAdmin(){
-    this.createdCourses.getCoursesFromApi();
+    this.createdCourses.getCourses();
   }
 
 }

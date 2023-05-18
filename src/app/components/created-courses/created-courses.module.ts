@@ -15,10 +15,12 @@ import { CreateCourseModule } from '../create-course/create-course.module';
 import {AppbarModule} from "../appbar/appbar.module";
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiDialogModule} from '@taiga-ui/core';
-
+import { FilterPipe } from 'src/app/services/filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
     declarations: [
-        CreatedCoursesComponent
+        CreatedCoursesComponent,
+        FilterPipe
     ],
     exports: [
         CreatedCoursesComponent
@@ -35,7 +37,8 @@ import {TuiDialogModule} from '@taiga-ui/core';
         CreateCourseModule,
         AppbarModule,
         TuiSvgModule,
-        TuiDialogModule
+        TuiDialogModule,
+        NgxPaginationModule
     ]
 })
 export class CreatedCoursesModule { }

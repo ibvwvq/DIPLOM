@@ -12,7 +12,7 @@ export class CreatedCoursesService {
   isEmpty = false;
 
   ngOnInit() {
-    this.getCoursesFromApi();
+    this.getCourses();
 
     if (this.CURRENT_COURSES.length == 0) {
       this.isEmpty = true;
@@ -20,7 +20,6 @@ export class CreatedCoursesService {
 
   }
 
-  current_courses: any;
   CURRENT_COURSES: any[] = [];
 
   current_user: any;
@@ -28,19 +27,17 @@ export class CreatedCoursesService {
 
   isBad = false;
 
-  getCoursesFromApi() {
+  getCourses() {
     this.current_user = localStorage.getItem('user');
 
     this.CURRENT_USER = JSON.parse(this.current_user);
-
-    this.current_courses = localStorage.getItem('courses');
-    this.CURRENT_COURSES = JSON.parse(this.current_courses);
 
     this.dataService.getCourses(this.CURRENT_USER.idUser)
       .pipe(first())
       .subscribe(
         data => {
           this.isBad = false;
+          this.CURRENT_COURSES = data;
         },
         error => {
           this.isBad = true;
