@@ -23,7 +23,7 @@
         
             <form class="search" class="form-search" [formGroup]="formSearchCourses">
                 <tui-input class="input-search" [(ngModel)]="valueSearch" formControlName="valueName" tuiTextfieldSize="m">
-                    Название курса
+                    Название или описание курса
                     <input tuiTextfield type="text" />
                 </tui-input>
             </form>
@@ -42,7 +42,7 @@
                 <p class="p-2">Вы пока не создали ни одного курса...</p>
             </ng-template>
 
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
             
         </div>
     </div>
