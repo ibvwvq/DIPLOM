@@ -22,7 +22,7 @@ export class SyllabusCourseComponent implements OnInit {
   loading = true;
   ngOnInit() {  
     this.loading = true;
-    this.getModules();
+     this.getModules();
   }
 
   dialogCreateModule = false;
@@ -36,8 +36,12 @@ export class SyllabusCourseComponent implements OnInit {
 
   current_modules:any;
 
+  locale_storage_infoCourse:any = localStorage.getItem('infoCourse');
+
   getModules(){
-      this.dataService.getModules(this.current_course.idCourse)
+
+    const infoCourse = JSON.parse(this.locale_storage_infoCourse);
+      this.dataService.getModules(infoCourse.idCourse)
       .pipe(first())
         .subscribe(
           data => {

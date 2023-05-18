@@ -9,15 +9,7 @@ import { InfoCourseService } from 'src/app/services/info-course/info-course.serv
   templateUrl: './appbar-course.component.html',
   styleUrls: ['./appbar-course.component.css']
 })
-export class AppbarCourseComponent implements OnInit {
+export class AppbarCourseComponent   {
 
-  constructor(private infoCourseService: InfoCourseService,
-    private router: Router,
-    private appBarCourseService: AppbarCourseService) { }
 
-  current_course: any;
-  activeItemIndex: any = this.appBarCourseService.activeItemIndex;
-  ngOnInit() {
-    this.current_course = this.infoCourseService.current_course;
-  }
 }

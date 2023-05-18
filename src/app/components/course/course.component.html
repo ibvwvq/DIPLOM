@@ -1,5 +1,5 @@
 <app-appbar></app-appbar>
-<tui-tabs tuiMobileTabs [(activeItemIndex)]="activeItemIndex">
+<!-- <tui-tabs tuiMobileTabs [(activeItemIndex)]="activeItemIndex">
     <button tuiTab tuiRipple="var(--tui-text-01)" class="p-2" (click)="getPageInfoCourse()">
         Описание
     </button>
@@ -7,12 +7,9 @@
     <button tuiTab tuiRipple="var(--tui-text-01)" class="p-2" (click)="getPageSyllabus()">
         Содержание
     </button>
-</tui-tabs>
+</tui-tabs> -->
 
 <ng-template [ngIf]="pageInfoCourse">
     <app-info-course></app-info-course>
-</ng-template>
-
-<ng-template [ngIf]="pageSyllabus">
     <app-syllabus-course></app-syllabus-course>
 </ng-template>
