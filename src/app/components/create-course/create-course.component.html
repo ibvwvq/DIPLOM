@@ -1,10 +1,7 @@
-
-
 <form class="formCreateCourse" [formGroup]="formCreateCourse" (ngSubmit)="createCourse(formCreateCourse)">
-  <h5 class="m-2">Создание нового курса</h5>
   <tui-input formControlName="valueName" class="m-2">
     Название курса*
-    <input tuiTextfield type="text"/>
+    <input tuiTextfield type="text" />
   </tui-input>
 
   <div *ngIf="f.valueName.errors && isSubmit">
@@ -13,7 +10,7 @@
 
   <tui-input formControlName="valueDescription" class="m-2">
     Описание курса*
-    <input tuiTextfield type="text"/>
+    <input tuiTextfield type="text" />
   </tui-input>
 
   <div *ngIf="f.valueDescription.errors && isSubmit">
@@ -21,8 +18,7 @@
   </div>
 
 
-  <button
-    tuiButton type="submit" appearance="primary" class="m-2 btn-submit_create-course" size="m">
+  <button tuiButton type="submit" appearance="primary" class="m-2 btn-submit_create-course" size="m">
     Создать
   </button>
 
@@ -34,10 +30,8 @@
 
   <ng-template [ngIf]="isCreatedUnSuccess">
     <tui-notification status="error" class="success-error-notification m-2">
-     Что-то пошло не так...Попробуйте еще раз.
+      Что-то пошло не так...Попробуйте еще раз.
     </tui-notification>
   </ng-template>
 
 </form>
-
-

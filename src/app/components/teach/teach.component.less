@@ -1,3 +1,6 @@
+
+
+
 .content {
   display: flex;
   margin: 2rem 0;
@@ -13,4 +16,18 @@
   margin-left: 2rem;
   min-width: 3rem;
   width: 10rem;
+}
+
+.main{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+}
+
+.created-courses{
+  grid-column: span 5;
+}
+
+.btn-create-course{
+  grid-column: span 2;
+
 }

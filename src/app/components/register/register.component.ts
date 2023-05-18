@@ -27,9 +27,10 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  postdata(formRegister:FormGroup) {
+  registerUser(formRegister:FormGroup) {
     this.loaderRegister = true;
     this.isSubmit = true;
+    
     if(this.formRegister.controls.email.valid && this.formRegister.controls.name && this.formRegister.controls.password){
       this.dataService.userregistration(formRegister.value.name, formRegister.value.email, formRegister.value.password)
         .pipe(first())

@@ -1,4 +1,17 @@
 <div class="conteiner">
+    <p class="title_created-courses">Курсы</p>
+
+    <form class="search" class="form-search" [formGroup]="formSearchCourses">
+        <tui-input class="input-search" formControlName="valueName" tuiTextfieldSize="m">
+            Название курса
+            <input tuiTextfield type="text" />
+        </tui-input>
+        <button tuiButton type="button" appearance="primary" class="submit-search" size="m">
+            Найти
+        </button>
+    </form>
+
+
     <div class="cards" *ngFor="let item of CURRENT_COURSES">
         <a tuiIsland  [hoverable]="true" class="info-course">
             <h3 class="tui-island__title">{{item.name}}</h3>

@@ -20,6 +20,7 @@ export class InfoLessonsComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentModule();
+    this.getLessons();
     console.log(this.current_module);
   }
 
@@ -27,6 +28,7 @@ export class InfoLessonsComponent implements OnInit {
   // nameCurrentModule = JSON.parse(this.currentModule).name;
   nameCurrentModule:any;
   current_module:any;
+  current_lessons:any;
   getCurrentModule() {
     const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
     const idCourse = Number(this.route.snapshot.paramMap.get('id'));
@@ -41,7 +43,6 @@ export class InfoLessonsComponent implements OnInit {
               console.log(this.current_module);
               localStorage.setItem('current_module', JSON.stringify(this.current_module));
               this.nameCurrentModule = this.current_module.name;
-              console.log(this.nameCurrentModule);
             }
           }
         },
@@ -53,5 +54,18 @@ export class InfoLessonsComponent implements OnInit {
 
   openPageCreateLesson() {
     this.open = true;
+  }
+
+  getLessons(){
+    const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
+    this.dataService.getLessons(idModule)
+      .pipe(first())
+      .subscribe(
+        data => {
+        this.current_lessons = data;
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

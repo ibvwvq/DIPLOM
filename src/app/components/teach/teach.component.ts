@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-teach',
   templateUrl: './teach.component.html',
-  styleUrls: ['./teach.component.css']
+  styleUrls: ['./teach.component.less']
 })
 export class TeachComponent {
   pageCreateCourse = false;

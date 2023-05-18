@@ -38,8 +38,8 @@ export class ApiService implements OnInit{
   }
   public userregistration(name:any, email:any, pwd:any) : Observable<any> {
     return this.httpClient.post<any>(this.baseUrl + '/register.php', { name, email, pwd})
-      .pipe(map(Users => {
-        return Users;
+      .pipe(map(User => {
+        return User;
       }));
   }
   
@@ -78,6 +78,13 @@ export class ApiService implements OnInit{
     .pipe(map(Lesson=>{
       console.log(Lesson);
       return Lesson;
+    }));
+  }
+
+  public getLessons(idModule :any){
+    return this.httpClient.post<any>(this.baseUrl + '/getLessons.php', {idModule})
+    .pipe(map(Lessons => {
+      return Lessons;
     }));
   }
 

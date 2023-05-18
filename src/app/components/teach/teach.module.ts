@@ -9,6 +9,8 @@ import {AppbarModule} from "../appbar/appbar.module";
 import {CreateCourseModule} from "../create-course/create-course.module";
 import {TuiSvgModule} from '@taiga-ui/core';
 import {CreatedCoursesModule} from "../created-courses/created-courses.module";
+import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiDialogModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     TeachComponent
@@ -20,7 +22,9 @@ import {CreatedCoursesModule} from "../created-courses/created-courses.module";
     AppbarModule,
     CreateCourseModule,
     TuiSvgModule,
-    CreatedCoursesModule
+    CreatedCoursesModule,
+    TuiButtonModule,
+    TuiDialogModule
   ]
 })
 export class TeachModule { }

@@ -1,23 +1,20 @@
 <app-appbar></app-appbar>
 
-<tui-tabs tuiMobileTabs>
-  <button tuiTab tuiRipple="var(--tui-text-01)" class="p-2" (click)="openPageCreatedCourses()">
-   Ваши Курсы
-  </button>
-  
-  <button tuiTab tuiRipple="var(--tui-text-01)" class="p-2" (click)="openPageCreateCourse()">
-    <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
-    Создать
-  </button>
-
-
-
-</tui-tabs>
-
-<ng-template [ngIf]="pageCreateCourse">
+<ng-template let-observer [tuiDialogOptions]="{label: 'Создание курса', size: 'm'}"
+  [(tuiDialog)]="pageCreateCourse">
   <app-create-course></app-create-course>
 </ng-template>
 
-<ng-template [ngIf]="pageCreatedCourses">
-  <app-created-courses></app-created-courses>
-</ng-template>
+
+<div class="main">
+  <div class="btn-create-course">
+    <button tuiButton class="m-2" (click)="openPageCreateCourse()" size="m" appearance="whiteblock-active">
+      <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
+      Новый курс
+    </button>
+  </div>
+    <div class="created-courses m-2">
+      <app-created-courses></app-created-courses>
+    </div>
+</div>
+

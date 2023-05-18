@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { InfoLessonsRoutingModule } from './info-lessons-routing.module';
 import { InfoLessonsComponent } from './info-lessons.component';
 import { AppbarModule } from '../appbar/appbar.module';
-
+import {TuiIslandModule} from '@taiga-ui/kit';
 
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiDialogModule} from '@taiga-ui/core';
@@ -19,7 +19,8 @@ import { CreateLessonsModuleModule } from '../create-lessons-module/create-lesso
     AppbarModule,
     TuiButtonModule,
     TuiDialogModule,
-    CreateLessonsModuleModule
+    CreateLessonsModuleModule,
+    TuiIslandModule
   ]
 })
 export class InfoLessonsModule { }

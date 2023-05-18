@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api/api.service";
 import { first, isEmpty } from "rxjs";
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-created-courses',
@@ -8,8 +9,12 @@ import { first, isEmpty } from "rxjs";
   styleUrls: ['./created-courses.component.css']
 })
 export class CreatedCoursesComponent implements OnInit {
-
-  constructor(private dataService: ApiService) { }
+  formSearchCourses:FormGroup;
+  constructor(private dataService: ApiService,private fb:FormBuilder) { 
+    this.formSearchCourses = this.fb.group({
+      
+    })
+  }
   isEmpty = false;
 
   ngOnInit() {

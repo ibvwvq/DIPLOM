@@ -12,3 +12,24 @@
     max-width: 1000px;
    margin: auto;
 }
+.title_created-courses{
+    font-size: 28px;
+    margin-left: 10px ;
+
+}
+
+.form-search{
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+}
+
+.submit-search{
+margin: 10px;
+}
+
+.input-search{
+    width: 500px;
+    min-width: 100px;
+    margin: 10px;
+}

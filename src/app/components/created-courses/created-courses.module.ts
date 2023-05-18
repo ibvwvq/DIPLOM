@@ -6,6 +6,10 @@ import { CreatedCoursesComponent } from './created-courses.component';
 
 import {TuiIslandModule} from '@taiga-ui/kit';
 import {TuiLinkModule} from '@taiga-ui/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 
 @NgModule({
     declarations: [
@@ -18,7 +22,11 @@ import {TuiLinkModule} from '@taiga-ui/core';
         CommonModule,
         CreatedCoursesRoutingModule,
         TuiIslandModule,
-        TuiLinkModule
+        TuiLinkModule,
+        TuiInputModule,
+        ReactiveFormsModule,
+        TuiButtonModule,
+        TuiTextfieldControllerModule
     ]
 })
 export class CreatedCoursesModule { }
