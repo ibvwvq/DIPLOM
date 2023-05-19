@@ -69,5 +69,17 @@
 
 .line_title_btn-settings{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.icon {
+    .transition(transform);
+
+    &_rotated {
+        transform: rotate(180deg);
+    }
 }

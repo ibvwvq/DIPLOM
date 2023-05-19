@@ -23,11 +23,11 @@
             <form class="search" class="form-search" [formGroup]="formSearchCourses">
                 <tui-input class="input-search" [(ngModel)]="valueSearch" formControlName="valueName"
                     tuiTextfieldSize="m">
-                        Поиск по названию или описанию курса
+                    <tui-svg src="tuiIconSearch" class="icon"></tui-svg>
+                    Поиск по названию или описанию курса
                     <input tuiTextfield type="text" />
                 </tui-input>
             </form>
-
 
             <div class="cards"
                 *ngFor="let item of CURRENT_COURSES | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">
@@ -36,14 +36,21 @@
                     <div class="line_title_btn-settings">
                         <h3 class="tui-island__title">{{item.name}}</h3>
                         <div class="btn-settings" style="float:right;">
-                            <tui-hosted-dropdown tuiDropdownLimitWidth="fixed" [content]="dropdown">
-                                <button tuiButton type="button"  appearance="flat" size="m">
-                                    <tui-svg src="tuiIconMoreVertical" class="icon"></tui-svg>
+                            <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
+                                <button tuiButton type="button" appearance="flat" size="s"
+                                     [pseudoActive]="open || null">
+                                     <tui-svg src="tuiIconMoreVertical" class="icon"></tui-svg>
                                 </button>
                             </tui-hosted-dropdown>
-    
-                            <ng-template #dropdown style="width: 200px;">
-                                <span>qwqw</span>
+
+                            <ng-template #dropdown let-close="close">
+                                <tui-data-list>
+                                    <tui-opt-group>
+                                        <button tuiOption>
+                                            Удалить
+                                        </button>
+                                    </tui-opt-group>
+                                </tui-data-list>
                             </ng-template>
                         </div>
                     </div>

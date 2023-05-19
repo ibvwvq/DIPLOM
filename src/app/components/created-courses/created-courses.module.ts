@@ -5,7 +5,7 @@ import { CreatedCoursesRoutingModule } from './created-courses-routing.module';
 import { CreatedCoursesComponent } from './created-courses.component';
 
 import {TuiIslandModule} from '@taiga-ui/kit';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiDataListModule, TuiLinkModule} from '@taiga-ui/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
 import {TuiButtonModule} from '@taiga-ui/core';
@@ -42,7 +42,8 @@ import {TuiHostedDropdownModule} from '@taiga-ui/core';
         TuiDialogModule,
         NgxPaginationModule,
         TuiDropdownModule,
-        TuiHostedDropdownModule
+        TuiHostedDropdownModule,
+        TuiDataListModule
     ]
 })
 export class CreatedCoursesModule { }

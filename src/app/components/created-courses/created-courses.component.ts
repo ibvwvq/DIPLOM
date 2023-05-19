@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from "../../services/api/api.service";
 import { Subject, debounceTime, distinctUntilChanged, first, isEmpty, map } from "rxjs";
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CreatedCoursesService } from 'src/app/services/created-courses/created-courses.service';
 import { TUI_ARROW } from '@taiga-ui/kit';
+import { TuiHostedDropdownComponent } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-created-courses',
   templateUrl: './created-courses.component.html',
-  styleUrls: ['./created-courses.component.css']
+  styleUrls: ['./created-courses.component.less']
 })
 export class CreatedCoursesComponent implements OnInit {
   formSearchCourses: FormGroup;
@@ -67,5 +68,17 @@ export class CreatedCoursesComponent implements OnInit {
           this.isBad = true;
         });
   }
+
+  @ViewChild(TuiHostedDropdownComponent)
+    component?: TuiHostedDropdownComponent;
+ 
+    readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
+ 
+    open = false;
+ 
+    onClick(): void {
+        this.open = false;
+        this.component?.nativeFocusableElement?.focus();
+    }
 
 }
