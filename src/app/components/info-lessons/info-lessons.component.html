@@ -1,11 +1,11 @@
-<app-appbar></app-appbar>
+
 
 <div class="container">
    <button tuiButton type="button" appearance="primary" class="m-2" size="s" (click)="openPageCreateLesson()">
       Добавить урок
    </button>
 
-   <h3>Модуль - {{nameCurrentModule}}</h3>
+   <h3>Модуль - {{current_module.name}}</h3>
 
    <ng-template let-observer [tuiDialogOptions]="{label: 'Создать урок в текущий модуль', size: 'm'}"
       [(tuiDialog)]="open">
@@ -18,11 +18,6 @@
               <div class="tui-island__title">
                   <h3 class="m-3"> Урок {{index+1}}. {{item.text}}</h3>
               </div>
-              <!-- <button title="Отредактировать" tuiButton type="button" appearance="flat" class="btn-edit-module m-2"
-                  routerLink="/course/edit/{{item.idCourse}}/module/{{item.idModule}}/info">
-                  <tui-svg src="tuiIconEdit3Large" class="icon-edit"></tui-svg>
-              </button> -->
-              
           </a>
       </div>
   </div>

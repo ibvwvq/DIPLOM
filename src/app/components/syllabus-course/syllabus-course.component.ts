@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
+import { InfoLessonsService } from 'src/app/services/info-lessons/info-lessons.service';
 import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
 export class SyllabusCourseComponent implements OnInit {
 
   constructor(
+    private infoLessonsModule: InfoLessonsService,
     private route: ActivatedRoute,
     private dataService: ApiService,
     private syllabusService: SyllabusService) { }
@@ -54,17 +56,11 @@ export class SyllabusCourseComponent implements OnInit {
           console.log(error);
         });
   }
-  // getLessons(id:any){
-  //   const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
-  //   this.dataService.getLessons(id)
-  //     .pipe(first())
-  //     .subscribe(
-  //       data => {
-  //         this.current_lessons = data;
-  //         console.log(this.current_lessons);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
+
+  pageInfoLessons = false;
+
+  openPageInfoLessons(module:any){
+      this.pageInfoLessons = true;
+      this.infoLessonsModule.current_module = module;
+  }
 }

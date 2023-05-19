@@ -11,6 +11,7 @@ import {TuiDialogModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiLoaderModule} from '@taiga-ui/core';
+import { InfoLessonsModule } from '../info-lessons/info-lessons.module';
 @NgModule({
   declarations: [
     SyllabusCourseComponent
@@ -26,7 +27,8 @@ import {TuiLoaderModule} from '@taiga-ui/core';
     TuiDialogModule,
     TuiIslandModule,
     TuiSvgModule,
-    TuiLoaderModule
+    TuiLoaderModule,
+    InfoLessonsModule
   ]
 })
 export class SyllabusCourseModule { }

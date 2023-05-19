@@ -11,6 +11,7 @@ import { InfoLessonsService } from 'src/app/services/info-lessons/info-lessons.s
 })
 export class InfoLessonsComponent implements OnInit {
   constructor(
+    private infoLessonsService: InfoLessonsService,
     private route: ActivatedRoute,
     private dataService: ApiService) { }
 
@@ -22,7 +23,7 @@ export class InfoLessonsComponent implements OnInit {
   }
 
   nameCurrentModule:any;
-  current_module:any;
+  current_module:any = this.infoLessonsService.current_module;
   current_lessons:any;
   getCurrentModule() {
     const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
@@ -36,8 +37,6 @@ export class InfoLessonsComponent implements OnInit {
             if (data[i].idModule == idModule) {
               this.current_module = data[i];
               console.log(this.current_module);
-              localStorage.setItem('current_module', JSON.stringify(this.current_module));
-              this.nameCurrentModule = this.current_module.name;
             }
           }
         },
@@ -52,8 +51,8 @@ export class InfoLessonsComponent implements OnInit {
   }
 
   getLessons(){
-    const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
-    this.dataService.getLessons(idModule)
+    const idModule = this.current_module;
+    this.dataService.getLessons(idModule.idModule)
       .pipe(first())
       .subscribe(
         data => {

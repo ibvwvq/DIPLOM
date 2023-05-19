@@ -22,23 +22,22 @@
     <div class="cards-modules" *ngFor="let item of MODULES; let index = index">
         <div class="card-module">
             <a tuiIsland [hoverable]="true" class="info-course m-2">
-                <div class="tui-island__title">
-                    <h3 class="m-3"> {{index+1}}. {{item.name}}</h3>
+                <div>
+                    <span style="font-size: 22px;" class="m-3"> <a (click)="openPageInfoLessons(item)" tuiLink>{{index+1}}. {{item.name}}</a></span>
                 </div>
                 <button title="Отредактировать" tuiButton type="button" appearance="flat" class="btn-edit-module m-2"
                     routerLink="/course/edit/{{item.idCourse}}/module/{{item.idModule}}/info">
                     <tui-svg src="tuiIconEdit3Large" class="icon-edit"></tui-svg>
                 </button>
             </a>
-            <div *ngFor="let lesson of current_lessons">
-                <div>
-                    {{lesson}}
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 <ng-template [tuiDialogOptions]="{label: 'Создание модуля', size: 'm'}" [(tuiDialog)]="dialogCreateModule" let-observer>
     <app-create-module-course></app-create-module-course>
+</ng-template>
+
+<ng-template [tuiDialogOptions]="{ size: 'm'}" [(tuiDialog)]="pageInfoLessons" let-observer>
+   <app-info-lessons></app-info-lessons>
 </ng-template>

@@ -13,6 +13,7 @@ import { CreateLessonsModuleModule } from '../create-lessons-module/create-lesso
   declarations: [
     InfoLessonsComponent
   ],
+  exports: [InfoLessonsComponent],
   imports: [
     CommonModule,
     InfoLessonsRoutingModule,
