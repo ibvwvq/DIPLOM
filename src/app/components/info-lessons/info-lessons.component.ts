@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
-import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
 import { InfoLessonsService } from 'src/app/services/info-lessons/info-lessons.service';
-import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
 
 @Component({
   selector: 'app-info-lessons',

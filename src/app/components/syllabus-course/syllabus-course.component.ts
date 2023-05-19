@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
-import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
 import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
 
 @Component({
@@ -13,7 +12,6 @@ import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
 export class SyllabusCourseComponent implements OnInit {
 
   constructor(
-    private infoCourseService:InfoCourseService,
     private route:ActivatedRoute,
     private dataService:ApiService,
     private syllabusService:SyllabusService){}
@@ -44,6 +42,7 @@ export class SyllabusCourseComponent implements OnInit {
       .pipe(first())
         .subscribe(
           data => {
+            console.log(data);
             this.syllabusService.modules = data;
             this.MODULES = this.syllabusService.modules;
             this.loading = false;

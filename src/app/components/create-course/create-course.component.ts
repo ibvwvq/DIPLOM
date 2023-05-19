@@ -32,7 +32,7 @@ export class CreateCourseComponent {
     this.CURRENT_USER = JSON.parse(this.current_user);
 
     this.isSubmit = true;
-    if(this.formCreateCourse.controls.valueName.valid && this.formCreateCourse.controls.valueDescription){
+    if(this.formCreateCourse.controls.valueName.valid && this.formCreateCourse.controls.valueDescription.valid){
       this.dataService.userCreateCourse(form.value.valueName,form.value.valueDescription,this.CURRENT_USER.idUser)
         .pipe(first())
         .subscribe(
@@ -45,10 +45,6 @@ export class CreateCourseComponent {
             this.isCreatedUnSuccess = true;
           });
     }
-
   }
-
   get f() {return this.formCreateCourse.controls}
-
-
 }

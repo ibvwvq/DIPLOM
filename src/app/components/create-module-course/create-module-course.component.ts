@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Route } from '@angular/router';
 import { first } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
-import { InfoCourseService } from 'src/app/services/info-course/info-course.service';
 
 @Component({
   selector: 'app-create-module-course',
@@ -11,33 +11,33 @@ import { InfoCourseService } from 'src/app/services/info-course/info-course.serv
 })
 export class CreateModuleCourseComponent implements OnInit {
   formCreateModuleCourse: FormGroup;
-  constructor(private fb: FormBuilder, private dataService: ApiService, private infoCoursesService: InfoCourseService) {
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private dataService: ApiService) {
     this.formCreateModuleCourse = this.fb.group({
       valueNameModule: [null, Validators.required]
     });
   }
-  idCourse: any;
-
 
   isCreatedSuccess = false;
   isCreatedError = false;
   isSubmit = false;
 
   ngOnInit(): void {
-    this.idCourse = this.infoCoursesService.current_course.idCourse;
   }
 
-
-
   createModule(form: FormGroup) {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
     this.isSubmit = true;
     if (this.formCreateModuleCourse.controls.valueNameModule.valid) {
-      this.dataService.createModule(form.value.valueNameModule, this.idCourse)
+      this.dataService.createModule(form.value.valueNameModule, id)
         .pipe(first())
         .subscribe(
           data => {
             this.isCreatedSuccess = true;
-            console.log(data);
+            window.location.reload();
           },
           error => {
             this.isCreatedError = true;
