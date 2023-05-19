@@ -91,11 +91,10 @@ export class CreatedCoursesComponent implements OnInit {
         this.component?.nativeFocusableElement?.focus();
     }
 
-    pageConfirmationCourseDelete:any = this.createdCoursesService.pageConfirmationCourseDelete;
+    pageConfirmationCourseDelete:any = false;
 
     openPageConfirmationCourseDelete(idCourse:any){
       this.pageConfirmationCourseDelete = true;
-      this.createdCoursesService.pageConfirmationCourseDelete = this.pageConfirmationCourseDelete;
       for(let i=0; i<this.CURRENT_COURSES.length;i++){
         if(this.CURRENT_COURSES[i].idCourse == idCourse){
           this.createdCoursesService.course_delete = this.CURRENT_COURSES[i];
