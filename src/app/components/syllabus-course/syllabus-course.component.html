@@ -1,13 +1,15 @@
 <app-appbar></app-appbar>
 
 <div class="main-syllabus">
-    <button title="Добавить новый модуль в программу курса" tuiButton type="button" appearance="primary" class="m-3"
-        size="s" (click)="openPageCreateModule()">
-        <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
-        Новый модуль
-    </button>
 
-    <p class="title_syllabus-course m-2">Программа курса </p>
+    <div class="main_title_btnCreateModule">
+        <p class="title_syllabus-course m-2">Программа курса </p>
+        <button title="Добавить новый модуль в программу курса" tuiButton type="button" appearance="primary" class="m-3"
+            size="s" (click)="openPageCreateModule()">
+            <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
+            Новый модуль
+        </button>
+    </div>
 
     <tui-loader class="inline-flex tui-space_right-2" [showLoader]="loading" [inheritColor]="true" [overlay]="true">
        
@@ -28,6 +30,11 @@
                     <tui-svg src="tuiIconEdit3Large" class="icon-edit"></tui-svg>
                 </button>
             </a>
+            <div *ngFor="let lesson of current_lessons">
+                <div>
+                    {{lesson}}
+                </div>
+            </div>
         </div>
     </div>
 </div>

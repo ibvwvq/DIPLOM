@@ -12,48 +12,59 @@ import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
 export class SyllabusCourseComponent implements OnInit {
 
   constructor(
-    private route:ActivatedRoute,
-    private dataService:ApiService,
-    private syllabusService:SyllabusService){}
+    private route: ActivatedRoute,
+    private dataService: ApiService,
+    private syllabusService: SyllabusService) { }
 
 
 
   loading = true;
-  ngOnInit() {  
+  ngOnInit() {
     this.loading = true;
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-     this.getModules(id);
+    this.getModules(id);
   }
 
   dialogCreateModule = false;
 
-  openPageCreateModule(){
+  openPageCreateModule() {
     this.dialogCreateModule = true;
   }
 
-  MODULES:any[] = [];
-  noneModules:any = false;
+  MODULES: any[] = [];
+  noneModules: any = false;
 
+  current_lessons:any = [];
 
-    getModules(id: any){
-
-      this.dataService.getModules(id)
+  getModules(id: any) {
+    this.dataService.getModules(id)
       .pipe(first())
-        .subscribe(
-          data => {
-            console.log(data);
-            this.syllabusService.modules = data;
-            this.MODULES = this.syllabusService.modules;
-            this.loading = false;
-            if(this.syllabusService.modules.length == 0){
-              this.noneModules = true;
-            }
-          },
-          error => {
-            console.log(error);
-          });
-
-          
+      .subscribe(
+        data => {
+          console.log(data);
+          this.syllabusService.modules = data;
+          this.MODULES = this.syllabusService.modules;
+          this.loading = false;
+          if (this.syllabusService.modules.length == 0) {
+            this.noneModules = true;
+          }
+        },
+        error => {
+          console.log(error);
+        });
   }
+  // getLessons(id:any){
+  //   const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
+  //   this.dataService.getLessons(id)
+  //     .pipe(first())
+  //     .subscribe(
+  //       data => {
+  //         this.current_lessons = data;
+  //         console.log(this.current_lessons);
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       });
+  // }
 }

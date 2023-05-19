@@ -11,7 +11,6 @@ import { InfoLessonsService } from 'src/app/services/info-lessons/info-lessons.s
 })
 export class InfoLessonsComponent implements OnInit {
   constructor(
-    private infoLessonsService: InfoLessonsService,
     private route: ActivatedRoute,
     private dataService: ApiService) { }
 
@@ -22,8 +21,6 @@ export class InfoLessonsComponent implements OnInit {
     console.log(this.current_module);
   }
 
-  // currentModule:any = localStorage.getItem('current_module');
-  // nameCurrentModule = JSON.parse(this.currentModule).name;
   nameCurrentModule:any;
   current_module:any;
   current_lessons:any;

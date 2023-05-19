@@ -3,6 +3,9 @@
 .info-course{
     max-width: 800px;
     height: auto;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
 
@@ -18,4 +21,10 @@
 
 .title_syllabus-course{
     font-size: 28px;
+}
+
+.main_title_btnCreateModule{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,auto));
+    grid-auto-flow: dense;
 }
