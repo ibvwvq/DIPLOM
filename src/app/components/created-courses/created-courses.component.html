@@ -23,16 +23,18 @@
             <form class="search" class="form-search" [formGroup]="formSearchCourses">
                 <tui-input class="input-search" [(ngModel)]="valueSearch" formControlName="valueName"
                     tuiTextfieldSize="m">
-                    <tui-svg src="tuiIconSearch" class="icon"></tui-svg>
+                    <tui-svg src="tuiIconSearch"></tui-svg>
                     Поиск по названию или описанию курса
                     <input tuiTextfield type="text" />
                 </tui-input>
             </form>
 
-            <div class="cards"
-                *ngFor="let item of CURRENT_COURSES | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">
-                <a tuiIsland [hoverable]="true" class="info-course">
+            <tui-loader [showLoader]="loaderGetCourses"></tui-loader>
 
+            <div class="cards"
+            *ngFor="let item of CURRENT_COURSES | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">
+
+                <a tuiIsland [hoverable]="true" class="info-course">
                     <div class="line_title_btn-settings">
                         <h3 class="tui-island__title">{{item.name}}</h3>
                         <div class="btn-settings" style="float:right;">

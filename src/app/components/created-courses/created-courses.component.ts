@@ -52,7 +52,10 @@ export class CreatedCoursesComponent implements OnInit {
 
   isBad = false;
 
+  loaderGetCourses:boolean = true;
+
   getCourses() {
+    this.loaderGetCourses = true;
     this.locale_storage_current_user = localStorage.getItem('user');
     this.CURRENT_USER = JSON.parse(this.locale_storage_current_user);
 
@@ -61,6 +64,7 @@ export class CreatedCoursesComponent implements OnInit {
       .subscribe(
         data => {
           this.isBad = false;
+          this.loaderGetCourses = false;
           this.createdCoursesService.CURRENT_COURSES = data;
           this.CURRENT_COURSES =  this.createdCoursesService.CURRENT_COURSES;
         },
