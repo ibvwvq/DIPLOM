@@ -46,9 +46,9 @@ export class CreatedCoursesComponent implements OnInit {
   ngOnInit(): void {
     this.getCourses();
     this.CURRENT_COURSES =  this.createdCoursesService.CURRENT_COURSES;
+    
   }
 
-  readonly arrow = TUI_ARROW;
 
   locale_storage_current_user: any;
   CURRENT_USER: any;
@@ -70,6 +70,9 @@ export class CreatedCoursesComponent implements OnInit {
           this.loaderGetCourses = false;
           this.createdCoursesService.CURRENT_COURSES = data;
           this.CURRENT_COURSES =  this.createdCoursesService.CURRENT_COURSES;
+          if(this.CURRENT_COURSES.length === 0){
+            this.isEmpty = true;
+          }
         },
         error => {
           this.isBad = true;

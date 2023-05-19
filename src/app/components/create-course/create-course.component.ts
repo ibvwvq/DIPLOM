@@ -39,6 +39,7 @@ export class CreateCourseComponent {
           data => {
             this.isCreatedSuccess = true;
             this.createdCourseService.getCourses();
+            window.location.reload();
           },
           error => {
             this.isCreatedUnSuccess = true;

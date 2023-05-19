@@ -26,7 +26,6 @@ export class ConfirmationCourseDeletionComponent implements OnInit {
         data => {
          console.log(data);
          window.location.reload();
-
         },
         error => {
           console.log(error);
