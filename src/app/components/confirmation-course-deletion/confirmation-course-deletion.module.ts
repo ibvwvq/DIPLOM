@@ -5,6 +5,8 @@ import { ConfirmationCourseDeletionRoutingModule } from './confirmation-course-d
 import { ConfirmationCourseDeletionComponent } from './confirmation-course-deletion.component';
 import {TuiButtonModule} from '@taiga-ui/core';
 
+
+
 @NgModule({
   declarations: [
     ConfirmationCourseDeletionComponent

@@ -8,4 +8,6 @@ const routes: Routes = [{ path: '', component: ConfirmationCourseDeletionCompone
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ConfirmationCourseDeletionRoutingModule { }
+export class ConfirmationCourseDeletionRoutingModule {
+  static logout$: any;
+}

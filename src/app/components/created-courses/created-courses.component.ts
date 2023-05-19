@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from "../../services/api/api.service";
 import { Subject, debounceTime, distinctUntilChanged, first, isEmpty, map } from "rxjs";
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CreatedCoursesService } from 'src/app/services/created-courses/created-courses.service';
 import { TUI_ARROW } from '@taiga-ui/kit';
-import { TuiHostedDropdownComponent } from '@taiga-ui/core';
+import { TuiDialogService, TuiHostedDropdownComponent } from '@taiga-ui/core';
+import { ConfirmationCourseDeletionComponent } from '../confirmation-course-deletion/confirmation-course-deletion.component';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 
 @Component({
   selector: 'app-created-courses',
@@ -13,7 +15,8 @@ import { TuiHostedDropdownComponent } from '@taiga-ui/core';
 })
 export class CreatedCoursesComponent implements OnInit {
   formSearchCourses: FormGroup;
-  constructor(private dataService: ApiService, private fb: FormBuilder, private createdCoursesService: CreatedCoursesService) {
+  constructor(
+    private dataService: ApiService, private fb: FormBuilder, private createdCoursesService: CreatedCoursesService) {
     this.formSearchCourses = this.fb.group({
       valueName: [null]
     })
@@ -85,14 +88,20 @@ export class CreatedCoursesComponent implements OnInit {
         this.component?.nativeFocusableElement?.focus();
     }
 
-    pageConfirmationCourseDelete:any = false;
+    pageConfirmationCourseDelete:any = this.createdCoursesService.pageConfirmationCourseDelete;
 
     openPageConfirmationCourseDelete(idCourse:any){
       this.pageConfirmationCourseDelete = true;
+      this.createdCoursesService.pageConfirmationCourseDelete = this.pageConfirmationCourseDelete;
       for(let i=0; i<this.CURRENT_COURSES.length;i++){
         if(this.CURRENT_COURSES[i].idCourse == idCourse){
           this.createdCoursesService.course_delete = this.CURRENT_COURSES[i];
         }
       }
     }
+
+    
+  
+
+    
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CreatedCoursesRoutingModule } from './created-courses-routing.module';
@@ -11,7 +11,6 @@ import {TuiInputModule} from '@taiga-ui/kit';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import { CreateCourseModule } from '../create-course/create-course.module';
-
 import {AppbarModule} from "../appbar/appbar.module";
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiDialogModule} from '@taiga-ui/core';
@@ -21,6 +20,7 @@ import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLoaderModule} from '@taiga-ui/core';
 import { ConfirmationCourseDeletionModule } from '../confirmation-course-deletion/confirmation-course-deletion.module';
+
 @NgModule({
     declarations: [
         CreatedCoursesComponent,

@@ -51,11 +51,19 @@ export class ApiService implements OnInit{
   }
 
  courses:any[]=[];
+
   public getCourses(idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/OutPutCourses.php', {idUser})
       .pipe(map(Courses => {
         return Courses;
       }));
+  }
+
+  public deleteCourse(idCourse:any){
+    return this.httpClient.post<any>(this.baseUrl + '/deleteCourse.php', {idCourse})
+    .pipe(map(Course => {
+      return Course;
+    }));
   }
 
   public createModule(textModule:any,idCourse:any){
