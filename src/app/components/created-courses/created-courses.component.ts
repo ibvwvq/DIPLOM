@@ -3,6 +3,7 @@ import { ApiService } from "../../services/api/api.service";
 import { Subject, debounceTime, distinctUntilChanged, first, isEmpty, map } from "rxjs";
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CreatedCoursesService } from 'src/app/services/created-courses/created-courses.service';
+import { TUI_ARROW } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-created-courses',
@@ -41,8 +42,9 @@ export class CreatedCoursesComponent implements OnInit {
   ngOnInit(): void {
     this.getCourses();
     this.CURRENT_COURSES =  this.createdCoursesService.CURRENT_COURSES;
-
   }
+
+  readonly arrow = TUI_ARROW;
 
   locale_storage_current_user: any;
   CURRENT_USER: any;

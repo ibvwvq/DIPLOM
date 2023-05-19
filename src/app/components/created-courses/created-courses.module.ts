@@ -17,7 +17,8 @@ import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiDialogModule} from '@taiga-ui/core';
 import { FilterPipe } from 'src/app/services/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import {TuiDropdownModule} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/core';
 @NgModule({
     declarations: [
         CreatedCoursesComponent,
@@ -39,7 +40,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
         AppbarModule,
         TuiSvgModule,
         TuiDialogModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        TuiDropdownModule,
+        TuiHostedDropdownModule
     ]
 })
 export class CreatedCoursesModule { }

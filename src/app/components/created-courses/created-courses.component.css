@@ -66,3 +66,8 @@
 .link-card_course{
     margin-left: 10px ;
 }
+
+.line_title_btn-settings{
+    display: flex;
+    flex-direction: row;
+}

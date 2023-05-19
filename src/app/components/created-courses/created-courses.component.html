@@ -1,10 +1,7 @@
-
-
 <app-appbar></app-appbar>
 
-<ng-template let-observer [tuiDialogOptions]="{label: 'Создание курса', size: 'm'}"
-  [(tuiDialog)]="pageCreateCourse">
-  <app-create-course></app-create-course>
+<ng-template let-observer [tuiDialogOptions]="{label: 'Создание курса', size: 'm'}" [(tuiDialog)]="pageCreateCourse">
+    <app-create-course></app-create-course>
 </ng-template>
 
 
@@ -14,24 +11,43 @@
             <div class="btn-create_title">
                 <p class="title_created-courses">Курсы</p>
                 <div class="btn-create-course">
-                    <button tuiButton class="m-2" title="Создать новый курс" (click)="openPageCreateCourse()" size="s" appearance="whiteblock-active">
-                      <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
-                      Новый курс
+                    <button tuiButton class="m-2" title="Создать новый курс" (click)="openPageCreateCourse()" size="s"
+                        appearance="whiteblock-active">
+                        <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
+                        Новый курс
                     </button>
-                  </div>
+                </div>
             </div>
-        
+
+
             <form class="search" class="form-search" [formGroup]="formSearchCourses">
-                <tui-input class="input-search" [(ngModel)]="valueSearch" formControlName="valueName" tuiTextfieldSize="m">
-                    Название или описание курса
+                <tui-input class="input-search" [(ngModel)]="valueSearch" formControlName="valueName"
+                    tuiTextfieldSize="m">
+                        Поиск по названию или описанию курса
                     <input tuiTextfield type="text" />
                 </tui-input>
             </form>
-        
-        
-            <div class="cards" *ngFor="let item of CURRENT_COURSES | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">
-                <a tuiIsland  [hoverable]="true" class="info-course">
-                    <h3 class="tui-island__title">{{item.name}}</h3>
+
+
+            <div class="cards"
+                *ngFor="let item of CURRENT_COURSES | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">
+                <a tuiIsland [hoverable]="true" class="info-course">
+
+                    <div class="line_title_btn-settings">
+                        <h3 class="tui-island__title">{{item.name}}</h3>
+                        <div class="btn-settings" style="float:right;">
+                            <tui-hosted-dropdown tuiDropdownLimitWidth="fixed" [content]="dropdown">
+                                <button tuiButton type="button"  appearance="flat" size="m">
+                                    <tui-svg src="tuiIconMoreVertical" class="icon"></tui-svg>
+                                </button>
+                            </tui-hosted-dropdown>
+    
+                            <ng-template #dropdown style="width: 200px;">
+                                <span>qwqw</span>
+                            </ng-template>
+                        </div>
+                    </div>
+
                     <p class="tui-island__paragraph">{{item.description}}</p>
                     <p class="tui-island__paragraph tui-island__paragraph_button">
                         <a class="link-card_course" tuiLink routerLink="/course/info/{{item.idCourse}}">Содержание</a>
@@ -43,8 +59,7 @@
             </ng-template>
 
             <pagination-controls class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
-            
+
         </div>
     </div>
 </div>
-
