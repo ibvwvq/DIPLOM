@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLoaderModule} from '@taiga-ui/core';
+import { ConfirmationCourseDeletionModule } from '../confirmation-course-deletion/confirmation-course-deletion.module';
 @NgModule({
     declarations: [
         CreatedCoursesComponent,
@@ -45,7 +46,8 @@ import {TuiLoaderModule} from '@taiga-ui/core';
         TuiDropdownModule,
         TuiHostedDropdownModule,
         TuiDataListModule,
-        TuiLoaderModule
+        TuiLoaderModule,
+        ConfirmationCourseDeletionModule
     ]
 })
 export class CreatedCoursesModule { }

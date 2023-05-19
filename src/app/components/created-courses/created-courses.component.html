@@ -4,6 +4,9 @@
     <app-create-course></app-create-course>
 </ng-template>
 
+<ng-template let-observer [tuiDialogOptions]="{size: 'm'}" [(tuiDialog)]="pageConfirmationCourseDelete">
+   <app-confirmation-course-deletion></app-confirmation-course-deletion>
+</ng-template>
 
 <div class="main">
     <div class="created-courses m-2">
@@ -48,7 +51,7 @@
                             <ng-template #dropdown let-close="close">
                                 <tui-data-list>
                                     <tui-opt-group>
-                                        <button tuiOption>
+                                        <button tuiOption (click)="openPageConfirmationCourseDelete(item.idCourse)">
                                             Удалить
                                         </button>
                                     </tui-opt-group>

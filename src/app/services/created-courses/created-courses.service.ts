@@ -11,6 +11,8 @@ export class CreatedCoursesService implements OnInit {
   constructor(
     private dataService: ApiService) { }
 
+    course_delete:any;
+
   ngOnInit() {
     this.getCourses();
 
