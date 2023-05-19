@@ -79,19 +79,16 @@ export class CreatedCoursesComponent implements OnInit {
         });
   }
 
-  @ViewChild(TuiHostedDropdownComponent)
-    component?: TuiHostedDropdownComponent;
  
-    readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
  
     open = false;
  
-    onClick(): void {
+    getSettingsBtn(): void {
         this.open = false;
-        this.component?.nativeFocusableElement?.focus();
+      
     }
 
-    pageConfirmationCourseDelete:any = false;
+    pageConfirmationCourseDelete:boolean = false;
 
     openPageConfirmationCourseDelete(idCourse:any){
       this.pageConfirmationCourseDelete = true;
@@ -101,9 +98,4 @@ export class CreatedCoursesComponent implements OnInit {
         }
       }
     }
-
-    
-  
-
-    
 }

@@ -12,7 +12,6 @@ export class CreatedCoursesService implements OnInit {
     private dataService: ApiService) { }
 
     course_delete:any;
-    pageConfirmationCourseDelete = false;
 
   ngOnInit() {
     this.getCourses();

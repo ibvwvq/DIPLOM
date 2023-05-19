@@ -19,7 +19,7 @@ export class ConfirmationCourseDeletionComponent implements OnInit {
     
     }
 
-    reLoad(){
+    deleteCourse(){
       this.dataService.deleteCourse(this.course_delete.idCourse)
       .pipe(first())
       .subscribe(
