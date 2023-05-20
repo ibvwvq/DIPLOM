@@ -19,15 +19,15 @@
 
   <div class="btns-main">
 
-    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="m">
+    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="s">
       <tui-loader [showLoader]="loaderAuth" [inheritColor]="true"
         [overlay]="true">
         Войти
       </tui-loader>
     </button>
 
-    <button tuiButton routerLink="/register" type="button" appearance="secondary" class="btn-go_register m-2" size="m">
-      Зарегистрироваться
-    </button>
+    <a tuiLink routerLink="/register" type="button" appearance="secondary" class="btn-go_register m-2" size="m">
+      Нет аккаунта? Зарегистрируйтесь
+    </a>
   </div>
 </form>

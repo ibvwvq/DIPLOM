@@ -7,9 +7,14 @@
 }
 
 .btns-main{
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(auto-fill,minmax(190px,auto));
-  grid-gap: 10px;
+  grid-gap: 10px; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+
 }
 
 .forget-password{
@@ -28,4 +33,9 @@ h3{
 
 .error-email{
     color:red;
+}
+
+
+.btn-submit{
+    width: 150px;
 }
