@@ -25,7 +25,7 @@
                 <div>
                     <span class="title-module m-3">{{index+1}}. {{item.name}}</span>
                 </div>
-                <button title="Отредактировать" tuiButton type="button" appearance="flat" class="btn-edit-module m-2">
+                <button  title="Отредактировать" tuiButton type="button" appearance="flat" class="btn-edit-module m-2">
                     <tui-svg src="tuiIconEdit3Large" class="icon-edit"></tui-svg>
                 </button>
             </a>
@@ -37,11 +37,11 @@
         Введите название нового урока
         <input tuiTextfield type="text" name="text" />
       </tui-input>
-      <div *ngIf="isNotValidLesson && isSubmit">
-        <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>
-      </div>
+<!--      <div *ngIf="isNotValidLesson && isSubmit">-->
+<!--        <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>-->
+<!--      </div>-->
     </div>
-    <button tuiButton type="button" class="btn-create-lesson m-2" size="s"
+    <button [disabled]="isNotValidLesson" tuiButton type="button" class="btn-create-lesson m-2" size="s"
             appearance="flat"  (click)="createLesson(item.idModule)">
       <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
     </button>
@@ -65,7 +65,7 @@
                         <button tuiOption>
                           Редактировать
                         </button>
-                        <button tuiOption>
+                        <button tuiOption (click)="deleteLesson(lesson.idLesson)">
                           Удалить
                         </button>
                       </tui-opt-group>

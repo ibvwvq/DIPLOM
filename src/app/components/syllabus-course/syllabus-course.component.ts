@@ -80,7 +80,7 @@ export class SyllabusCourseComponent implements OnInit {
   isSubmit: boolean = false;
   p:any;
   lesson = '';
-  isNotValidLesson = false;
+  isNotValidLesson = true;
   createLesson(idModule:any) {
     this.isSubmit = true;
     if(this.lesson == ''){
@@ -103,6 +103,27 @@ export class SyllabusCourseComponent implements OnInit {
   onKey(event: any) { // without type info
     this.lesson = event.target.value;
     console.log(this.lesson);
+    if(this.lesson == ''){
+      this.isNotValidLesson = true;
+    }
+    else{
+      this.isNotValidLesson = false;
+
+    }
+
   }
 
+
+  deleteLesson(idLesson:any){
+    this.dataService.deleteLesson(idLesson)
+      .pipe(first())
+      .subscribe(
+        data => {
+         console.log("its ok");
+          window.location.reload();
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }

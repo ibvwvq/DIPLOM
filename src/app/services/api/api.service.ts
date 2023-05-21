@@ -86,6 +86,13 @@ export class ApiService {
     }));
   }
 
+  public deleteLesson(idLesson:any){
+    return this.httpClient.post<any>(this.baseUrl + '/deleteLesson.php', {idLesson})
+      .pipe(map(Lesson => {
+        return Lesson;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);
