@@ -23,25 +23,59 @@
         <div class="card-module">
             <a tuiIsland [hoverable]="true" class="info-course m-2">
                 <div>
-                    <span style="font-size: 22px;" class="m-3">{{index+1}}. {{item.name}}</span>
+                    <span class="title-module m-3">{{index+1}}. {{item.name}}</span>
                 </div>
-                <button title="Отредактировать" tuiButton type="button" appearance="flat" class="btn-edit-module m-2"
-                   >
+                <button title="Отредактировать" tuiButton type="button" appearance="flat" class="btn-edit-module m-2">
                     <tui-svg src="tuiIconEdit3Large" class="icon-edit"></tui-svg>
                 </button>
-
             </a>
           <div>
-            <app-create-lessons-module></app-create-lessons-module>
+
+            <form [formGroup]="formCreateLesson" class="formCreateLesson">
+              <div class="input-name-lesson">
+                <tui-input formControlName="valueNameLesson" class="valueNameLesson m-2" tuiTextfieldSize="s">
+                  Введите название нового урока
+                  <input tuiTextfield type="text" name="text" />
+                </tui-input>
+                <div *ngIf="f.valueNameLesson.errors && isSubmit">
+                  <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>
+                </div>
+              </div>
+              <button tuiButton type="submit" class="btn-create-lesson m-2" size="s"
+                      appearance="primary"  (click)="createLesson(item.idModule)">
+                <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
+              </button>
+            </form>
           </div>
+
           <div *ngFor="let lesson of LESSONS[index]; let lessonIndex = index" class = "info-course-lesson">
-
             <tui-island class = "card-lesson m-2">
-              <span class = "lesson tui-space_left-5" style="font-size: 18px">{{index + 1}}.{{lessonIndex+1}} {{lesson.text}}</span>
-              <a title="Редактировать урок в модуле {{item.name}}" routerLink="/login" tuiLink> Редактировать </a>
+              <div class="title-settings">
+                <span class = "lesson tui-space_left-5" style="font-size: 18px">{{index + 1}}.{{lessonIndex+1}} {{lesson.text}}</span>
+                <div class="btn-settings">
+                  <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
+                    <button tuiButton type="button" appearance="flat" size="s">
+                      <tui-svg src="tuiIconMoreVertical" class="icon"></tui-svg>
+                    </button>
+                  </tui-hosted-dropdown>
+
+                  <ng-template #dropdown let-close="close">
+                    <tui-data-list>
+                      <tui-opt-group>
+                        <button tuiOption>
+                          Редактировать
+                        </button>
+                        <button tuiOption>
+                          Удалить
+                        </button>
+                      </tui-opt-group>
+                    </tui-data-list>
+                  </ng-template>
+                </div>
+
+              </div>
+
             </tui-island>
-
-
           </div>
 
         </div>

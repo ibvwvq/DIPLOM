@@ -4,18 +4,29 @@ import { first, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
 import { InfoLessonsService } from 'src/app/services/info-lessons/info-lessons.service';
 import { SyllabusService } from 'src/app/services/syllabus/syllabus.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-syllabus-course',
   templateUrl: './syllabus-course.component.html',
   styleUrls: ['./syllabus-course.component.css']
 })
+
 export class SyllabusCourseComponent implements OnInit {
+  formCreateLesson: FormGroup;
+
   constructor(
+    private infoLessons: InfoLessonsService,
+    private fb: FormBuilder,
     private infoLessonsModule: InfoLessonsService,
     private route: ActivatedRoute,
     private dataService: ApiService,
-    private syllabusService: SyllabusService) { }
+    private syllabusService: SyllabusService)
+{
+  this.formCreateLesson = this.fb.group({
+    valueNameLesson: [null, Validators.required]
+  })
+}
 
   loading:boolean = true;
   ngOnInit() {
@@ -59,4 +70,32 @@ export class SyllabusCourseComponent implements OnInit {
           console.log(error);
         });
   }
+
+
+
+
+  lcCurrentModule: any;
+  text: any;
+  idModule: any;
+  isSubmit: boolean = false;
+  createLesson(idModule:any) {
+    this.isSubmit = true;
+    this.lcCurrentModule = localStorage.getItem('current_module');
+    console.log(idModule);
+    this.text = this.formCreateLesson.value.valueNameLesson;
+
+    if (this.formCreateLesson.controls.valueNameLesson.valid){
+      this.dataService.createLesson(this.text, idModule)
+        .pipe(first())
+        .subscribe(
+          data => {
+            console.log(data);
+            window.location.reload();
+            },
+          error => {
+            console.log(error);
+          });
+    }
+  }
+  get f() { return this.formCreateLesson.controls }
 }

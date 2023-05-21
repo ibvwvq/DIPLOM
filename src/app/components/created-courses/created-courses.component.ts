@@ -37,16 +37,12 @@ export class CreatedCoursesComponent implements OnInit {
     this.pageCreatedCourses = false;
   }
 
-  openPageCreatedCourses() {
-    this.pageCreateCourse = false;
-    this.pageCreatedCourses = true;
 
-  }
 
   ngOnInit(): void {
     this.getCourses();
     this.CURRENT_COURSES =  this.createdCoursesService.CURRENT_COURSES;
-    
+
   }
 
 
@@ -79,13 +75,12 @@ export class CreatedCoursesComponent implements OnInit {
         });
   }
 
- 
- 
+
+
     open = false;
- 
+
     getSettingsBtn(): void {
         this.open = false;
-      
     }
 
     pageConfirmationCourseDelete:boolean = false;

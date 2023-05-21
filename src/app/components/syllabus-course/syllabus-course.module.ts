@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SyllabusCourseRoutingModule } from './syllabus-course-routing.module';
 import { SyllabusCourseComponent } from './syllabus-course.component';
 import { AppbarModule } from '../appbar/appbar.module';
-import {TuiTabsModule} from '@taiga-ui/kit';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiInputModule, TuiSelectModule, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiButtonModule, TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import { CreateModuleCourseModule } from '../create-module-course/create-module-course.module';
 import {TuiDialogModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
@@ -14,6 +14,11 @@ import {TuiLoaderModule} from '@taiga-ui/core';
 import { InfoLessonsModule } from '../info-lessons/info-lessons.module';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {CreateLessonsModuleModule} from "../create-lessons-module/create-lessons-module.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { NgxPaginationModule } from 'ngx-pagination';
+import {TuiDropdownModule} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/core';
+
 @NgModule({
   declarations: [
     SyllabusCourseComponent
@@ -32,7 +37,16 @@ import {CreateLessonsModuleModule} from "../create-lessons-module/create-lessons
     TuiLoaderModule,
     InfoLessonsModule,
     TuiLinkModule,
-    CreateLessonsModuleModule
+    CreateLessonsModuleModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiInputModule,
+    TuiSelectModule,
+    TuiTextfieldControllerModule,
+    NgxPaginationModule,
+    TuiDropdownModule,
+    TuiHostedDropdownModule,
+    TuiDataListModule
   ]
 })
 export class SyllabusCourseModule { }
