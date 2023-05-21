@@ -4,7 +4,7 @@
 
     <div class="main_title_btnCreateModule">
         <p class="title_syllabus-course m-2">Программа курса </p>
-        <button title="Добавить новый модуль в программу курса" tuiButton type="button" appearance="primary" class="m-3"
+        <button title="Добавить новый модуль в программу курса" tuiButton type="button" appearance="whiteblock-active" class="m-3"
             size="s" (click)="openPageCreateModule()">
             <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
             Новый модуль
@@ -29,30 +29,30 @@
                     <tui-svg src="tuiIconEdit3Large" class="icon-edit"></tui-svg>
                 </button>
             </a>
-          <div>
 
-            <form [formGroup]="formCreateLesson" class="formCreateLesson">
-              <div class="input-name-lesson">
-                <tui-input formControlName="valueNameLesson" class="valueNameLesson m-2" tuiTextfieldSize="s">
-                  Введите название нового урока
-                  <input tuiTextfield type="text" name="text" />
-                </tui-input>
-                <div *ngIf="f.valueNameLesson.errors && isSubmit">
-                  <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>
-                </div>
-              </div>
-              <button tuiButton type="submit" class="btn-create-lesson m-2" size="s"
-                      appearance="primary"  (click)="createLesson(item.idModule)">
-                <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
-              </button>
-            </form>
-          </div>
+
+  <form  class="formCreateLesson">
+    <div class="input-name-lesson">
+      <tui-input class="valueNameLesson m-2" tuiTextfieldSize="s" (keyup)="onKey($event)">
+        Введите название нового урока
+        <input tuiTextfield type="text" name="text" />
+      </tui-input>
+      <div *ngIf="isNotValidLesson && isSubmit">
+        <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>
+      </div>
+    </div>
+    <button tuiButton type="button" class="btn-create-lesson m-2" size="s"
+            appearance="flat"  (click)="createLesson(item.idModule)">
+      <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
+    </button>
+  </form>
 
           <div *ngFor="let lesson of LESSONS[index]; let lessonIndex = index" class = "info-course-lesson">
             <tui-island class = "card-lesson m-2">
               <div class="title-settings">
                 <span class = "lesson tui-space_left-5" style="font-size: 18px">{{index + 1}}.{{lessonIndex+1}} {{lesson.text}}</span>
                 <div class="btn-settings">
+
                   <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
                     <button tuiButton type="button" appearance="flat" size="s">
                       <tui-svg src="tuiIconMoreVertical" class="icon"></tui-svg>
@@ -80,7 +80,10 @@
 
         </div>
     </div>
+
 </div>
+
+
 
 <ng-template [tuiDialogOptions]="{label: 'Создание модуля', size: 'm'}" [(tuiDialog)]="dialogCreateModule" let-observer>
     <app-create-module-course></app-create-module-course>

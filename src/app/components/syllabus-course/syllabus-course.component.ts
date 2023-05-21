@@ -78,24 +78,31 @@ export class SyllabusCourseComponent implements OnInit {
   text: any;
   idModule: any;
   isSubmit: boolean = false;
+  p:any;
+  lesson = '';
+  isNotValidLesson = false;
   createLesson(idModule:any) {
     this.isSubmit = true;
-    this.lcCurrentModule = localStorage.getItem('current_module');
-    console.log(idModule);
-    this.text = this.formCreateLesson.value.valueNameLesson;
-
-    if (this.formCreateLesson.controls.valueNameLesson.valid){
-      this.dataService.createLesson(this.text, idModule)
+    if(this.lesson == ''){
+      this.isNotValidLesson = true;
+    }
+    else{
+      this.isNotValidLesson = false;
+      this.dataService.createLesson(this.lesson, idModule)
         .pipe(first())
         .subscribe(
           data => {
-            console.log(data);
             window.location.reload();
-            },
+          },
           error => {
             console.log(error);
           });
     }
   }
   get f() { return this.formCreateLesson.controls }
+  onKey(event: any) { // without type info
+    this.lesson = event.target.value;
+    console.log(this.lesson);
+  }
+
 }
