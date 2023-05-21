@@ -14,7 +14,6 @@
 .card:hover{
     box-shadow: 0 5px 20px rgb(144, 187, 239);
     cursor: pointer;
-
 }
 
 .cards{

@@ -26,7 +26,6 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
   }
-
   qw:any;
   CURRENT_USER:any;
   postdata(formLogin:FormGroup) {

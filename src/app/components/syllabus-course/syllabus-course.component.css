@@ -7,6 +7,21 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
+.info-course-lesson{
+  max-width: 750px;
+  margin-left: 30px;
+}
+
+.card-lesson:hover{
+  box-shadow: 0 5px 20px rgb(144, 187, 239);
+  cursor: pointer;
+}
+
+.card-lesson{
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
 
 
 .info-course:hover{

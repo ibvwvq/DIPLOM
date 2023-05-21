@@ -5,8 +5,9 @@ import { CreateLessonsModuleRoutingModule } from './create-lessons-module-routin
 import { CreateLessonsModuleComponent } from './create-lessons-module.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
-
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/core';
+
 @NgModule({
   declarations: [
     CreateLessonsModuleComponent
@@ -17,7 +18,8 @@ import {TuiButtonModule} from '@taiga-ui/core';
     CreateLessonsModuleRoutingModule,
     TuiInputModule,
     ReactiveFormsModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiTextfieldControllerModule
   ]
 })
 export class CreateLessonsModuleModule { }

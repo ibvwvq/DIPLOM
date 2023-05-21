@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'teach', loadChildren: () => import('./components/created-courses/created-courses.module').then(m => m.CreatedCoursesModule) , canActivate: [RoleguardGuard,AuthguardGuard]},
   { path: 'course/info/:id', loadChildren: () => import('./components/syllabus-course/syllabus-course.module').then(m => m.SyllabusCourseModule),canActivate: [RoleguardGuard,AuthguardGuard] },
-  { path: 'course/edit/:id/module/:idModule/info', loadChildren: () => import('./components/info-lessons/info-lessons.module').then(m => m.InfoLessonsModule) },
-  { path: 'confirmation-course-deletion', loadChildren: () => import('./components/confirmation-course-deletion/confirmation-course-deletion.module').then(m => m.ConfirmationCourseDeletionModule) },
+  // { path: 'course/edit/:id/module/:idModule/info', loadChildren: () => import('./components/info-lessons/info-lessons.module').then(m => m.InfoLessonsModule) },
+  // { path: 'confirmation-course-deletion', loadChildren: () => import('./components/confirmation-course-deletion/confirmation-course-deletion.module').then(m => m.ConfirmationCourseDeletionModule) },
 ];
 
 @NgModule({

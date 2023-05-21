@@ -8,12 +8,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 
-export class ApiService implements OnInit{
-
-  ngOnInit() {
-
-  }
-
+export class ApiService {
   user:any;
   role:any;
 
@@ -42,16 +37,12 @@ export class ApiService implements OnInit{
         return User;
       }));
   }
-  
   public userCreateCourse(nameCourse:any,descriptionCourse :any,idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/createcourse.php', { nameCourse, descriptionCourse, idUser})
       .pipe(map(Course => {
         return Course;
       }));
   }
-
- courses:any[]=[];
-
   public getCourses(idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/OutPutCourses.php', {idUser})
       .pipe(map(Courses => {
