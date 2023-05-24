@@ -1,18 +1,92 @@
-<p>create-task works!</p>
-<div>
-  <!--    <tui-combo-box-->
-  <!--      class="variants-task m-2"-->
-  <!--      [formControl]="testValue"-->
-  <!--      [(ngModel)]="value"-->
-  <!--    >-->
-  <!--      Вариант задачи-->
-  <!--      <input-->
-  <!--        tuiTextfield-->
-  <!--        placeholder="Введите название варианта"-->
-  <!--      />-->
-  <!--      <tui-data-list-wrapper-->
-  <!--        *tuiDataList-->
-  <!--        [items]="variantsTask | tuiFilterByInput"-->
-  <!--      ></tui-data-list-wrapper>-->
-  <!--    </tui-combo-box>-->
+<div class="main">
+
+  <form [formGroup]="formCreate">
+    <div *ngIf="stepOne">
+      <div class="step">
+        1 шаг
+      </div>
+      <tui-combo-box formControlName="valueTask"
+                     class="variants-task m-2" [(ngModel)]="value">
+        Вариант задачи
+        <input
+          tuiTextfield placeholder="Введите название варианта"/>
+        <tui-data-list-wrapper *tuiDataList [items]="variantsTasks | tuiFilterByInput"></tui-data-list-wrapper>
+      </tui-combo-box>
+
+
+
+      <button
+        tuiButton
+        title="Перейти к следующему шагу"
+        type="button" (click)="openSecondStep()"
+        class="btn-create_task m-2"
+        size="m"
+        appearance="primary">
+        Далее
+      </button>
+    </div>
+
+    <div *ngIf="stepSecond">
+      <div class="step">
+        2 шаг
+      </div>
+
+          <tui-text-area formControlName="valueTextTask"
+            class="field-medium m-2"
+            [expandable]="true"
+            [maxLength]="512">
+            Введите текст задачи
+          </tui-text-area>
+
+      <div *ngIf="answers == 1">
+        <tui-input formControlName="valueAnswer" class="m-2">
+          Введите правильный ответ на задачу
+          <input tuiTextfield type="text"/>
+        </tui-input>
+
+        <tui-input formControlName="valueWrongAnswerOne" class="m-2">
+          Введите не правильный ответ на задачу
+          <input tuiTextfield type="text"/>
+        </tui-input>
+
+        <tui-input formControlName="valueWrongAnswerTwo" class="m-2">
+          Введите не правильный ответ на задачу
+          <input tuiTextfield type="text"/>
+        </tui-input>
+
+        <tui-input formControlName="valueWrongAnswerThree" class="m-2">
+          Введите не правильный ответ на задачу
+          <input tuiTextfield type="text"/>
+        </tui-input>
+      </div>
+
+      <div *ngIf="answers == 2">
+        <tui-input formControlName="valueTextTask" class="m-2">
+          Введите правильный ответ на задачу
+          <input tuiTextfield type="text"/>
+        </tui-input>
+      </div>
+
+      <button
+        tuiButton
+        title="Перейти к предыдущему шагу"
+        type="button" (click)="backStep()"
+        class="btn-create_task m-2"
+        size="m"
+        appearance="flat">
+        Назад
+      </button>
+
+      <button
+        tuiButton
+        title="Перейти к следующему шагу"
+        type="button" (click)="openSecondStep()"
+        class="btn-create_task m-2"
+        size="m"
+        appearance="primary">
+        Создать
+      </button>
+    </div>
+  </form>
+
 </div>

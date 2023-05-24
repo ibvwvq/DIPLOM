@@ -114,6 +114,13 @@ export class ApiService {
       }));
   }
 
+  public getCorrectAnswer(idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getCorrectAnswer.php', {idTask})
+      .pipe(map(Answer => {
+        return Answer;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

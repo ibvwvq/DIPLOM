@@ -8,12 +8,12 @@ import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from "@taiga-ui/core";
 import {TuiForModule} from "@taiga-ui/cdk";
 import {TuiFilterByInputPipeModule, TuiTextAreaModule} from '@taiga-ui/kit';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {TuiDataListModule} from '@taiga-ui/core';
-import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+
 import {TuiDialogModule} from '@taiga-ui/core'
 import {CreateModuleCourseModule} from "../create-module-course/create-module-course.module";
 import {CreateTaskModule} from "../create-task/create-task.module";
 import {TuiLoaderModule} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
 @NgModule({
   declarations: [
     EditLessonComponent
@@ -28,15 +28,13 @@ import {TuiLoaderModule} from '@taiga-ui/core';
     TuiTextAreaModule,
     ReactiveFormsModule,
     FormsModule,
-    TuiDataListWrapperModule,
-    TuiComboBoxModule,
-    TuiDataListModule,
     TuiFilterByInputPipeModule,
     TuiLinkModule,
     TuiDialogModule,
     CreateModuleCourseModule,
     CreateTaskModule,
-    TuiLoaderModule
+    TuiLoaderModule,
+    TuiInputModule
   ]
 })
 export class EditLessonModule { }
