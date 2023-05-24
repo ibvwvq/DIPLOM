@@ -1,1 +1,67 @@
-<p>edit-lesson works!</p>
+<app-appbar></app-appbar>
+
+<div class="main">
+  <div class="m-2">
+    <span class="title_edit-lesson m-2">Настройки урока</span>
+    <p class="name-lesson m-2">{{current_lesson}}</p>
+  </div>
+
+  <ng-template [ngIf]="noneTask">
+    <span>Добавьте первую задачу!</span>
+  </ng-template>
+
+  <div class="items">
+      <div class="items tasks" *ngFor="let task of TASKS;let index = index">
+        <div class="item-task" (click)="choiceTask(task)" title="Шаг {{index +1}}">{{index + 1}}</div>
+      </div>
+
+    <div class="btn-create-task">
+      <div class="iconPlus">
+        <tui-svg src="tuiIconPlusLarge" class=""></tui-svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" *ngIf="current_task">
+
+<!--    <tui-combo-box-->
+<!--      class="variants-task m-2"-->
+<!--      [formControl]="testValue"-->
+<!--      [(ngModel)]="value"-->
+<!--    >-->
+<!--      Вариант задачи-->
+<!--      <input-->
+<!--        tuiTextfield-->
+<!--        placeholder="Введите название варианта"-->
+<!--      />-->
+<!--      <tui-data-list-wrapper-->
+<!--        *tuiDataList-->
+<!--        [items]="variantsTask | tuiFilterByInput"-->
+<!--      ></tui-data-list-wrapper>-->
+<!--    </tui-combo-box>-->
+
+    <p class="m-4">Задача: {{current_variant_task}}</p>
+
+    <tui-text-area
+      [(ngModel)]="current_task.textTask"
+      class="field-medium m-2"
+      [expandable]="true"
+      [maxLength]="512"
+    >
+      Введите текст задачи
+    </tui-text-area>
+
+    <button
+      tuiButton
+      title="Сохранить изменения"
+      type="button"
+      class="btn-save m-2"
+      size="m"
+      appearance="custom">
+      Сохранить
+    </button>
+
+  </div>
+
+
+</div>

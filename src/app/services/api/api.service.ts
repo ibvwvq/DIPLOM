@@ -86,8 +86,22 @@ export class ApiService {
     }));
   }
 
+  public getLesson(idLesson:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getLesson.php', {idLesson})
+      .pipe(map(Lesson => {
+        return Lesson;
+      }));
+  }
+
   public deleteLesson(idLesson:any){
     return this.httpClient.post<any>(this.baseUrl + '/deleteLesson.php', {idLesson})
+      .pipe(map(Lesson => {
+        return Lesson;
+      }));
+  }
+
+  public getTasks(idLesson:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getTasks.php', {idLesson})
       .pipe(map(Lesson => {
         return Lesson;
       }));

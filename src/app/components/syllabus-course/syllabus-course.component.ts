@@ -61,6 +61,7 @@ export class SyllabusCourseComponent implements OnInit {
                   data => {
                     this.LESSONS[i] = data;
                     this.loading = false;
+                    this.syllabusService.LESSONS = this.LESSONS;
                   },
                   error => {
                     console.log(error);
@@ -71,9 +72,6 @@ export class SyllabusCourseComponent implements OnInit {
           console.log(error);
         });
   }
-
-
-
 
   lcCurrentModule: any;
   text: any;
@@ -109,12 +107,8 @@ export class SyllabusCourseComponent implements OnInit {
     }
     else{
       this.isNotValidLesson = false;
-
     }
-
   }
-
-
   deleteLesson(idLesson:any){
     this.dataService.deleteLesson(idLesson)
       .pipe(first())

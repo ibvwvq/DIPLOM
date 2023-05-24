@@ -1,0 +1,54 @@
+.main{
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+.title_edit-lesson{
+  font-size: 20px;
+}
+
+.items-task{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(50px,auto));
+  margin-left: 10px;
+}
+
+.items{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(60px,auto));
+  margin-left: 10px;
+}
+
+.item-task{
+  background-color: #8dda71;
+  height: 50px;
+  margin: 5px;
+  width: 50px;
+}
+
+.btn-create-task{
+  background-color: #8dda71;
+  height: 50px;
+  margin: 5px;
+  width: 50px;
+}
+
+.item-task:hover{
+  cursor: pointer;
+}
+
+
+.iconPlus{
+  margin-left: 12px;
+  margin-top: 10px;
+}
+
+.variants-task{
+  max-width: 300px;
+}
+
+.btn-save {
+  background-color: var(--tui-support-03);
+  margin: auto;
+}

@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class SyllabusService {
 
  modules:any[]=[];
-  
+
+
+ LESSONS:any[] = [];
 
 }
