@@ -102,5 +102,9 @@ export class EditLessonComponent implements OnInit{
         });
   }
 
+  dialogCreateTask = false;
 
+  openCreateTask(){
+    this.dialogCreateTask = true;
+  }
 }

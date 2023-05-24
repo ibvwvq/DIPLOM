@@ -15,7 +15,7 @@
         <div class="item-task" (click)="choiceTask(task)" title="Шаг {{index +1}}">{{index + 1}}</div>
       </div>
 
-    <div class="btn-create-task">
+    <div class="btn-create-task" (click)="openCreateTask()">
       <div class="iconPlus" title="Создать новую задачу">
         <tui-svg src="tuiIconPlusLarge" class=""></tui-svg>
       </div>
@@ -23,23 +23,6 @@
   </div>
 
   <div class="task" *ngIf="current_task">
-
-<!--    <tui-combo-box-->
-<!--      class="variants-task m-2"-->
-<!--      [formControl]="testValue"-->
-<!--      [(ngModel)]="value"-->
-<!--    >-->
-<!--      Вариант задачи-->
-<!--      <input-->
-<!--        tuiTextfield-->
-<!--        placeholder="Введите название варианта"-->
-<!--      />-->
-<!--      <tui-data-list-wrapper-->
-<!--        *tuiDataList-->
-<!--        [items]="variantsTask | tuiFilterByInput"-->
-<!--      ></tui-data-list-wrapper>-->
-<!--    </tui-combo-box>-->
-
     <p class="m-2">Задача: {{current_variant_task}}</p>
 
     <a tuiLink class="delete-task m-2" (click)="deleteTask()">
@@ -70,3 +53,8 @@
 
 
 </div>
+
+
+<ng-template [tuiDialogOptions]="{label: 'Создание задачи', size: 'm'}" [(tuiDialog)]="dialogCreateTask" let-observer>
+  <app-create-task></app-create-task>
+</ng-template>

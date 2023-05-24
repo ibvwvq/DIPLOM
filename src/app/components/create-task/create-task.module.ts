@@ -6,12 +6,15 @@ import { CreateTaskComponent } from './create-task.component';
 
 
 @NgModule({
-  declarations: [
-    CreateTaskComponent
-  ],
-  imports: [
-    CommonModule,
-    CreateTaskRoutingModule
-  ]
+    declarations: [
+        CreateTaskComponent
+    ],
+    exports: [
+        CreateTaskComponent
+    ],
+    imports: [
+        CommonModule,
+        CreateTaskRoutingModule
+    ]
 })
 export class CreateTaskModule { }
