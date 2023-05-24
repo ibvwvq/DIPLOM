@@ -88,5 +88,19 @@ export class EditLessonComponent implements OnInit{
     }
   }
 
-  protected readonly undefined = undefined;
+  deleteTask(){
+   const idTask = this.current_task.idTask;
+
+    this.dataService.deleteTask(idTask)
+      .pipe(first())
+      .subscribe(
+        data => {
+          window.location.reload()
+        },
+        error => {
+          console.log("its not ok");
+        });
+  }
+
+
 }

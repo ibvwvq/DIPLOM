@@ -42,7 +42,7 @@
 
     <p class="m-2">Задача: {{current_variant_task}}</p>
 
-    <a tuiLink class="delete-task m-2">
+    <a tuiLink class="delete-task m-2" (click)="deleteTask()">
       <tui-svg src="tuiIconTrashLarge"></tui-svg>
       Удалить текущий шаг
     </a>

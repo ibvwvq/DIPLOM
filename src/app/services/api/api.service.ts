@@ -102,8 +102,15 @@ export class ApiService {
 
   public getTasks(idLesson:any){
     return this.httpClient.post<any>(this.baseUrl + '/getTasks.php', {idLesson})
-      .pipe(map(Lesson => {
-        return Lesson;
+      .pipe(map(Tasks => {
+        return Tasks;
+      }));
+  }
+
+  public deleteTask(idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/deleteTask.php', {idTask})
+      .pipe(map(Task => {
+        return Task;
       }));
   }
 
