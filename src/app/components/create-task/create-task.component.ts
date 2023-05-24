@@ -67,15 +67,20 @@ export class CreateTaskComponent {
 isSubmit = false;
   isOk = false;
   isNotOk = false;
+
+  idTask:any;
   createTask(){
     this.isSubmit = true;
-      if(this.answers == 2 || this.answers == 3){
-        const idLesson:number = Number(this.route.snapshot.paramMap.get('idLesson'));
-        // @ts-ignore
-        this.dataService.createTask(idLesson,this.answers,this.formCreate.value.valueTextTask)
+    const idLesson:number = Number(this.route.snapshot.paramMap.get('idLesson'));
+    const valueTextTask = this.formCreate.value.valueTextTask;
+    const valueCorrectAnswer = this.formCreate.value.valueAnswer;
+
+    if(this.answers == 2 || this.answers == 3){
+        this.dataService.createTask(idLesson,this.answers,valueTextTask)
           .pipe(first())
           .subscribe(
             data => {
+
               window.location.reload()
               this.isOk = true;
               this.isNotOk = false;
@@ -86,5 +91,58 @@ isSubmit = false;
               this.isNotOk = true;
             });
       }
+
+
+    if(this.answers == 1 || this.answers == 4){
+      console.log(this.formCreate.value);
+      this.dataService.createTask(idLesson, this.answers,this.formCreate.value.valueTextTask)
+        .pipe(first())
+        .subscribe(
+          data => {
+              this.idTask = data;
+              console.log(data)
+               this.createCorrectAnswer();
+          },
+          error => {
+           console.log(error);
+          });
+
+
+    }
+
+
+  }
+  createCorrectAnswer(){
+    this.dataService.createCorrectAnswer(this.idTask,this.answers,this.formCreate.value.valueAnswer)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+          if(this.answers == 4){
+            this.createWrongAnswer(data,this.formCreate.value.valueWrongAnswerOne);
+            this.createWrongAnswer(data,this.formCreate.value.valueWrongAnswerTwo);
+            this.createWrongAnswer(data,this.formCreate.value.valueWrongAnswerThree);
+          }
+          this.isOk = true;
+          this.isNotOk = false;
+          window.location.reload()
+        },
+        error => {
+          console.log(error);
+          this.isOk = false;
+          this.isNotOk = true;
+        });
+  }
+
+  createWrongAnswer(idAnswer:any,textAnswer:any){
+    this.dataService.createWrongAnswer(idAnswer,textAnswer)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

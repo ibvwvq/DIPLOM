@@ -124,8 +124,7 @@ export class EditLessonComponent implements OnInit{
       .pipe(first())
       .subscribe(
         data => {
-          this.current_answer_task = data[0];
-          console.log(data);
+          this.current_answer_task = data[0].answer;
         },
         error => {
           console.log("its not ok");

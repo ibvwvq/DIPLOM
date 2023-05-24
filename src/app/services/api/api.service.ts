@@ -135,7 +135,7 @@ export class ApiService {
       }));
   }
 
-  public createWrongAnswer(idAnswer :any,textAnswer  :any){
+  public createWrongAnswer(idAnswer :any,textAnswer:any){
     return this.httpClient.post<any>(this.baseUrl + '/createWrongAns.php', {idAnswer,textAnswer})
       .pipe(map(CorrectAnswer => {
         return CorrectAnswer;
