@@ -8,6 +8,7 @@ import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TuiFilterByInputPipeModule, TuiTextAreaModule} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiNotificationModule} from '@taiga-ui/core';
 @NgModule({
     declarations: [
         CreateTaskComponent
@@ -26,7 +27,8 @@ import {TuiInputModule} from '@taiga-ui/kit';
     TuiTextAreaModule,
     ReactiveFormsModule,
     TuiButtonModule,
-    TuiInputModule
+    TuiInputModule,
+    TuiNotificationModule
   ]
 })
 export class CreateTaskModule { }

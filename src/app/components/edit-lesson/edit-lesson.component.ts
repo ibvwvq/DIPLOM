@@ -58,6 +58,7 @@ export class EditLessonComponent implements OnInit{
             this.TASKS = data;
             if(this.TASKS.length==0){
               this.noneTask = true;
+              this.loaderEditLesson = false;
             }
             this.current_task= this.TASKS[0];
             this.checkVariant(this.current_task.idVariantTask);

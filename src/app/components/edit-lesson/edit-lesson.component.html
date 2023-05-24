@@ -34,7 +34,7 @@
       [(ngModel)]="current_task.textTask"
       class="field-medium m-2"
       [expandable]="true"
-      [maxLength]="512"
+      [maxLength]="5000"
     >
       Введите текст задачи
     </tui-text-area>
@@ -44,8 +44,7 @@
         Верный ответ на задачу
         <input
           tuiTextfield
-          type="text"
-        />
+          type="text"/>
       </tui-input>
     </div>
 
@@ -60,8 +59,6 @@
     </button>
 
   </div>
-
-
 </div>
 
 

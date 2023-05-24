@@ -34,16 +34,16 @@
           <tui-text-area formControlName="valueTextTask"
             class="field-medium m-2"
             [expandable]="true"
-            [maxLength]="512">
+            [maxLength]="5000">
             Введите текст задачи
           </tui-text-area>
 
-      <div *ngIf="answers == 1">
+      <div *ngIf="answers == 4">
         <tui-input formControlName="valueAnswer" class="m-2">
           Введите правильный ответ на задачу
           <input tuiTextfield type="text"/>
         </tui-input>
-
+<br>
         <tui-input formControlName="valueWrongAnswerOne" class="m-2">
           Введите не правильный ответ на задачу
           <input tuiTextfield type="text"/>
@@ -60,12 +60,28 @@
         </tui-input>
       </div>
 
-      <div *ngIf="answers == 2">
+      <div *ngIf="answers == 1">
         <tui-input formControlName="valueTextTask" class="m-2">
           Введите правильный ответ на задачу
           <input tuiTextfield type="text"/>
         </tui-input>
       </div>
+
+      <ng-template [ngIf] = "isOk">
+        <tui-notification
+          status="success"
+          class="tui-space_top-4">
+          Отлично! Задача скоро появится у вас на странице.
+        </tui-notification>
+      </ng-template>
+
+      <ng-template [ngIf] = "isNotOk">
+        <tui-notification
+          status="error"
+          class="tui-space_top-4">
+          Что-то пошло не так...
+        </tui-notification>
+      </ng-template>
 
       <button
         tuiButton
@@ -79,8 +95,8 @@
 
       <button
         tuiButton
-        title="Перейти к следующему шагу"
-        type="button" (click)="openSecondStep()"
+        title="Создать задачу"
+        type="button" (click)="createTask()"
         class="btn-create_task m-2"
         size="m"
         appearance="primary">

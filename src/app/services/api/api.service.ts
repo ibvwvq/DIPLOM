@@ -116,8 +116,29 @@ export class ApiService {
 
   public getCorrectAnswer(idTask:any){
     return this.httpClient.post<any>(this.baseUrl + '/getCorrectAnswer.php', {idTask})
-      .pipe(map(Answer => {
-        return Answer;
+      .pipe(map(CorrectAnswer => {
+        return CorrectAnswer;
+      }));
+  }
+
+  public createTask(idLesson :any, idVariantTask :any, textTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/createTask.php', {idLesson,idVariantTask,textTask})
+      .pipe(map(Task => {
+        return Task;
+      }));
+  }
+
+  public createCorrectAnswer(idTask:any,idVariantTask :any, textAnswer :any){
+    return this.httpClient.post<any>(this.baseUrl + '/createAnswers.php', {idTask,idVariantTask,textAnswer})
+      .pipe(map(CorrectAnswer => {
+        return CorrectAnswer;
+      }));
+  }
+
+  public createWrongAnswer(idAnswer :any,textAnswer  :any){
+    return this.httpClient.post<any>(this.baseUrl + '/createWrongAns.php', {idAnswer,textAnswer})
+      .pipe(map(CorrectAnswer => {
+        return CorrectAnswer;
       }));
   }
 
