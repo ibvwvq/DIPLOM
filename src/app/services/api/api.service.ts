@@ -142,6 +142,13 @@ export class ApiService {
       }));
   }
 
+  public getWrongAnswer(idAnswer :any){
+    return this.httpClient.post<any>(this.baseUrl + '/getWA.php', {idAnswer})
+      .pipe(map(WrongAnswers => {
+        return WrongAnswers;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

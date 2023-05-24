@@ -12,7 +12,9 @@
 
   <div class="items">
       <div class="items tasks" *ngFor="let task of TASKS;let index = index">
-        <div class="item-task" (click)="choiceTask(task)" title="Шаг {{index +1}}">{{index + 1}}</div>
+        <div class="item-task" (click)="choiceTask(task)" title="Шаг {{index +1}}">
+          <p class="index">{{index + 1}}</p>
+        </div>
       </div>
 
     <div class="btn-create-task" (click)="openCreateTask()">
@@ -39,7 +41,10 @@
       Введите текст задачи
     </tui-text-area>
 
-    <div class="right-answer" *ngIf="!without_answer">
+    <tui-loader [showLoader]="loaderAnswers && without_answer == 1" class="m-3"></tui-loader>
+    <tui-loader [showLoader]="loaderAnswers && without_answer == 4" class="m-3"></tui-loader>
+
+    <div class="right-answer" *ngIf="!loaderAnswers && without_answer == 1">
       <tui-input class="m-2" [(ngModel)]="current_answer_task">
         Верный ответ на задачу
         <input
@@ -48,13 +53,28 @@
       </tui-input>
     </div>
 
+    <div class="right-answer" *ngIf="!loaderAnswers && without_answer == 4">
+      <tui-input class="m-2" [(ngModel)]="current_answer_task">
+        Верный ответ на задачу
+        <input
+          tuiTextfield
+          type="text"/>
+      </tui-input>
+<br>
+      <div *ngFor="let wrong of wrong_answers">
+        <tui-input class="m-2" [(ngModel)]="wrong.textAnswer">
+          Не верный ответ на задачу
+          <input
+            tuiTextfield
+            type="text"/>
+        </tui-input>
+      </div>
+
+    </div>
+
     <button
       tuiButton
-      title="Сохранить изменения"
-      type="button"
-      class="btn-save m-2"
-      size="m"
-      appearance="custom">
+      title="Сохранить изменения" type="button" class="btn-save m-2" size="m" appearance="custom">
       Сохранить
     </button>
 

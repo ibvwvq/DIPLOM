@@ -29,6 +29,7 @@ export class EditLessonComponent implements OnInit{
       }
     current_lesson :any;
     loaderEditLesson:boolean = true;
+    loaderAnswers:boolean = true;
     getCurrentLesson(){
       const idLesson = Number(this.route.snapshot.paramMap.get('idLesson'));
 
@@ -37,6 +38,7 @@ export class EditLessonComponent implements OnInit{
         .subscribe(
           data => {
             this.current_lesson = data[0].text;
+
             this.getTasks();
           },
           error => {
@@ -61,6 +63,7 @@ export class EditLessonComponent implements OnInit{
               this.loaderEditLesson = false;
             }
             this.current_task= this.TASKS[0];
+            console.log(this.current_task);
             this.checkVariant(this.current_task.idVariantTask);
             this.loaderEditLesson = false;
           },
@@ -72,7 +75,6 @@ export class EditLessonComponent implements OnInit{
   value='';
   choiceTask(item:any){
     this.current_task = item;
-
     this.checkVariant(this.current_task.idVariantTask);
   }
 
@@ -80,19 +82,19 @@ export class EditLessonComponent implements OnInit{
     if(variant == 1){
       this.current_variant_task = "Тест";
       this.getCorrectAnswer();
-      this.without_answer = false;
+      this.without_answer = 1;
     }
     if(variant == 2){
       this.current_variant_task = "Лекция";
-      this.without_answer = true;
+      this.without_answer = 2;
     }
     if(variant == 3){
       this.current_variant_task = "Программирование";
-      this.without_answer = true;
+      this.without_answer = 3;
     }
     if(variant == 4){
       this.current_variant_task = "Тест с варинтами ответов";
-      this.without_answer = false;
+      this.without_answer = 4;
       this.getCorrectAnswer();
     }
   }
@@ -117,7 +119,7 @@ export class EditLessonComponent implements OnInit{
     this.dialogCreateTask = true;
   }
 
-  without_answer:any;
+  without_answer?:number;
   getCorrectAnswer(){
     const idTask = this.current_task.idTask;
     this.dataService.getCorrectAnswer(idTask)
@@ -125,6 +127,27 @@ export class EditLessonComponent implements OnInit{
       .subscribe(
         data => {
           this.current_answer_task = data[0].answer;
+          console.log(data);
+          if(this.without_answer == 4){
+            this.getWrongAnswer(data[0].idAnswer)
+            this.loaderAnswers = false;
+          }
+          this.loaderEditLesson = false;
+          this.loaderAnswers = false;
+        },
+        error => {
+          console.log("its not ok");
+        });
+  }
+  wrong_answers :any;
+  getWrongAnswer(isAnswer:any){
+    this.dataService.getWrongAnswer(isAnswer)
+      .pipe(first())
+      .subscribe(
+        data => {
+         this.wrong_answers = data;
+         console.log(data);
+          this.loaderEditLesson = false;
         },
         error => {
           console.log("its not ok");
