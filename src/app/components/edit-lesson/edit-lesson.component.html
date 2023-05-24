@@ -40,7 +40,12 @@
 <!--      ></tui-data-list-wrapper>-->
 <!--    </tui-combo-box>-->
 
-    <p class="m-4">Задача: {{current_variant_task}}</p>
+    <p class="m-2">Задача: {{current_variant_task}}</p>
+
+    <a tuiLink class="delete-task m-2">
+      <tui-svg src="tuiIconTrashLarge"></tui-svg>
+      Удалить текущий шаг
+    </a>
 
     <tui-text-area
       [(ngModel)]="current_task.textTask"
