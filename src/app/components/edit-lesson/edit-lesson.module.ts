@@ -13,6 +13,7 @@ import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
 import {TuiDialogModule} from '@taiga-ui/core'
 import {CreateModuleCourseModule} from "../create-module-course/create-module-course.module";
 import {CreateTaskModule} from "../create-task/create-task.module";
+import {TuiLoaderModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     EditLessonComponent
@@ -34,7 +35,8 @@ import {CreateTaskModule} from "../create-task/create-task.module";
     TuiLinkModule,
     TuiDialogModule,
     CreateModuleCourseModule,
-    CreateTaskModule
+    CreateTaskModule,
+    TuiLoaderModule
   ]
 })
 export class EditLessonModule { }

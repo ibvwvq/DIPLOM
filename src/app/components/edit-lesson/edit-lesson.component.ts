@@ -27,6 +27,7 @@ export class EditLessonComponent implements OnInit{
       this.getCurrentLesson();
     }
     current_lesson :any;
+    loaderEditLesson:boolean = true;
     getCurrentLesson(){
       const idLesson = Number(this.route.snapshot.paramMap.get('idLesson'));
 
@@ -59,6 +60,7 @@ export class EditLessonComponent implements OnInit{
             }
             this.current_task= this.TASKS[0];
             this.checkVariant(this.current_task.idVariantTask);
+            this.loaderEditLesson = false;
           },
           error => {
             console.log(error);

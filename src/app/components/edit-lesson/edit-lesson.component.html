@@ -1,6 +1,6 @@
 <app-appbar></app-appbar>
-
-<div class="main">
+<tui-loader [showLoader]="loaderEditLesson" class="m-3"></tui-loader>
+<div class="main" *ngIf = "!loaderEditLesson">
   <div class="m-2">
     <span class="title_edit-lesson m-2">Настройки урока</span>
     <p class="name-lesson m-2">{{current_lesson}}</p>
