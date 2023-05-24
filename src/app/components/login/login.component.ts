@@ -20,7 +20,11 @@ export class LoginComponent {
 
   loaderAuth = false;
 
-  constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router,public loginService: LoginService) {
+  constructor(
+    private fb: FormBuilder,
+    private dataService: ApiService,
+    private router: Router,
+    public loginService: LoginService) {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
       password: ['', Validators.required]

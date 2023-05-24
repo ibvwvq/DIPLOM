@@ -11,9 +11,7 @@ import {TuiDialogModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiLoaderModule} from '@taiga-ui/core';
-import { InfoLessonsModule } from '../info-lessons/info-lessons.module';
 import {TuiLinkModule} from '@taiga-ui/core';
-import {CreateLessonsModuleModule} from "../create-lessons-module/create-lessons-module.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiDropdownModule} from '@taiga-ui/core';
@@ -35,9 +33,7 @@ import {TuiHostedDropdownModule} from '@taiga-ui/core';
     TuiIslandModule,
     TuiSvgModule,
     TuiLoaderModule,
-    InfoLessonsModule,
     TuiLinkModule,
-    CreateLessonsModuleModule,
     FormsModule,
     ReactiveFormsModule,
     TuiInputModule,

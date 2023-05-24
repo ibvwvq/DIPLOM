@@ -37,9 +37,7 @@
         Введите название нового урока
         <input tuiTextfield type="text" name="text" />
       </tui-input>
-<!--      <div *ngIf="isNotValidLesson && isSubmit">-->
-<!--        <span class="error-valueNameLesson m-2">Имя урока не может быть пустым</span>-->
-<!--      </div>-->
+
     </div>
     <button [disabled]="isNotValidLesson" tuiButton type="button" class="btn-create-lesson m-2" size="s"
             appearance="flat"  (click)="createLesson(item.idModule)">

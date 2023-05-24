@@ -51,6 +51,7 @@ export class SyllabusCourseComponent implements OnInit {
           this.syllabusService.modules = data;
           if (this.syllabusService.modules.length == 0) {
             this.noneModules = true;
+            this.loading = false;
           }
           this.MODULES = this.syllabusService.modules;
             for(let i = 0;i<this.MODULES.length;i++){
