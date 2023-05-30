@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'edit-lesson/:idLesson', loadChildren: () => import('./components/edit-lesson/edit-lesson.module').then(m => m.EditLessonModule) },
   { path: 'create-task', loadChildren: () => import('./components/create-task/create-task.module').then(m => m.CreateTaskModule) },
   { path: 'create-account', loadChildren: () => import('./components/create-account/create-account.module').then(m => m.CreateAccountModule),canActivate:[AdminguardGuard,AuthguardGuard] },
+  { path: 'footer', loadChildren: () => import('./components/footer/footer.module').then(m => m.FooterModule) },
 
   // { path: 'course/edit/:id/module/:idModule/info', loadChildren: () => import('./components/info-lessons/info-lessons.module').then(m => m.InfoLessonsModule) },
   // { path: 'confirmation-course-deletion', loadChildren: () => import('./components/confirmation-course-deletion/confirmation-course-deletion.module').then(m => m.ConfirmationCourseDeletionModule) },

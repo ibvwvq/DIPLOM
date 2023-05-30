@@ -149,6 +149,10 @@ export class ApiService {
       }));
   }
 
+  public createAccount(email:any,passWord:any,){
+
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);
