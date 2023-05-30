@@ -17,6 +17,9 @@ export class AppbarComponent implements OnInit{
   role:any = '';
   ROLE:any = '';
   isAdmin:boolean = false;
+  isTeacher:boolean = false;
+  isStudent:boolean = false;
+
   ngOnInit():void {
    this.role = localStorage.getItem('role');
    this.ROLE = JSON.parse(this.role);
@@ -24,6 +27,16 @@ export class AppbarComponent implements OnInit{
    if(this.ROLE == 1){
      this.getPageAdmin();
      this.isAdmin = true;
+    }
+
+    if(this.ROLE == 2){
+      this.getPageAdmin();
+      this.isTeacher = true;
+    }
+
+    if(this.ROLE == 3){
+      this.getPageAdmin();
+      this.isStudent = true;
     }
   }
 
