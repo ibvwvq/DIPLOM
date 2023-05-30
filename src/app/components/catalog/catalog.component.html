@@ -1,20 +1,33 @@
 <app-appbar></app-appbar>
+<div class="title m-2">
+Онлайн-курсы
+  <tui-svg src="tuiIconCornerRightDown" class="icon"></tui-svg>
+
+</div>
+
 <form class="search" class="form-search" [formGroup]="formSearchCourses">
   <tui-input class="input-search" formControlName="valueName">
     Название курса
     <input tuiTextfield type="text" />
   </tui-input>
-  <button tuiButton type="button" appearance="primary" class="submit-search">
-    Найти
-  </button>
 </form>
 <div class="container">
+
   <div *ngFor="let item of courses">
       <a tuiIsland class="card">
         <div class="line_title_btn-settings">
-          <h3 class="tui-island__title">{{item.name}}</h3>
+          <span >{{item.name}}</span>
         </div>
-        <p class="tui-island__paragraph">{{item.description}}</p>
+        <p class="tui-island__footer-button m-2" style="position: absolute;
+width: 80%;
+bottom:20px; ">
+          <a
+            href="/"
+            tuiLink
+          >
+            Бесплатно
+          </a>
+        </p>
       </a>
     </div>
 </div>

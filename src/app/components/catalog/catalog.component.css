@@ -5,15 +5,20 @@
     grid-template-columns: repeat(auto-fill,minmax(250px,auto));
     grid-gap: 50px;
   padding: 20px;
+  position: relative;
 }
-
+.title{
+  text-align: center;
+  margin: auto;
+  font-size: 26px;
+}
 .card:hover{
     box-shadow: 0 5px 20px rgb(144, 187, 239);
     cursor: pointer;
 }
 .card{
   width: 250px;
-  height: 200px;
+  height: 150px;
   overflow: hidden;
 }
 
@@ -24,8 +29,9 @@
 .form-search{
     display: flex;
     flex-direction: row;
-    max-width: 1000px;
+    max-width: 500px;
   margin: auto;
+  align-items: center;
 }
 
 .submit-search{
