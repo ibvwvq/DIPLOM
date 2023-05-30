@@ -22,34 +22,36 @@
 }
 
 .item-task{
-  background-color: #8dda71;
   height: 50px;
   margin: 5px;
   width: 50px;
+  background-color: var(--tui-support-03);
 }
 
-.btn-create-task{
-  background-color: #f6f6f6;
-  height: 50px;
-  margin: 5px;
-  width: 50px;
-  cursor: pointer;
-}
+/*.btn-create-task{*/
+/*  background-color: #f6f6f6;*/
+/*  height: 50px;*/
+/*  margin: 5px;*/
+/*  width: 50px;*/
+/*  cursor: pointer;*/
+/*}*/
 
 .item-task:hover{
   cursor: pointer;
 }
 
+.svg-plus{
+  margin: auto;
+}
 .index{
   font-size: large;
-  margin-left: 17px;
-  margin-top: 10px;
-
 }
 
-.iconPlus{
-  margin-left: 12px;
-  margin-top: 10px;
+.btn-create-task{
+  height: 50px;
+  margin: 5px;
+  width: 50px;
+  cursor: pointer;
 }
 
 .variants-task{
@@ -64,4 +66,10 @@
 .delete-task{
   color: red;
 
+}
+
+.btns-save-delete{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,auto));
+  grid-gap: 10px;
 }

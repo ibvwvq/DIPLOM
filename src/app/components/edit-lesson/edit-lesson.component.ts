@@ -4,7 +4,9 @@ import {SyllabusService} from "../../services/syllabus/syllabus.service";
 import {first} from "rxjs";
 import {ApiService} from "../../services/api/api.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-
+import {ChangeDetectionStrategy, Inject} from '@angular/core';
+import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
   selector: 'app-edit-lesson',
   templateUrl: './edit-lesson.component.html',
@@ -14,6 +16,7 @@ export class EditLessonComponent implements OnInit{
   formTask:FormGroup;
 
   constructor(
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     private fb:FormBuilder,
     private dataService:ApiService,
     private syllabusService:SyllabusService,
@@ -25,7 +28,6 @@ export class EditLessonComponent implements OnInit{
 
     ngOnInit(){
       this.getCurrentLesson();
-
       }
     current_lesson :any;
     loaderEditLesson:boolean = true;
@@ -63,6 +65,7 @@ export class EditLessonComponent implements OnInit{
               this.loaderEditLesson = false;
             }
             this.current_task= this.TASKS[0];
+            this.ckeditorContent = this.current_task.textTask;
             console.log(this.current_task);
             this.checkVariant(this.current_task.idVariantTask);
             this.loaderEditLesson = false;
@@ -98,7 +101,7 @@ export class EditLessonComponent implements OnInit{
       this.getCorrectAnswer();
     }
   }
-  ckeditorContent='';
+  ckeditorContent= '';
 
   deleteTask(){
    const idTask = this.current_task.idTask;
@@ -115,6 +118,7 @@ export class EditLessonComponent implements OnInit{
   }
 
   dialogCreateTask = false;
+  dialogOutputTask= false;
 
   openCreateTask(){
     this.dialogCreateTask = true;
@@ -155,9 +159,17 @@ export class EditLessonComponent implements OnInit{
         });
   }
 
-  outputText(){
-    console.log("qw")
+  openOutputTask(){
+    this.dialogOutputTask = true;
     let myContainer = document.getElementById('results') as HTMLInputElement;
-    myContainer.innerHTML = this.ckeditorContent;
+    myContainer.innerHTML = this.current_task.textTask;
   }
+
+  closeOutputTask(){
+    this.dialogOutputTask = false;
+    let myContainer = document.getElementById('results') as HTMLInputElement;
+    myContainer.innerHTML = '';
+  }
+
+
 }

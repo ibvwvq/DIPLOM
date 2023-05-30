@@ -20,31 +20,39 @@
 
   <div class="items">
       <div class="items tasks" *ngFor="let task of TASKS;let index = index">
-        <div class="item-task" (click)="choiceTask(task)" title="Шаг {{index +1}}">
+        <button tuiButton class="item-task" appearance="custom" (click)="choiceTask(task)" title="Шаг {{index +1}}">
           <p class="index">{{index + 1}}</p>
-        </div>
+        </button>
       </div>
 
-    <div class="btn-create-task" (click)="openCreateTask()">
-      <div class="iconPlus" title="Создать новую задачу">
-        <tui-svg src="tuiIconPlusLarge" class=""></tui-svg>
-      </div>
+    <div class="btn-create" (click)="openCreateTask()">
+      <button  tuiButton class="btn-create-task" appearance="custom" title="Создать новую задачу">
+        <tui-svg src="tuiIconPlusLarge" class="svg-plus"></tui-svg>
+      </button>
     </div>
   </div>
 
   <div class="task" *ngIf="current_task">
     <p class="m-2">Задача: {{current_variant_task}}</p>
 
-    <a tuiLink class="delete-task m-2" (click)="deleteTask()">
-      <tui-svg src="tuiIconTrashLarge"></tui-svg>
-      Удалить текущий шаг
+    <a tuiLink *ngIf="!dialogOutputTask" class="output-task m-2" (click)="openOutputTask()">
+      Просмотреть как выглядит задача
     </a>
+    <a tuiLink *ngIf="dialogOutputTask" class="output-task m-2" (click)="closeOutputTask()">
+      Скрыть
+    </a>
+        <ckeditor
+          [(ngModel)]="current_task.textTask"
+          class="field-medium m-2">
+          Введите текст задачи
+        </ckeditor>
 
-    <ckeditor [(ngModel)]="ckeditorContent"
-      [(ngModel)]="current_task.textTask"
-      class="field-medium m-2">
-      Введите текст задачи
-    </ckeditor>
+      <div class="viewing-task">
+        <div id="results">
+
+        </div>
+      </div>
+
 
     <tui-loader [showLoader]="loaderAnswers && without_answer == 1" class="m-3"></tui-loader>
     <tui-loader [showLoader]="loaderAnswers && without_answer == 4" class="m-3"></tui-loader>
@@ -77,13 +85,23 @@
 
     </div>
 
-    <button
-      tuiButton
-      title="Сохранить изменения" type="button" class="btn-save m-2" size="m" appearance="custom">
-      Сохранить
-    </button>
+    <div class="btns-save-delete">
+      <button
+        tuiButton
+        title="Сохранить изменения" type="button" class="btn-save m-2" size="m" appearance="custom">
+        Сохранить
+      </button>
+
+      <a tuiLink class="delete-task m-2" (click)="deleteTask()" title="Удалить текущую задачу">
+        <tui-svg src="tuiIconTrashLarge" class="m-2"></tui-svg>
+      </a>
+    </div>
+
 
   </div>
+
+
+
 </div>
 
 
@@ -91,5 +109,8 @@
   <app-create-task></app-create-task>
 </ng-template>
 
+
+
+
 <app-footer></app-footer>
-<div id="results"></div>
+
