@@ -8,7 +8,7 @@
     ></tui-progress-segmented>
 
     <div class="description tui-space_top-2">
-      <label > роль</label>
+      <label > Роль</label>
       <label > Имя</label>
       <label > Email</label>
       <label > Пароль</label>
@@ -58,7 +58,7 @@
 
   <ng-template [ngIf]="valueProgress == 4">
     <div class="input-email m-2">
-      <tui-input formControlName="valueEmail">
+      <tui-input formControlName="valuePassword">
         Введите пароль
         <input
           tuiTextfield
@@ -66,6 +66,33 @@
         />
       </tui-input>
     </div>
+  </ng-template>
+
+<ng-template [ngIf]="isOk">
+  <tui-notification
+    status="success"
+    class="m-2"
+  >
+    Аккаунт успешно создан
+  </tui-notification>
+</ng-template>
+
+  <ng-template [ngIf]="isNotOk">
+    <tui-notification
+      status="error"
+      class="m-2"
+    >
+      Аккаунт с такой почтой уже зарегистрирован
+    </tui-notification>
+  </ng-template>
+
+  <ng-template [ngIf]="isNotValid">
+    <tui-notification
+      status="error"
+      class="m-2"
+    >
+     Введите все данные корректно
+    </tui-notification>
   </ng-template>
 
   <div class="buttons-back-next p-2">

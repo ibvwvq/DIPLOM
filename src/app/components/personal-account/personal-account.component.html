@@ -1,43 +1,44 @@
-<app-appbar></app-appbar>
-<tui-tabs tuiMobileTabs [(activeItemIndex)]="activeItemIndex">
-  <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
-    Ваши данные
-  </button>
-  <ng-template [ngIf]="isAdmin == false">
-    <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2" (click)="this.apiService.getUsers()">
-      Курсы
-    </button>
+<div class="content">
+  <app-appbar></app-appbar>
+  <tui-tabs tuiMobileTabs [(activeItemIndex)]="activeItemIndex">
     <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
-      Избранное
+      Ваши данные
     </button>
+    <ng-template [ngIf]="isAdmin == false">
+      <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2" (click)="this.apiService.getUsers()">
+        Курсы
+      </button>
+      <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
+        Избранное
+      </button>
+    </ng-template>
+  </tui-tabs>
+
+  <ng-template [ngIf]="activeItemIndex==0">
+    <tui-island class="main-personal m-2">
+      <tui-avatar
+        new
+        text="alex inkin"
+        size="xl"
+        avatarUrl="tuiIconUser"
+        class="avatar-user tui-space_left-2 tui-space_top-2"
+      ></tui-avatar>
+      <div class="title-personal tui-space_left-2 tui-space_top-2">
+        <h3 class="name">{{name}}</h3>
+        <span class="email">{{email}}</span>
+        <span class="email">{{id}}</span>
+        <span class="email">{{role}}</span>
+
+      </div>
+    </tui-island>
   </ng-template>
-</tui-tabs>
 
-<ng-template [ngIf]="activeItemIndex==0">
-  <tui-island class="main-personal m-2">
-    <tui-avatar
-      new
-      text="alex inkin"
-      size="xl"
-      avatarUrl="tuiIconUser"
-      class="avatar-user tui-space_left-2 tui-space_top-2"
-    ></tui-avatar>
-    <div class="title-personal tui-space_left-2 tui-space_top-2">
-      <h3 class="name">{{name}}</h3>
-      <span class="email">{{email}}</span>
-      <span class="email">{{id}}</span>
-      <span class="email">{{role}}</span>
+  <ng-template [ngIf]="activeItemIndex==1">
+    <span class="m-3">Вы пока не записались ни на один курс...</span>
+  </ng-template>
 
-    </div>
-  </tui-island>
-</ng-template>
+  <ng-template [ngIf]="activeItemIndex==2">
+    <span class="m-3">Вы пока не добавлили ни один курс в избранное....</span>
+  </ng-template>
 
-<ng-template [ngIf]="activeItemIndex==1">
-  <span class="m-3">Вы пока не записались ни на один курс...</span>
-</ng-template>
-
-<ng-template [ngIf]="activeItemIndex==2">
-  <span class="m-3">Вы пока не добавлили ни один курс в избранное....</span>
-</ng-template>
-
-
+</div>

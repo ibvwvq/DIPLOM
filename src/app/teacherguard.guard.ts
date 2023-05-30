@@ -23,6 +23,6 @@ export class TeacherguardGuard implements CanActivate {
     }
 
     this.dataService.redirectUrl = routeurl;
-    this.router.navigate(['#/'+this.router.url], { queryParams: { returnUrl: routeurl } });
+    this.router.navigate(['/#'+this.router.url], { queryParams: { returnUrl: routeurl } });
   }
 }

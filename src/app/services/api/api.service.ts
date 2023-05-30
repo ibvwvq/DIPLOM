@@ -149,8 +149,11 @@ export class ApiService {
       }));
   }
 
-  public createAccount(email:any,passWord:any,){
-
+  public createAccount(idRole :any,fullName:any,email:any,passNewPerson:any){
+    return this.httpClient.post<any>(this.baseUrl + '/addPerson.php', {idRole,fullName,email,passNewPerson})
+      .pipe(map(Account => {
+        return Account;
+      }));
   }
 
   getUsers(){

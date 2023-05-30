@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiHostedDropdownModule} from '@taiga-ui/core';
+import {FooterModule} from "../footer/footer.module";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {TuiHostedDropdownModule} from '@taiga-ui/core';
     NgxPaginationModule,
     TuiDropdownModule,
     TuiHostedDropdownModule,
-    TuiDataListModule
+    TuiDataListModule,
+    FooterModule
   ]
 })
 export class SyllabusCourseModule { }

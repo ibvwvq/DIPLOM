@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy,LocationStrategy } from "@angular/common";
+import {FooterModule} from "./components/footer/footer.module";
+import {AppbarModule} from "./components/appbar/appbar.module";
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { HashLocationStrategy,LocationStrategy } from "@angular/common";
   imports: [
     BrowserModule,
     AppRoutingModule,
-      BrowserAnimationsModule,
-      TuiRootModule,
-      TuiDialogModule,
-      TuiAlertModule,
-      HttpClientModule
-    ],
+    BrowserAnimationsModule,
+    TuiRootModule,
+    TuiDialogModule,
+    TuiAlertModule,
+    HttpClientModule,
+    FooterModule,
+    AppbarModule
+  ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })

@@ -11,6 +11,7 @@ import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiNotificationModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     CreateAccountComponent
@@ -30,7 +31,8 @@ import {TuiInputModule} from '@taiga-ui/kit';
     TuiFilterByInputPipeModule,
     TuiButtonModule,
     TuiSvgModule,
-    TuiInputModule
+    TuiInputModule,
+    TuiNotificationModule
   ]
 })
 export class CreateAccountModule { }

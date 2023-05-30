@@ -14,6 +14,7 @@ import {CreateModuleCourseModule} from "../create-module-course/create-module-co
 import {CreateTaskModule} from "../create-task/create-task.module";
 import {TuiLoaderModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
+import {FooterModule} from "../footer/footer.module";
 @NgModule({
   declarations: [
     EditLessonComponent
@@ -34,7 +35,8 @@ import {TuiInputModule} from '@taiga-ui/kit';
     CreateModuleCourseModule,
     CreateTaskModule,
     TuiLoaderModule,
-    TuiInputModule
+    TuiInputModule,
+    FooterModule
   ]
 })
 export class EditLessonModule { }
