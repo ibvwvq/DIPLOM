@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TuiFilterByInputPipeModule, TuiTextAreaModule} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/kit';
 import {TuiNotificationModule} from '@taiga-ui/core';
+import { CKEditorModule } from 'ng2-ckeditor';
 @NgModule({
     declarations: [
         CreateTaskComponent
@@ -28,7 +29,8 @@ import {TuiNotificationModule} from '@taiga-ui/core';
     ReactiveFormsModule,
     TuiButtonModule,
     TuiInputModule,
-    TuiNotificationModule
+    TuiNotificationModule,
+    CKEditorModule
   ]
 })
 export class CreateTaskModule { }
