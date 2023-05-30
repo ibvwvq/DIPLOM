@@ -25,23 +25,20 @@ export class AppbarComponent implements OnInit{
    this.ROLE = JSON.parse(this.role);
 
    if(this.ROLE == 1){
-     this.getPageAdmin();
      this.isAdmin = true;
     }
 
     if(this.ROLE == 2){
-      this.getPageAdmin();
+      this.getPageTeacher();
       this.isTeacher = true;
     }
 
     if(this.ROLE == 3){
-      this.getPageAdmin();
       this.isStudent = true;
     }
   }
 
-  getPageAdmin(){
+  getPageTeacher(){
     this.createdCourses.getCourses();
   }
-
 }

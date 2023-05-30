@@ -196,7 +196,21 @@ export class ApiService {
   }
 
   isTeacher():boolean{
-    if(this.CURRENT_ROLE != 3){
+    if(this.CURRENT_ROLE == 2){
+      return true;
+    }
+    return false;
+  }
+
+  isAdmin():boolean{
+    if(this.CURRENT_ROLE == 1){
+      return true;
+    }
+    return false;
+  }
+
+  isStudent():boolean{
+    if(this.CURRENT_ROLE == 3){
       return true;
     }
     return false;

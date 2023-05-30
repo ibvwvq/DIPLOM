@@ -1,1 +1,107 @@
-<p>create-account works!</p>
+<app-appbar></app-appbar>
+
+<div class="wrapper">
+  <div class="progress-step m-2">
+    <tui-progress-segmented
+      [max]="4"
+      [value]="valueProgress"
+    ></tui-progress-segmented>
+
+    <div class="description tui-space_top-2">
+      <label tuiLabel="Роль">Ввести роль</label>
+      <label tuiLabel="Имя">Ввести Имя</label>
+      <label tuiLabel="Email">Ввести Email</label>
+      <label tuiLabel="Пароль">Ввести Пароль</label>
+    </div>
+  </div>
+<form [formGroup]="formCreateAccount" class="formCreateAccount">
+  <ng-template [ngIf]="valueProgress == 1">
+    <div class="choice-role m-2">
+      <tui-combo-box formControlName="valueRole"
+        class="combo-box-roles"
+        [(ngModel)]="value">
+        Роли аккаунтов
+        <input
+          tuiTextfield
+          placeholder="Введите роль"/>
+        <tui-data-list-wrapper
+          *tuiDataList
+          [items]="roles | tuiFilterByInput"></tui-data-list-wrapper>
+      </tui-combo-box>
+    </div>
+  </ng-template>
+
+
+  <ng-template [ngIf]="valueProgress == 2">
+    <div class="input-name m-2">
+      <tui-input formControlName="valueName">
+        Введите имя и фамилию
+        <input
+          tuiTextfield
+          type="text"
+        />
+      </tui-input>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="valueProgress == 3">
+    <div class="input-email m-2">
+      <tui-input formControlName="valueEmail">
+        Введите электронную почту
+        <input
+          tuiTextfield
+          type="email"
+        />
+      </tui-input>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="valueProgress == 4">
+    <div class="input-email m-2">
+      <tui-input formControlName="valueEmail">
+        Введите пароль
+        <input
+          tuiTextfield
+          type="text"
+        />
+      </tui-input>
+    </div>
+  </ng-template>
+
+  <div class="buttons-back-next p-2">
+    <div class="btn-back">
+      <button size="m" (click)="back()"
+              tuiButton
+              type="button"
+              appearance="flat"
+              class="tui-space_right-3 tui-space_bottom-3">
+        <tui-svg src="tuiIconArrowLeftLarge" class="icon"></tui-svg>
+      </button>
+    </div>
+
+    <div class="btn-next-step m-2" *ngIf="valueProgress != 4">
+      <button size="m" (click)="next()"
+              tuiButton
+              type="button"
+              appearance="primary"
+              class="tui-space_right-3 tui-space_bottom-3">
+        Далее
+      </button>
+    </div>
+
+    <div class="btn-create-account m-2" *ngIf="valueProgress == 4">
+      <button size="m" (click)="createAccount()"
+              tuiButton
+              type="button"
+              appearance="primary"
+              class="tui-space_right-3 tui-space_bottom-3">
+        Создать
+      </button>
+    </div>
+
+  </div>
+</form>
+
+    </div>
+
+
