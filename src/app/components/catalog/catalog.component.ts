@@ -1,47 +1,37 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import {ApiService} from "../../services/api/api.service";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent {
-  constructor() { }
-  page1: boolean = true;
-  page2: boolean = false;
-  page3: boolean = false;
-  page4: boolean = false;
+export class CatalogComponent  implements OnInit{
+  constructor(private dataService:ApiService) { }
 
+  ngOnInit() {
+      this.getAllCourses();
+  }
+  courses:any[]=[];
+  teachers:any[]=[];
+  getAllCourses(){
+    this.dataService.getAllCourses()
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.courses = data;
+          console.log(data);
+          for(let i=0;i<this.courses.length;i++){
 
-  openPageOOP() {
-    this.page1 = true;
-    this.page2 = false;
-    this.page3 = false;
-    this.page4 = false;
+          }
+        },
+        error => {
+            console.log("its not ok");
+        });
   }
 
-  openPageTests() {
-    this.page2 = true;
-    this.page1 = false;
-    this.page3 = false;
-    this.page4 = false;
-  }
-
-  openPageUnity() {
-    this.page3 = true;
-    this.page1 = false;
-    this.page4 = false;
-    this.page2 = false;
-
-  }
-
-  openPageWeb() {
-    this.page4 = true;
-    this.page1 = false;
-    this.page3 = false;
-    this.page2 = false;
-  }
 
   formSearchCourses = new FormGroup({
     valueName: new FormControl(''),

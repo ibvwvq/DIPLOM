@@ -50,6 +50,13 @@ export class ApiService {
       }));
   }
 
+  public getAllCourses(){
+    return this.httpClient.post<any>(this.baseUrl + '/getAllCourses.php',{} )
+      .pipe(map(Courses => {
+        return Courses;
+      }));
+  }
+
   public deleteCourse(idCourse:any){
     return this.httpClient.post<any>(this.baseUrl + '/deleteCourse.php', {idCourse})
     .pipe(map(Course => {

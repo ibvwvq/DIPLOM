@@ -1,26 +1,22 @@
 .container{
     max-width: 1000px;
     margin: auto;
-}
-
-.card {
-    height: 200px;
-    max-width: 300px;
-    border-radius: 10px;
-    border: 1px solid rgb(211, 211, 211);
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,auto));
+    grid-gap: 50px;
+  padding: 20px;
 }
 
 .card:hover{
     box-shadow: 0 5px 20px rgb(144, 187, 239);
     cursor: pointer;
 }
-
-.cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(250px,auto));
-    grid-gap: 50px;
+.card{
+  width: 250px;
+  height: 200px;
+  overflow: hidden;
 }
+
 .info-course{
     margin: 10px;
 }
@@ -29,6 +25,7 @@
     display: flex;
     flex-direction: row;
     max-width: 1000px;
+  margin: auto;
 }
 
 .submit-search{
@@ -40,3 +37,5 @@ margin: 10px;
     min-width: 100px;
     margin: 10px;
 }
+
+
