@@ -9,7 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {TuiButtonModule, TuiDataListModule, TuiHostedDropdownModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
 import {FooterModule} from "../footer/footer.module";
 import {TuiIslandModule} from '@taiga-ui/kit';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import {TuiLoaderModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     CatalogComponent
@@ -27,7 +28,9 @@ import {TuiIslandModule} from '@taiga-ui/kit';
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
-    TuiSvgModule
+    TuiSvgModule,
+    NgxPaginationModule,
+    TuiLoaderModule
   ]
 })
 export class CatalogModule { }

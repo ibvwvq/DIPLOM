@@ -25,7 +25,11 @@
 .info-course{
     margin: 10px;
 }
-
+.btn-cost-free{
+  position: absolute;
+  width: 80%;
+  bottom:20px;
+}
 .form-search{
     display: flex;
     flex-direction: row;

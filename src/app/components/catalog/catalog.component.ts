@@ -16,19 +16,22 @@ export class CatalogComponent  implements OnInit{
   }
   courses:any[]=[];
   teachers:any[]=[];
+  loader = false;
   getAllCourses(){
+    this.loader = true;
     this.dataService.getAllCourses()
       .pipe(first())
       .subscribe(
         data => {
           this.courses = data;
           console.log(data);
-          for(let i=0;i<this.courses.length;i++){
+          this.loader = false;
 
-          }
         },
         error => {
             console.log("its not ok");
+          this.loader = false;
+
         });
   }
 
