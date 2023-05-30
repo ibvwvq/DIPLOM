@@ -98,6 +98,7 @@ export class EditLessonComponent implements OnInit{
       this.getCorrectAnswer();
     }
   }
+  ckeditorContent='';
 
   deleteTask(){
    const idTask = this.current_task.idTask;
@@ -152,5 +153,11 @@ export class EditLessonComponent implements OnInit{
         error => {
           console.log("its not ok");
         });
+  }
+
+  outputText(){
+    console.log("qw")
+    let myContainer = document.getElementById('results') as HTMLInputElement;
+    myContainer.innerHTML = this.ckeditorContent;
   }
 }

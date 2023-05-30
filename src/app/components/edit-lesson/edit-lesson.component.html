@@ -1,5 +1,13 @@
 <app-appbar></app-appbar>
 <tui-loader [showLoader]="loaderEditLesson" class="m-3"></tui-loader>
+
+
+<div>
+ <body>
+
+ </body>
+</div>
+
 <div class="main" *ngIf = "!loaderEditLesson">
   <div class="m-2">
     <span class="title_edit-lesson m-2">Настройки урока</span>
@@ -32,14 +40,11 @@
       Удалить текущий шаг
     </a>
 
-    <tui-text-area
+    <ckeditor [(ngModel)]="ckeditorContent"
       [(ngModel)]="current_task.textTask"
-      class="field-medium m-2"
-      [expandable]="true"
-      [maxLength]="5000"
-    >
+      class="field-medium m-2">
       Введите текст задачи
-    </tui-text-area>
+    </ckeditor>
 
     <tui-loader [showLoader]="loaderAnswers && without_answer == 1" class="m-3"></tui-loader>
     <tui-loader [showLoader]="loaderAnswers && without_answer == 4" class="m-3"></tui-loader>
@@ -86,3 +91,4 @@
   <app-create-task></app-create-task>
 </ng-template>
 <app-footer></app-footer>
+<div id="results"></div>
