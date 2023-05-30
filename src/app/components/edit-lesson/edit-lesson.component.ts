@@ -77,6 +77,7 @@ export class EditLessonComponent implements OnInit{
 
   value='';
   choiceTask(item:any){
+    this.closeOutputTask();
     this.current_task = item;
     this.checkVariant(this.current_task.idVariantTask);
   }
