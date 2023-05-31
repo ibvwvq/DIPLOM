@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
-import {TuiButtonModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiSvgModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_INPUT_PASSWORD_DEFAULT_OPTIONS, TUI_INPUT_PASSWORD_OPTIONS, TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/kit';
@@ -25,7 +25,8 @@ import {TuiLoaderModule} from '@taiga-ui/core';
     TuiInputModule,
     TuiTextfieldControllerModule,
     TuiNotificationModule,
-    TuiLoaderModule
+    TuiLoaderModule,
+    TuiSvgModule
   ],
   providers: [
     {

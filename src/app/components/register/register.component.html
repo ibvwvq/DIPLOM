@@ -1,5 +1,6 @@
 <form [formGroup]="formRegister" class="form-register" (ngSubmit)="registerUser(formRegister)">
-    <h3>Зарегистрируйтесь</h3>
+  <span style="font-size: 32px;">Используйте все возможности онлайн-образования в одном продукте</span>
+    <span style="font-size: 20px;">Зарегистрируйтесь</span>
     <tui-input formControlName="name" class="m-2">
         Имя и фамилия
         <input tuiTextfield type="text" name="name" />
@@ -35,11 +36,11 @@
 
 
     <div class="btns-main">
-        <button tuiButton type="button" appearance="outline" class="btn-go_register m-2" routerLink="/login" size="s">
-            Назад
+        <button tuiButton type="button" appearance="custom" class="btn-go_register m-2" routerLink="/login" size="s">
+          <tui-svg src="tuiIconArrowLeftLarge" class="icon"></tui-svg>
         </button>
 
-        <button tuiButton type="submit" appearance="primary" class="m-2" size="s">
+        <button tuiButton type="submit" appearance="primary" class="m-2" size="m">
             <tui-loader [showLoader]="loaderRegister" [inheritColor]="true"
                 [overlay]="true">
                 Зарегистрироваться
