@@ -1,24 +1,8 @@
-<!--<div class="qw">-->
-<!--  <div class="d-flex">-->
-<!--    <div class="sidebar" id="side_nav">-->
-<!--      <div class="header-box">-->
-<!--        <h5><span class="bg-white text-dark rounded shadow px-2 me-2">Модуль Введение в ангулар</span></h5>-->
-<!--        <button class="btn close-btn px-1 py-0 text-black">-->
-
-<!--        </button>-->
-<!--      </div>-->
-<!--      <ul class="px-2">-->
-<!--        <li class="">QWERTY</li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--    <div class="content">-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 
 <form class="form-auth" [formGroup]="formLogin" (ngSubmit)="postdata(formLogin)">
-  <h3>Авторизация</h3>
+  <span style="font-size: 32px;">Мечты о знаниях приводят на Timelider</span>
+
+  <span style="font-size: 20px;">Авторизация</span>
   <tui-input formControlName="email" class="valueEmail m-2">
     E-mail
     <input tuiTextfield type="email" name="email" />
@@ -38,7 +22,7 @@
 
   <div class="btns-main">
 
-    <button tuiButton type="submit" class="btn-submit m-2" appearance="primary" size="s">
+    <button tuiButton type="submit" class="custom btn-submit m-2" appearance="custom" size="m">
       <tui-loader [showLoader]="loaderAuth" [inheritColor]="true"
         [overlay]="true">
         Войти
