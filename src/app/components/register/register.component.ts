@@ -16,10 +16,10 @@ export class RegisterComponent implements OnInit {
   isSubmit = false;
   constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router) {
     this.formRegister = this.fb.group({
-      email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
-      password: ['', Validators.required],
-      name: ['', [Validators.required]],
-      mobile: ['', Validators.required]
+      email: [null, [Validators.required, Validators.minLength(1), Validators.email]],
+      password: [null, [Validators.required,Validators.minLength(5)]],
+      password_repeat:[null,[Validators.required,Validators.minLength(5)]],
+      name: [null, [Validators.required]]
     });
   }
 
@@ -27,23 +27,34 @@ export class RegisterComponent implements OnInit {
 
   }
 
+isNotValid = false;
+
   registerUser(formRegister:FormGroup) {
     this.loaderRegister = true;
     this.isSubmit = true;
-    
-    if(this.formRegister.controls.email.valid && this.formRegister.controls.name && this.formRegister.controls.password){
-      this.dataService.userregistration(formRegister.value.name, formRegister.value.email, formRegister.value.password)
-        .pipe(first())
-        .subscribe(
-          data => {
-            this.router.navigate(['login']);
-            this.loaderRegister = false;
-          },
 
-          error => {
-            this.isNotCorrect = true;
-            this.loaderRegister = false;
-          });
+
+    if(this.formRegister.controls.email.valid && this.formRegister.controls.name && this.formRegister.controls.password.valid &&
+    this.formRegister.controls.password_repeat.valid){
+      if((this.formRegister.value.password == this.formRegister.value.password_repeat)){
+        this.dataService.userregistration(formRegister.value.name, formRegister.value.email, formRegister.value.password)
+          .pipe(first())
+          .subscribe(
+            data => {
+              this.router.navigate(['login']);
+              this.loaderRegister = false;
+            },
+
+            error => {
+              this.isNotCorrect = true;
+              this.loaderRegister = false;
+            });
+      }
+      else{
+        this.isNotValid = true;
+        this.loaderRegister = false;
+      }
+
     }
     else{
       this.loaderRegister = false;

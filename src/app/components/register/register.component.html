@@ -1,6 +1,6 @@
 <form [formGroup]="formRegister" class="form-register" (ngSubmit)="registerUser(formRegister)">
-  <span style="font-size: 32px;">Используйте все возможности онлайн-образования в одном продукте</span>
-    <span style="font-size: 20px;">Зарегистрируйтесь</span>
+  <span style="font-size: 32px; margin-bottom: 10px; ">Используйте все возможности онлайн-образования в одном продукте</span>
+    <span style="font-size: 20px;">Регистрация</span>
     <tui-input formControlName="name" class="m-2">
         Имя и фамилия
         <input tuiTextfield type="text" name="name" />
@@ -20,12 +20,21 @@
     </div>
 
     <tui-input-password formControlName="password" class=" m-2">
-        Пароль
+        Пароль(не менее 5 символов)
         <input tuiTextfield name="Password" />
     </tui-input-password>
 
-    <div *ngIf="f.password.errors && isSubmit">
-        <span class="error-password m-2">Введите корректый пароль</span>
+  <div *ngIf="f.password.errors && isSubmit">
+    <span class="error-password m-2">Введите корректый пароль</span>
+  </div>
+
+    <tui-input-password formControlName="password_repeat" class=" m-2">
+      Повторите пароль
+      <input tuiTextfield name="Password" />
+    </tui-input-password>
+
+    <div *ngIf="f.password_repeat.errors && isSubmit">
+        <span class="error-password m-2">Введите еще раз пароль</span>
     </div>
 
     <div *ngIf="isNotCorrect">
@@ -33,6 +42,12 @@
             E-mail уже зарегистрирован
         </tui-notification>
     </div>
+
+  <div *ngIf="isNotValid">
+    <tui-notification status="error" class="error m-2">
+     Ваши пароли не совпадают
+    </tui-notification>
+  </div>
 
 
     <div class="btns-main">
