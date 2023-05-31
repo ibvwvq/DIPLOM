@@ -15,7 +15,7 @@
 
 <div class="container">
 
-  <div *ngFor="let item of courses">
+  <div *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }">
       <a tuiIsland class="card">
         <div class="line_title_btn-settings">
           <span >{{item.name}}</span>
@@ -27,6 +27,9 @@
         </p>
       </a>
     </div>
+
+  <pagination-controls class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
+
 </div>
 
 

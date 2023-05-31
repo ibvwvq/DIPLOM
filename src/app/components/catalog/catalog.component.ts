@@ -34,6 +34,7 @@ export class CatalogComponent  implements OnInit{
 
         });
   }
+  p:any;
 
 
   formSearchCourses = new FormGroup({
