@@ -5,6 +5,7 @@ import { PromoCourseComponent } from './promo-course.component';
 import {TuiButtonModule, TuiSvgModule} from "@taiga-ui/core";
 import {AppbarModule} from "../appbar/appbar.module";
 import {TuiLoaderModule} from '@taiga-ui/core';
+import {NgxPaginationModule} from "ngx-pagination";
 @NgModule({
   declarations: [
     PromoCourseComponent
@@ -15,7 +16,8 @@ import {TuiLoaderModule} from '@taiga-ui/core';
     TuiSvgModule,
     TuiButtonModule,
     AppbarModule,
-    TuiLoaderModule
+    TuiLoaderModule,
+    NgxPaginationModule
   ]
 })
 export class PromoCourseModule { }

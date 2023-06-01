@@ -22,15 +22,17 @@
 
       <h4 class="m-3">Бесплатно</h4>
 
-      <button (click)="joinCourse()" title="Записаться на курс" size="m" tuiButton type="button" class="m-2">
        <ng-template [ngIf]="!joinOk">
+         <button (click)="joinCourse()" title="Записаться на курс" size="m" tuiButton type="button" class="m-2">
          Начать
+         </button>
        </ng-template>
 
         <ng-template [ngIf]="joinOk">
+          <button  title="Записаться на курс" size="m" tuiButton type="button" class="m-2">
           Продолжить
+          </button>
         </ng-template>
-      </button>
 
       <button title="Добавить в избранное" size="m" tuiButton type="button" appearance="outline" class="m-2 btn-add_like">
         <tui-svg src="tuiIconHeartLarge" class="icon m-1"></tui-svg>

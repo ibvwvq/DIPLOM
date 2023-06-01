@@ -83,26 +83,39 @@ export class PromoCourseComponent implements OnInit{
 
 
   joinCourse(){
-    const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
-    this.lc_user = localStorage.getItem("user");
-    const idUser = JSON.parse(this.lc_user).idUser;
-    this.dataService.joinCourse(idUser, idCourse)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.showDepositAlert();
-          window.location.reload();
-        },
-        error => {
-          console.log(error);
-        });
+    if(!this.joinOk){
+      const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
+      this.lc_user = localStorage.getItem("user");
+      const idUser = JSON.parse(this.lc_user).idUser;
+      this.dataService.joinCourse(idUser, idCourse)
+        .pipe(first())
+        .subscribe(
+          data => {
+            this.showSuccessAlert();
+            window.location.reload();
+          },
+          error => {
+            console.log(error);
+          });
+    }
   }
+  p:any;
 
-  showDepositAlert(): void {
+  showSuccessAlert(): void {
     this.alerts
       .open('    ',{
         label: 'Вы записаны на курс!',
         status: TuiNotification.Success,
+        autoClose: false,
+      })
+      .subscribe();
+  }
+
+  showErrorAlert(): void {
+    this.alerts
+      .open('    ',{
+        label: 'Вы записаны на курс!',
+        status: TuiNotification.Error,
         autoClose: false,
       })
       .subscribe();
