@@ -163,6 +163,13 @@ export class ApiService {
       }));
   }
 
+  public getCourse(idCourse:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getCourse.php', {idCourse})
+      .pipe(map(Course => {
+        return Course;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

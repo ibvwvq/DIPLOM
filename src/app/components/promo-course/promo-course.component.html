@@ -2,17 +2,17 @@
 <div class="main-content" >
   <div class="course-promo_head">
     <div class="course-promo_head-content">
-      <h1 class="course-promo_head-title"></h1>
+      <h1 class="course-promo_head-title p-4">{{current_course.name}}</h1>
       <div class="course-promo_head-description mt-4"></div>
     </div>
   </div>
 
-  <div class="course-promo_main grid">
+  <div class="course-promo_main">
     <div class="col course-promo_program p-2">
-      <h2 class="m-3">Описание</h2>
-      <ul class="tui-list tui-list_large m-2 fs-6" >
-        <li class="tui-list__item"></li>
-      </ul>
+      <h2 class="m-3">О курсе</h2>
+      <div class="m-3">
+        {{current_course.description}}
+      </div>
     </div>
     <div class="course-promo_btn-start p-2">
 
