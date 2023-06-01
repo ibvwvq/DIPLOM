@@ -170,6 +170,13 @@ export class ApiService {
       }));
   }
 
+  public joinCourse(idUser:any,idCourse:any){
+    return this.httpClient.post<any>(this.baseUrl + '/joinCourse.php', {idUser, idCourse})
+      .pipe(map(Course => {
+        return Course;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

@@ -1,6 +1,6 @@
 .course-promo_head{
   background-color: #282b41;
-  height: 300px;
+  min-height: 300px;
   color: white;
 }
 
@@ -26,4 +26,8 @@
 
 .course-promo_head-title{
 
+}
+
+.course-promo_head-description{
+  max-width: 500px;
 }
