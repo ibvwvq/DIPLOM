@@ -4,7 +4,7 @@ import { PromoCourseRoutingModule } from './promo-course-routing.module';
 import { PromoCourseComponent } from './promo-course.component';
 import {TuiButtonModule, TuiSvgModule} from "@taiga-ui/core";
 import {AppbarModule} from "../appbar/appbar.module";
-
+import {TuiLoaderModule} from '@taiga-ui/core';
 @NgModule({
   declarations: [
     PromoCourseComponent
@@ -15,6 +15,7 @@ import {AppbarModule} from "../appbar/appbar.module";
     TuiSvgModule,
     TuiButtonModule,
     AppbarModule,
+    TuiLoaderModule
   ]
 })
 export class PromoCourseModule { }

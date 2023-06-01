@@ -19,17 +19,21 @@ export class PromoCourseComponent implements OnInit{
   }
 
   current_course:any;
+  loader:boolean = false;
 
   getCourse(id:any){
+    this.loader = true;
       this.dataService.getCourse(id)
         .pipe(first())
         .subscribe(
           data => {
                 console.log(data);
                 this.current_course = data[0];
-            },
+                this.loader = false;
+          },
         error => {
-          console.log(error);
+                console.log(error);
+                this.loader = false;
         })
   }
 }

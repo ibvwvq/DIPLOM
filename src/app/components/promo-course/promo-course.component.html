@@ -1,6 +1,8 @@
 <app-appbar></app-appbar>
-<div class="main-content" >
-  <div class="course-promo_head">
+<tui-loader [showLoader]="loader"></tui-loader>
+
+<div class="main-content" *ngIf="!loader">
+  <div class="course-promo_head" >
     <div class="course-promo_head-content">
       <h1 class="course-promo_head-title p-4">{{current_course.name}}</h1>
       <div class="course-promo_head-description mt-4"></div>
