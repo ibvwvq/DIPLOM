@@ -177,6 +177,13 @@ export class ApiService {
       }));
   }
 
+  public outputCoursesForStud(idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/OutPutCourses.php', {idUser})
+      .pipe(map(Courses => {
+        return Courses;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

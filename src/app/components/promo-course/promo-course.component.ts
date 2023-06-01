@@ -52,9 +52,6 @@ export class PromoCourseComponent implements OnInit{
           console.log(error);
         });
   }
-
-
-
   joinCourse(){
     const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
     this.lc_user = localStorage.getItem("user");

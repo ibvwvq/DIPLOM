@@ -37,8 +37,6 @@ export class CreatedCoursesComponent implements OnInit {
     this.pageCreatedCourses = false;
   }
 
-
-
   ngOnInit(): void {
     this.getCourses();
     this.CURRENT_COURSES =  this.createdCoursesService.CURRENT_COURSES;

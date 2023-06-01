@@ -4,6 +4,13 @@ import { CommonModule } from '@angular/common';
 import { LearnRoutingModule } from './learn-routing.module';
 import { LearnComponent } from './learn.component';
 import {AppbarModule} from "../appbar/appbar.module";
+
+import {TuiDialogModule} from '@taiga-ui/core';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
+import {TuiLoaderModule} from '@taiga-ui/core';
+
 import {
   TuiButtonModule,
   TuiDataListModule,
@@ -28,7 +35,10 @@ import {TuiIslandModule} from "@taiga-ui/kit";
     TuiHostedDropdownModule,
     TuiIslandModule,
     TuiLinkModule,
-    TuiSvgModule
+    TuiSvgModule,
+    TuiLoaderModule,
+    NgxPaginationModule,
+    TuiDialogModule
   ]
 })
 export class LearnModule { }

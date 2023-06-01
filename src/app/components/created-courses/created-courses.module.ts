@@ -20,7 +20,6 @@ import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLoaderModule} from '@taiga-ui/core';
 import { ConfirmationCourseDeletionModule } from '../confirmation-course-deletion/confirmation-course-deletion.module';
-import {FooterModule} from "../footer/footer.module";
 
 @NgModule({
     declarations: [
@@ -48,8 +47,7 @@ import {FooterModule} from "../footer/footer.module";
         TuiHostedDropdownModule,
         TuiDataListModule,
         TuiLoaderModule,
-        ConfirmationCourseDeletionModule,
-        FooterModule
+        ConfirmationCourseDeletionModule
     ]
 })
 export class CreatedCoursesModule { }

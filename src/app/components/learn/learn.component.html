@@ -4,10 +4,36 @@
   <div class="main-title">
     <span class="title m-2"> Моё обучение </span>
   </div>
-<!--  <a tuiIsland [hoverable]="true" class="info-course">-->
-<!--    <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph">{{item.description}}</p>-->
-<!--    <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph tui-island__paragraph_button">-->
-<!--      <a class="link-card_course" tuiLink routerLink="/course/info/{{item.idCourse}}">Содержание</a>-->
-<!--    </p>-->
-<!--  </a>-->
+  <div class="cards"
+       *ngFor="let item of user_courses  | paginate: { itemsPerPage: 3, currentPage: p }">
+
+    <a tuiIsland [hoverable]="true" class="info-course m-2">
+      <div class="line_title_btn-settings">
+        <h3 class="tui-island__title">{{item.name}}</h3>
+        <div class="btn-settings" style="float:right;">
+          <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
+            <button tuiButton type="button" appearance="flat" size="s"
+                    [pseudoActive]="open || null">
+              <tui-svg src="tuiIconMoreVertical" class="icon"></tui-svg>
+            </button>
+          </tui-hosted-dropdown>
+
+          <ng-template #dropdown let-close="close">
+            <tui-data-list>
+              <tui-opt-group>
+                <button tuiOption>
+                  Покинуть
+                </button>
+              </tui-opt-group>
+            </tui-data-list>
+          </ng-template>
+        </div>
+      </div>
+
+      <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph">{{item.description}}</p>
+      <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph tui-island__paragraph_button">
+        <a class="link-card_course" tuiLink routerLink="/course/info/{{item.idCourse}}">Продолжить</a>
+      </p>
+    </a>
+  </div>
 </div>
