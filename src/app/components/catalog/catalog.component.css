@@ -1,12 +1,18 @@
-.container{
+.cards{
     max-width: 1000px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(250px,auto));
     grid-gap: 50px;
-  padding: 20px;
-  position: relative;
+    padding: 20px;
+    position: relative;
 }
+
+.main-container{
+  max-width: 1000px;
+  margin: auto;
+}
+
 .title{
   text-align: center;
   margin: auto;
@@ -17,7 +23,7 @@
     cursor: pointer;
 }
 .card{
-  width: 250px;
+  width: 220px;
   height: 150px;
   overflow: hidden;
 }
@@ -34,12 +40,10 @@
     display: flex;
     flex-direction: row;
     max-width: 500px;
-  margin: auto;
-  align-items: center;
 }
 
 .submit-search{
-margin: 10px;
+    margin: 10px;
 }
 
 .input-search{

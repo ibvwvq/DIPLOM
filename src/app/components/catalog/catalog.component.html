@@ -1,21 +1,19 @@
 <app-appbar></app-appbar>
-<div class="title m-2">
-Онлайн-курсы
-  <tui-svg src="tuiIconCornerRightDown" class="icon"></tui-svg>
+<div class="main-container">
+  <form class="search" class="form-search m-1" [formGroup]="formSearchCourses">
+    <tui-input class="input-search" formControlName="valueName">
+      Название курса
+      <input tuiTextfield type="text" />
+    </tui-input>
+  </form>
+  <div class="title m-2">
+    Онлайн-курсы
+    <tui-svg src="tuiIconCornerRightDown" class="icon"></tui-svg>
+  </div>
+  <tui-loader [showLoader]="loader"></tui-loader>
 
-</div>
-
-<form class="search" class="form-search" [formGroup]="formSearchCourses">
-  <tui-input class="input-search" formControlName="valueName">
-    Название курса
-    <input tuiTextfield type="text" />
-  </tui-input>
-</form>
-<tui-loader [showLoader]="loader"></tui-loader>
-
-<div class="container">
-
-  <div *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }">
+  <div class="cards">
+    <div *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }" >
       <a tuiIsland class="card">
         <div class="line_title_btn-settings">
           <span >{{item.name}}</span>
@@ -28,11 +26,15 @@
       </a>
     </div>
 
-  <pagination-controls class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
+
+  </div>
+
+  <pagination-controls  previousLabel="Назад"
+                        nextLabel="След."
+                        class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
+
+
 
 </div>
-
-
-
 
 
