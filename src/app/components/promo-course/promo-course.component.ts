@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../services/api/api.service";
 import {first} from "rxjs";
-
+import {TuiAlertService, TuiNotification} from "@taiga-ui/core";
 @Component({
   selector: 'app-promo-course',
   templateUrl: './promo-course.component.html',
@@ -10,16 +10,17 @@ import {first} from "rxjs";
 })
 export class PromoCourseComponent implements OnInit{
   constructor(
+    @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
     private dataService:ApiService,
     private route: ActivatedRoute) {}
   ngOnInit(){
     const id = Number(this.route.snapshot.paramMap.get('idCourse'));
     this.getCourse(id);
     this.getModules(id);
-
+    this.outputCourses();
   }
-  lc_user:any;
 
+  lc_user:any;
   current_course:any;
   loader:boolean = false;
   current_modules:any[] = [];
@@ -52,6 +53,35 @@ export class PromoCourseComponent implements OnInit{
           console.log(error);
         });
   }
+  joinOk:boolean = false;
+
+  user_courses:any[]=[];
+  outputCourses() {
+    this.lc_user = localStorage.getItem("user");
+    const idUser = JSON.parse(this.lc_user).idUser;
+    const id = Number(this.route.snapshot.paramMap.get('idCourse'));
+
+    this.dataService.outputCoursesForStud(idUser)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+          this.user_courses = data;
+          for(let i=0;i<this.user_courses.length;i++){
+            if(this.user_courses[i].idCourse == id){
+              this.joinOk = true;
+            }
+          }
+        },
+        error => {
+          console.log(error);
+          this.loader = false;
+
+        })
+  }
+
+
+
   joinCourse(){
     const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
     this.lc_user = localStorage.getItem("user");
@@ -60,11 +90,22 @@ export class PromoCourseComponent implements OnInit{
       .pipe(first())
       .subscribe(
         data => {
-          console.log("its ok");
+          this.showDepositAlert();
+          window.location.reload();
         },
         error => {
           console.log(error);
         });
+  }
+
+  showDepositAlert(): void {
+    this.alerts
+      .open('    ',{
+        label: 'Вы записаны на курс!',
+        status: TuiNotification.Success,
+        autoClose: false,
+      })
+      .subscribe();
   }
 }
 

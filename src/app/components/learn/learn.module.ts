@@ -11,6 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import {TuiLoaderModule} from '@taiga-ui/core';
 
+import {TuiAlertModule} from '@taiga-ui/core';
+
 import {
   TuiButtonModule,
   TuiDataListModule,
@@ -38,7 +40,8 @@ import {TuiIslandModule} from "@taiga-ui/kit";
     TuiSvgModule,
     TuiLoaderModule,
     NgxPaginationModule,
-    TuiDialogModule
+    TuiDialogModule,
+    TuiAlertModule
   ]
 })
 export class LearnModule { }

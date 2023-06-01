@@ -20,8 +20,9 @@ export class LearnComponent implements OnInit{
   user_courses:any[]=[];
   p:any;
   open = false;
-
+  loader:boolean = false;
   getCourses(){
+    this.loader = true;
     this.lc_user = localStorage.getItem("user");
     const idUser = JSON.parse(this.lc_user).idUser;
 
@@ -31,9 +32,12 @@ export class LearnComponent implements OnInit{
         data =>{
           console.log(data);
           this.user_courses = data;
+          this.loader = false;
         },
         error => {
           console.log(error);
+          this.loader = false;
+
         }
       )
   }

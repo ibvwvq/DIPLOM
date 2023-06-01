@@ -4,6 +4,7 @@
   <div class="main-title">
     <span class="title m-2"> Моё обучение </span>
   </div>
+  <tui-loader [showLoader]="loader"></tui-loader>
   <div class="cards"
        *ngFor="let item of user_courses  | paginate: { itemsPerPage: 3, currentPage: p }">
 
