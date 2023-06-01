@@ -171,10 +171,6 @@ export class ApiService {
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
-  setCourses(courses:any){
-    localStorage.setItem('courses', JSON.stringify(courses));
-  }
-
   setLSUser(user:any){
     localStorage.setItem('user', JSON.stringify(user));
   }

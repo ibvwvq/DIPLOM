@@ -40,4 +40,7 @@ export class CatalogComponent  implements OnInit{
   formSearchCourses = new FormGroup({
     valueName: new FormControl(''),
   })
+
+
+
 }

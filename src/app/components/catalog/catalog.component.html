@@ -13,7 +13,7 @@
   <tui-loader [showLoader]="loader"></tui-loader>
 
   <div class="cards">
-    <div *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }" >
+    <div routerLink="/course/{{item.idCourse}}/promo" *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }" >
       <a tuiIsland class="card">
         <div class="line_title_btn-settings">
           <span >{{item.name}}</span>
