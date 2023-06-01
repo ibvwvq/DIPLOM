@@ -38,10 +38,21 @@
 <!--            Введите текст задачи-->
 <!--          </tui-text-area>-->
 
-      <ckeditor formControlName="valueTextTask"
-                class="field-medium m-2">
-        Введите текст задачи
-      </ckeditor>
+      <ng-template [ngIf]="answers ==2">
+        <ckeditor formControlName="valueTextTask"
+                  class="field-medium m-2">
+          Введите текст лекции
+        </ckeditor>
+      </ng-template>
+      <ng-template [ngIf]="answers != 2">
+          <tui-text-area
+            formControlName="valueTextTask"
+            class="field-large m-2"
+            [expandable]="true"
+            [maxLength]="5000">
+            Введите текст задачи
+          </tui-text-area>
+      </ng-template>
 
       <div *ngIf="answers == 4">
         <tui-input formControlName="valueAnswer" class="m-2">

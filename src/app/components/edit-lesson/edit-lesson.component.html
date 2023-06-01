@@ -33,19 +33,39 @@
   </div>
 
   <div class="task" *ngIf="current_task">
-    <p class="m-2">Задача: {{current_variant_task}}</p>
+    <div class="line-task_btn-delete">
+      <p class="m-2">Задача: {{current_variant_task}}</p>
+      <a tuiLink class="delete-task m-2" (click)="deleteTask()" title="Удалить текущую задачу">
+<!--        <tui-svg src="tuiIconTrashLarge" class="m-2"></tui-svg>-->
+        Удалить
+      </a>
+    </div>
 
-    <a tuiLink *ngIf="!dialogOutputTask" class="output-task m-2" (click)="openOutputTask()">
-      Просмотреть как выглядит задача
+
+    <a tuiLink *ngIf="current_variant_task == 'Лекция' && !dialogOutputTask" class="output-task m-2" (click)="openOutputTask()">
+      Просмотреть как выглядит лекция
     </a>
-    <a tuiLink *ngIf="dialogOutputTask" class="output-task m-2" (click)="closeOutputTask()">
+    <a tuiLink *ngIf="current_variant_task == 'Лекция' &&  dialogOutputTask" class="output-task m-2" (click)="closeOutputTask()">
       Скрыть
     </a>
-        <ckeditor
-          [(ngModel)]="current_task.textTask"
-          class="field-medium m-2">
-          Введите текст задачи
-        </ckeditor>
+    <ng-template [ngIf]="current_variant_task == 'Лекция' && !dialogOutputTask">
+      <ckeditor
+        [(ngModel)]="current_task.textTask"
+        class="task-text field-medium m-2">
+        Введите текст задачи
+      </ckeditor>
+    </ng-template>
+
+    <ng-template [ngIf]="current_variant_task != 'Лекция'">
+    <tui-text-area
+      [(ngModel)]="current_task.textTask"
+      class="field-large"
+      [expandable]="true"
+      [maxLength]="5000"
+    >
+      Введите текст задачи
+    </tui-text-area>
+    </ng-template>
 
       <div class="viewing-task">
         <div id="results">
@@ -92,9 +112,7 @@
         Сохранить
       </button>
 
-      <a tuiLink class="delete-task m-2" (click)="deleteTask()" title="Удалить текущую задачу">
-        <tui-svg src="tuiIconTrashLarge" class="m-2"></tui-svg>
-      </a>
+
     </div>
 
 

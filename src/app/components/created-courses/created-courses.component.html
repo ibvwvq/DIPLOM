@@ -10,26 +10,26 @@
 
 <div class="main">
     <div class="created-courses m-2">
-        <div class="conteiner">
+        <div class="container">
             <div class="btn-create_title">
-                <p class="title_created-courses">Курсы</p>
-                <div class="btn-create-course">
-                    <button tuiButton class="m-2" title="Создать новый курс" (click)="openPageCreateCourse()" size="s"
-                        appearance="whiteblock-active">
-                        <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
-                        Новый курс
-                    </button>
-                </div>
+                <p class="title_created-courses m-2">Курсы</p>
+
             </div>
 
 
             <form class="search" class="form-search" [formGroup]="formSearchCourses">
-                <tui-input class="input-search" [(ngModel)]="valueSearch" formControlName="valueName"
+                <tui-input class="input-search m-2"
+                           tuiTextfieldIconLeft="tuiIconSearchLarge"
+                           [(ngModel)]="valueSearch"
+                           formControlName="valueName"
                     tuiTextfieldSize="m">
-                    <tui-svg src="tuiIconSearch"></tui-svg>
                     Поиск по названию или описанию курса
                     <input tuiTextfield type="text" />
                 </tui-input>
+              <button tuiButton class="btn open-create-course m-3" title="Создать новый курс" (click)="openPageCreateCourse()" size="s"
+                      appearance="custom">
+                <tui-svg src="tuiIconPlus" class="icon"></tui-svg>
+              </button>
             </form>
 
             <tui-loader [showLoader]="loaderGetCourses"></tui-loader>
@@ -60,8 +60,8 @@
                         </div>
                     </div>
 
-                    <p class="tui-island__paragraph">{{item.description}}</p>
-                    <p class="tui-island__paragraph tui-island__paragraph_button">
+                    <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph">{{item.description}}</p>
+                    <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph tui-island__paragraph_button">
                         <a class="link-card_course" tuiLink routerLink="/course/info/{{item.idCourse}}">Содержание</a>
                     </p>
                 </a>
@@ -70,7 +70,9 @@
                 <p class="p-2">Вы пока не создали ни одного курса...</p>
             </ng-template>
 
-            <pagination-controls class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls  previousLabel="Назад"
+                                  nextLabel="След."
+                                  class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
 
         </div>
     </div>

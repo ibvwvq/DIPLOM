@@ -3,17 +3,16 @@
 <div class="main-syllabus">
 
     <div class="main_title_btnCreateModule">
-        <p class="title_syllabus-course m-2">Программа курса </p>
-        <button title="Добавить новый модуль в программу курса" tuiButton type="button" appearance="whiteblock-active" class="m-3"
-            size="s" (click)="openPageCreateModule()">
-            <tui-svg src="tuiIconPlus" class="icon-edit"></tui-svg>
-            Новый модуль
-        </button>
+        <p class="title_syllabus-course m-2">Программа курса
+          <button title="Добавить новый модуль в программу курса" tuiButton type="button" appearance="custom"
+                  class="btn open-create-module m-2"
+                  size="s" (click)="openPageCreateModule()">
+            <tui-svg src="tuiIconPlus" class="m-2 icon-edit"></tui-svg>
+          </button>
+        </p>
     </div>
 
-    <tui-loader class="inline-flex tui-space_right-2" [showLoader]="loading" [inheritColor]="true" [overlay]="true">
-
-    </tui-loader>
+    <tui-loader class="inline-flex tui-space_right-2" [showLoader]="loading" [inheritColor]="true" [overlay]="true"></tui-loader>
 
     <ng-template [ngIf]="noneModules">
         <p class="m-2">В курсе пока что нет ни одного модуля. <br> Добавьте свой первый модуль. </p>
