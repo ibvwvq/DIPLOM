@@ -1,1 +1,32 @@
-<p>study-course works!</p>
+<app-appbar></app-appbar>
+<div class="container">
+  <div class="app-ace-editor m-2" [(ngModel)]="value" #editor
+       style="max-width: 1000px;height: 250px;">
+  </div>
+
+  <div class="input-output-data">
+    <tui-text-area class="input-data m-2">
+        Input
+    </tui-text-area>
+
+    <tui-text-area class="output-data m-2">
+        Output
+    </tui-text-area>
+  </div>
+
+  <div class="btns-main">
+    <button size="m" tuiButton appearance="custom" class="btn-submit-code" >
+      Отправить
+    </button>
+
+    <button size="m" tuiButton appearance="custom" class="btn-run-code" (click)="submit()">
+      Запустить
+    </button>
+  </div>
+
+</div>
+
+
+
+
+

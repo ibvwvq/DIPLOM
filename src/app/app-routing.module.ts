@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'checking-lessons', loadChildren: () => import('./components/checking-lessons/checking-lessons.module').then(m => m.CheckingLessonsModule),canActivate: [AuthguardGuard,TeacherguardGuard] },
   { path: 'course/:idCourse/promo', loadChildren: () => import('./components/promo-course/promo-course.module').then(m => m.PromoCourseModule) ,canActivate: [AuthguardGuard,StudentguardGuard]},
   { path: 'learn', loadChildren: () => import('./components/learn/learn.module').then(m => m.LearnModule) },
-  { path: 'study-course', loadChildren: () => import('./components/study-course/study-course.module').then(m => m.StudyCourseModule) },
+  { path: 'course/study/:idCourse/lesson/:idLesson/step/:idTask', loadChildren: () => import('./components/study-course/study-course.module').then(m => m.StudyCourseModule) },
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api/api.service";
 import {first} from "rxjs";
+import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 
 @Component({
   selector: 'app-learn',
@@ -9,9 +10,9 @@ import {first} from "rxjs";
 })
 export class LearnComponent implements OnInit{
   constructor(
+    private route:ActivatedRoute,
     private dataService:ApiService) {}
 
-  lc_user:any;
 
   ngOnInit(){
     this.getCourses();
@@ -23,10 +24,8 @@ export class LearnComponent implements OnInit{
   loader:boolean = false;
   getCourses(){
     this.loader = true;
-    this.lc_user = localStorage.getItem("user");
-    const idUser = JSON.parse(this.lc_user).idUser;
 
-    this.dataService.outputCoursesForStud(idUser)
+    this.dataService.outputCoursesForStud(this.idUser)
       .pipe(first())
       .subscribe(
         data =>{
@@ -41,4 +40,29 @@ export class LearnComponent implements OnInit{
         }
       )
   }
+
+  goOverStudyCourse(){
+
+  }
+
+   idCourse:number = Number(this.route.snapshot.paramMap.get('id'));
+    LS_user:any = localStorage.getItem("user");
+   idUser:any = JSON.parse(this.LS_user).idUser;
+
+
+  getOffCourse(idCourse:any){
+    console.log(this.idUser + " " + idCourse);
+    this.dataService.getOffCourse(this.idUser,idCourse)
+      .pipe(first())
+      .subscribe(
+        data =>{
+          console.log(data);
+          window.location.reload();
+        },
+        error => {
+          console.log(error);
+        })
+  }
+
+
 }

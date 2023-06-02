@@ -184,6 +184,36 @@ export class ApiService {
       }));
   }
 
+  public testCompile(json:any){
+    return this.httpClient.post<any>(this.baseUrl + '/compilerFile.php', {json})
+      .pipe(map(Res => {
+        return Res;
+      }));
+  }
+
+
+  public getOffCourse(idUser:any,idCourse:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getOffCourse.php', {idUser,idCourse})
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
+
+  public addHistoryCourse(idModule:any,idLesson:any ,idTask:any,idUser:any ,idCourse:any ){
+    return this.httpClient.post<any>(this.baseUrl + '/createHistory.php', {idModule,idLesson ,idTask,idUser ,idCourse})
+      .pipe(map(History => {
+        return History;
+      }));
+  }
+
+  public getHistoryCourse(idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getHistory.php', {idUser})
+      .pipe(map(History => {
+        return History;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

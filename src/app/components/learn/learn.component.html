@@ -22,18 +22,16 @@
           <ng-template #dropdown let-close="close">
             <tui-data-list>
               <tui-opt-group>
-                <button tuiOption>
+                <button tuiOption (click)="getOffCourse(item.idCourse)">
                   Покинуть
-                </button>
-              </tui-opt-group>
-            </tui-data-list>
+                </button></tui-opt-group></tui-data-list>
           </ng-template>
         </div>
       </div>
 
-      <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph">{{item.description}}</p>
-      <p routerLink="/course/info/{{item.idCourse}}" class="tui-island__paragraph tui-island__paragraph_button">
-        <a class="link-card_course" tuiLink routerLink="/course/info/{{item.idCourse}}">Продолжить</a>
+      <p  routerLink="/course/study/{{item.idCourse}}/lesson/1/step/1" class="tui-island__paragraph">{{item.description}}</p>
+      <p routerLink="/course/study/{{item.idCourse}}/lesson/1/step/1" class="tui-island__paragraph tui-island__paragraph_button">
+        <a class="link-card_course" tuiLink routerLink="/course/study/{{item.idCourse}}/lesson/1/step/1">Продолжить</a>
       </p>
     </a>
   </div>
@@ -41,5 +39,4 @@
   <pagination-controls  previousLabel="Назад"
                         nextLabel="След."
                         class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
-
 </div>

@@ -14,7 +14,8 @@
 
   <div class="cards">
     <div routerLink="/course/{{item.idCourse}}/promo" *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }" >
-      <a tuiIsland class="card">
+        <a tuiIsland [hoverable]="true" class="card info-course">
+
         <div class="line_title_btn-settings">
           <span >{{item.name}}</span>
         </div>

@@ -18,6 +18,7 @@ import {FooterModule} from "../footer/footer.module";
 import {TuiIslandModule} from '@taiga-ui/kit';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiLoaderModule} from '@taiga-ui/core';
+
 @NgModule({
   declarations: [
     CatalogComponent
