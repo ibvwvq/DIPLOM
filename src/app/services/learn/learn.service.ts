@@ -6,4 +6,7 @@ import { Injectable } from '@angular/core';
 export class LearnService {
 
   constructor() { }
+
+  current_delete:any;
+
 }

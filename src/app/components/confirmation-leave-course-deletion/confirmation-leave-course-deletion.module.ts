@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ConfirmationLeaveCourseDeletionRoutingModule } from './confirmation-leave-course-deletion-routing.module';
 import { ConfirmationLeaveCourseDeletionComponent } from './confirmation-leave-course-deletion.component';
+import {TuiButtonModule} from "@taiga-ui/core";
 
 
 @NgModule({
@@ -12,9 +13,10 @@ import { ConfirmationLeaveCourseDeletionComponent } from './confirmation-leave-c
     exports: [
         ConfirmationLeaveCourseDeletionComponent
     ],
-    imports: [
-        CommonModule,
-        ConfirmationLeaveCourseDeletionRoutingModule
-    ]
+  imports: [
+    CommonModule,
+    ConfirmationLeaveCourseDeletionRoutingModule,
+    TuiButtonModule
+  ]
 })
 export class ConfirmationLeaveCourseDeletionModule { }

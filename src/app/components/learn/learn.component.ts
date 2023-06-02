@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api/api.service";
 import {first} from "rxjs";
 import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
+import {LearnService} from "../../services/learn/learn.service";
 
 @Component({
   selector: 'app-learn',
@@ -10,6 +11,7 @@ import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 })
 export class LearnComponent implements OnInit{
   constructor(
+    private learnService:LearnService,
     private route:ActivatedRoute,
     private dataService:ApiService) {}
 
@@ -41,8 +43,9 @@ export class LearnComponent implements OnInit{
       )
   }
   pageLeaveCourse = false;
-  goOverDialogLeaveCourse(){
+  goOverDialogLeaveCourse(course:any){
       this.pageLeaveCourse = true;
+      this.learnService.current_delete = course;
   }
 
    idCourse:number = Number(this.route.snapshot.paramMap.get('id'));

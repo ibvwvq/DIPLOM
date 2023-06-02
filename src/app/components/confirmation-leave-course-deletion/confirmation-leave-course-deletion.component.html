@@ -1,1 +1,10 @@
-<p>confirmation-leave-course-deletion works!</p>
+<div class="container">
+  <span class="title-confirmation-leave"><b>Покинуть курс "{{current_course_leave.name}}"?</b> </span>
+  <div class="btns-delete">
+    <br>
+    <button tuiButton type="button" appearance="secondary-destructive" class=" btn-leave-course" size="m"
+            (click)="getOffCourse(current_course_leave.idCourse)">
+      Да, покинуть
+    </button>
+  </div>
+</div>
