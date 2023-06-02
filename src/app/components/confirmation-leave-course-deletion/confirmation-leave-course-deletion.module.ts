@@ -6,12 +6,15 @@ import { ConfirmationLeaveCourseDeletionComponent } from './confirmation-leave-c
 
 
 @NgModule({
-  declarations: [
-    ConfirmationLeaveCourseDeletionComponent
-  ],
-  imports: [
-    CommonModule,
-    ConfirmationLeaveCourseDeletionRoutingModule
-  ]
+    declarations: [
+        ConfirmationLeaveCourseDeletionComponent
+    ],
+    exports: [
+        ConfirmationLeaveCourseDeletionComponent
+    ],
+    imports: [
+        CommonModule,
+        ConfirmationLeaveCourseDeletionRoutingModule
+    ]
 })
 export class ConfirmationLeaveCourseDeletionModule { }

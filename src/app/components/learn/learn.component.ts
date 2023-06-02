@@ -40,28 +40,14 @@ export class LearnComponent implements OnInit{
         }
       )
   }
-
-  goOverStudyCourse(){
-
+  pageLeaveCourse = false;
+  goOverDialogLeaveCourse(){
+      this.pageLeaveCourse = true;
   }
 
    idCourse:number = Number(this.route.snapshot.paramMap.get('id'));
    LS_user:any = localStorage.getItem("user");
    idUser:any = JSON.parse(this.LS_user).idUser;
-
-  getOffCourse(idCourse:any){
-    console.log(this.idUser + " " + idCourse);
-    this.dataService.getOffCourse(this.idUser,idCourse)
-      .pipe(first())
-      .subscribe(
-        data =>{
-          console.log(data);
-          window.location.reload();
-        },
-        error => {
-          console.log(error);
-        })
-  }
 
 
 }

@@ -73,8 +73,6 @@ export class CreatedCoursesComponent implements OnInit {
         });
   }
 
-
-
     open = false;
 
     getSettingsBtn(): void {

@@ -12,7 +12,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiLoaderModule} from '@taiga-ui/core';
 
 import {TuiAlertModule} from '@taiga-ui/core';
-
 import {
   TuiButtonModule,
   TuiDataListModule,
@@ -21,6 +20,10 @@ import {
   TuiLinkModule, TuiSvgModule
 } from "@taiga-ui/core";
 import {TuiIslandModule} from "@taiga-ui/kit";
+import {ConfirmationCourseDeletionModule} from "../confirmation-course-deletion/confirmation-course-deletion.module";
+import {
+  ConfirmationLeaveCourseDeletionModule
+} from "../confirmation-leave-course-deletion/confirmation-leave-course-deletion.module";
 
 
 @NgModule({
@@ -41,7 +44,9 @@ import {TuiIslandModule} from "@taiga-ui/kit";
     TuiLoaderModule,
     NgxPaginationModule,
     TuiDialogModule,
-    TuiAlertModule
+    TuiAlertModule,
+    ConfirmationCourseDeletionModule,
+    ConfirmationLeaveCourseDeletionModule
   ]
 })
 export class LearnModule { }
