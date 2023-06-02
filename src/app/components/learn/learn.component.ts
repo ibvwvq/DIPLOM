@@ -22,6 +22,7 @@ export class LearnComponent implements OnInit{
 
   user_courses:any[]=[];
   p:any;
+  isNull = false;
   open = false;
   loader:boolean = false;
   getCourses(){
@@ -34,6 +35,9 @@ export class LearnComponent implements OnInit{
           console.log(data);
           this.user_courses = data;
           this.loader = false;
+          if(this.user_courses.length == 0){
+            this.isNull = true;
+          }
         },
         error => {
           console.log(error);

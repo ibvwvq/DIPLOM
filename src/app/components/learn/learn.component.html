@@ -4,9 +4,17 @@
   <div class="main-title">
     <span class="title m-2"> Моё обучение </span>
   </div>
+
   <tui-loader [showLoader]="loader"></tui-loader>
+
+  <ng-template [ngIf]="isNull" >
+    <a class="courses-null m-2"  tuiLink routerLink="/catalog">Добавьте свой первый курс :)</a>
+   <br><br><br>  <br><br><br>
+  </ng-template>
+
   <div class="cards"
        *ngFor="let item of user_courses  | paginate: { itemsPerPage: 3, currentPage: p }">
+
 
     <a tuiIsland [hoverable]="true" class="info-course m-2">
       <div class="line_title_btn-settings">
