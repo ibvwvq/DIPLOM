@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'course/:idCourse/promo', loadChildren: () => import('./components/promo-course/promo-course.module').then(m => m.PromoCourseModule) ,canActivate: [AuthguardGuard,StudentguardGuard]},
   { path: 'learn', loadChildren: () => import('./components/learn/learn.module').then(m => m.LearnModule) },
   { path: 'course/study/:idCourse/lesson/:idLesson/step/:idTask', loadChildren: () => import('./components/study-course/study-course.module').then(m => m.StudyCourseModule) },
+  { path: 'confirmation-leave-course-deletion', loadChildren: () => import('./components/confirmation-leave-course-deletion/confirmation-leave-course-deletion.module').then(m => m.ConfirmationLeaveCourseDeletionModule) },
 ];
 
 @NgModule({

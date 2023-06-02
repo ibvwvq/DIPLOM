@@ -46,9 +46,8 @@ export class LearnComponent implements OnInit{
   }
 
    idCourse:number = Number(this.route.snapshot.paramMap.get('id'));
-    LS_user:any = localStorage.getItem("user");
+   LS_user:any = localStorage.getItem("user");
    idUser:any = JSON.parse(this.LS_user).idUser;
-
 
   getOffCourse(idCourse:any){
     console.log(this.idUser + " " + idCourse);
