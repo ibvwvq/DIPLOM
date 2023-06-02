@@ -14,8 +14,6 @@
 
   <div class="cards"
        *ngFor="let item of user_courses  | paginate: { itemsPerPage: 3, currentPage: p }">
-
-
     <a tuiIsland [hoverable]="true" class="info-course m-2">
       <div class="line_title_btn-settings">
         <h3 class="tui-island__title">{{item.name}}</h3>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {ApiService} from "../../services/api/api.service";
 import {first} from "rxjs";
@@ -10,6 +10,9 @@ import {first} from "rxjs";
 })
 export class CatalogComponent  implements OnInit{
   constructor(private dataService:ApiService) { }
+  LS_user:any = localStorage.getItem("user");
+  idUser:any = JSON.parse(this.LS_user).idUser;
+  @ViewChild("btn-favourite") private favourite: ElementRef<HTMLElement> | undefined;
 
   ngOnInit() {
       this.getAllCourses();
@@ -41,6 +44,20 @@ export class CatalogComponent  implements OnInit{
     valueName: new FormControl(''),
   })
 
+  valueSearch = '';
+  addCourseFavourite(idCourse:any){
+      this.dataService.addFavourite(idCourse, this.idUser)
+        .pipe(first())
+        .subscribe(
+          data=>{
+            console.log("add");
+
+          },
+          error => {
+            console.log("dont add");
+          }
+        )
+  }
 
 
 }

@@ -14,20 +14,23 @@ import { CreateCourseModule } from '../create-course/create-course.module';
 import {AppbarModule} from "../appbar/appbar.module";
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiDialogModule} from '@taiga-ui/core';
-import { FilterPipe } from 'src/app/services/pipes/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiDropdownModule} from '@taiga-ui/core';
 import {TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLoaderModule} from '@taiga-ui/core';
 import { ConfirmationCourseDeletionModule } from '../confirmation-course-deletion/confirmation-course-deletion.module';
+import { FilterPipe } from 'src/app/services/pipes/filter.pipe';
+
 
 @NgModule({
     declarations: [
         CreatedCoursesComponent,
-        FilterPipe
+         FilterPipe
+
     ],
     exports: [
-        CreatedCoursesComponent
+        CreatedCoursesComponent,
+      FilterPipe
     ],
     imports: [
         CommonModule,

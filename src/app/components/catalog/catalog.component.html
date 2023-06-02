@@ -1,7 +1,7 @@
 <app-appbar></app-appbar>
 <div class="main-container">
   <form class="search" class="form-search m-1" [formGroup]="formSearchCourses">
-    <tui-input  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search" formControlName="valueName">
+    <tui-input [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search" formControlName="valueName">
       Поиск по названию курса
       <input tuiTextfield type="text" />
     </tui-input>
@@ -13,20 +13,24 @@
   <tui-loader [showLoader]="loader"></tui-loader>
 
   <div class="cards">
-    <div routerLink="/course/{{item.idCourse}}/promo" *ngFor="let item of courses | paginate: { itemsPerPage: 6, currentPage: p }" >
-        <a tuiIsland [hoverable]="true" class="card info-course">
+    <div  *ngFor="let item of courses | FilterPipe: valueSearch | paginate: { itemsPerPage: 6, currentPage: p }" >
 
-        <div class="line_title_btn-settings">
+      <a tuiIsland [hoverable]="true" class="card info-course">
+
+        <button title="Добавить в избранное" size="s"   tuiButton appearance="custom">
+          <tui-svg [ngClass]="{'btn-favourite':!loader}" (click)="addCourseFavourite(item.idCourse)" src="tuiIconHeartLarge" class="btn-heart"></tui-svg>
+        </button>
+
+        <div class="title" routerLink="/course/{{item.idCourse}}/promo">
           <span >{{item.name}}</span>
         </div>
         <p class="btn-cost-free tui-island__footer-button m-2">
-          <button tuiLink>
+          <button tuiLink routerLink="/course/{{item.idCourse}}/promo">
             Бесплатно
           </button>
         </p>
       </a>
     </div>
-
 
   </div>
 

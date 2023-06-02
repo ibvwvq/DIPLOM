@@ -18,6 +18,7 @@ import {FooterModule} from "../footer/footer.module";
 import {TuiIslandModule} from '@taiga-ui/kit';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {TuiLoaderModule} from '@taiga-ui/core';
+import {CreatedCoursesModule} from "../created-courses/created-courses.module";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {TuiLoaderModule} from '@taiga-ui/core';
     TuiSvgModule,
     NgxPaginationModule,
     TuiLoaderModule,
-    TuiTextfieldControllerModule
+    TuiTextfieldControllerModule,
+    CreatedCoursesModule
   ]
 })
 export class CatalogModule { }

@@ -16,10 +16,9 @@
 .title{
   text-align: center;
   margin: auto;
-  font-size: 26px;
+  font-size: 20px;
 }
 .card:hover{
-    box-shadow: 0 5px 20px rgb(144, 187, 239);
     cursor: pointer;
 }
 .card{
@@ -52,4 +51,15 @@
     margin: 10px;
 }
 
+.btn-heart{
+ color: gray;
+}
 
+.active{
+  background: yellow;
+}
+
+
+.btn-favourite{
+  color: red;
+}
