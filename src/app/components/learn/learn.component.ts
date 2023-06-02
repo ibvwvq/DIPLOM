@@ -46,6 +46,7 @@ export class LearnComponent implements OnInit{
         }
       )
   }
+  valueSearch = '';
   pageLeaveCourse = false;
   goOverDialogLeaveCourse(course:any){
       this.pageLeaveCourse = true;

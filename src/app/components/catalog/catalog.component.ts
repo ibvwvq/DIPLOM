@@ -15,11 +15,17 @@ export class CatalogComponent  implements OnInit{
   @ViewChild("btn-favourite") private favourite: ElementRef<HTMLElement> | undefined;
 
   ngOnInit() {
-      this.getAllCourses();
+    this.FAVOURITES =[];
+
+    this.getAllCourses();
   }
   courses:any[]=[];
+  courses_fav:any[] = [];
   teachers:any[]=[];
   loader = false;
+
+  FAVOURITES:any[] = [];
+
   getAllCourses(){
     this.loader = true;
     this.dataService.getAllCourses()
@@ -29,16 +35,35 @@ export class CatalogComponent  implements OnInit{
           this.courses = data;
           console.log(data);
           this.loader = false;
+          this.dataService.getFavouriteCourses(this.idUser)
+            .pipe(first())
+            .subscribe(
+              data=>{
+
+                this.courses_fav = data;
+                console.log(this.courses_fav);
+
+                for(let i = 0; i<this.courses.length;i++){
+                  for(let j =0;j<this.courses_fav.length;j++){
+                    if(this.courses[i].idCourse == this.courses_fav[j].idCourse){
+                      this.FAVOURITES.push(this.courses[i].idCourse);
+                    }
+
+                  }
+                }
+              },
+              error => {
+                console.log(error);
+              })
 
         },
         error => {
-            console.log("its not ok");
           this.loader = false;
-
         });
   }
-  p:any;
 
+
+  p:any;
 
   formSearchCourses = new FormGroup({
     valueName: new FormControl(''),
@@ -46,18 +71,20 @@ export class CatalogComponent  implements OnInit{
 
   valueSearch = '';
   addCourseFavourite(idCourse:any){
-      this.dataService.addFavourite(idCourse, this.idUser)
-        .pipe(first())
-        .subscribe(
-          data=>{
-            console.log("add");
+    console.log(this.FAVOURITES);
 
-          },
-          error => {
-            console.log("dont add");
-          }
-        )
   }
 
-
+  getFavouriteCourses(){
+    this.dataService.getFavouriteCourses(this.idUser)
+      .pipe(first())
+      .subscribe(
+        data=>{
+          console.log(data);
+          this.courses_fav = data;
+        },
+        error => {
+          console.log(error);
+        })
+  }
 }

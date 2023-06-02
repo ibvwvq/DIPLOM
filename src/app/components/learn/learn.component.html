@@ -12,8 +12,13 @@
    <br><br><br>  <br><br><br>
   </ng-template>
 
+    <tui-input  tuiTextfieldSize="m" [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search m-2">
+      Поиск по названию курса
+      <input tuiTextfield type="text" />
+    </tui-input>
+
   <div class="cards"
-       *ngFor="let item of user_courses  | paginate: { itemsPerPage: 3, currentPage: p }">
+       *ngFor="let item of user_courses | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">
     <a tuiIsland [hoverable]="true" class="info-course m-2">
       <div class="line_title_btn-settings">
         <h3 class="tui-island__title">{{item.name}}</h3>

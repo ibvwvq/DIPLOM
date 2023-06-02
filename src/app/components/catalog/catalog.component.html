@@ -1,15 +1,15 @@
 <app-appbar></app-appbar>
 <div class="main-container">
+  <div class="title-main m-2">
+    Онлайн-курсы
+    <tui-svg src="tuiIconCornerRightDown" class="icon"></tui-svg>
+  </div>
   <form class="search" class="form-search m-1" [formGroup]="formSearchCourses">
-    <tui-input [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search" formControlName="valueName">
+    <tui-input  tuiTextfieldSize="m" [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search" formControlName="valueName">
       Поиск по названию курса
       <input tuiTextfield type="text" />
     </tui-input>
   </form>
-  <div class="title m-2">
-    Онлайн-курсы
-    <tui-svg src="tuiIconCornerRightDown" class="icon"></tui-svg>
-  </div>
   <tui-loader [showLoader]="loader"></tui-loader>
 
   <div class="cards">
@@ -17,13 +17,20 @@
 
       <a tuiIsland [hoverable]="true" class="card info-course">
 
-        <button title="Добавить в избранное" size="s"   tuiButton appearance="custom">
-          <tui-svg [ngClass]="{'btn-favourite':!loader}" (click)="addCourseFavourite(item.idCourse)" src="tuiIconHeartLarge" class="btn-heart"></tui-svg>
-        </button>
+        <div *ngFor="let fav of FAVOURITES" class="btn-favourite" >
+
+              <button *ngIf="fav == item.idCourse" title="Добавлено в избранное" size="s" class="btn-favourite"  tuiButton appearance="custom">
+                <tui-svg  style="color:red;" src="tuiIconHeartLarge" class="btn-heart"></tui-svg>
+              </button>
+
+        </div>
+
+
 
         <div class="title" routerLink="/course/{{item.idCourse}}/promo">
           <span >{{item.name}}</span>
         </div>
+        <br>
         <p class="btn-cost-free tui-island__footer-button m-2">
           <button tuiLink routerLink="/course/{{item.idCourse}}/promo">
             Бесплатно

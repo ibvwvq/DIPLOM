@@ -198,6 +198,13 @@ export class ApiService {
       }));
   }
 
+  public getFavouriteCourses(idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getFavoriteCourses.php', {idUser})
+      .pipe(map(Res => {
+        return Res;
+      }));
+  }
+
 
   public getOffCourse(idUser:any,idCourse:any){
     return this.httpClient.post<any>(this.baseUrl + '/getOffCourse.php', {idUser,idCourse})

@@ -20,7 +20,6 @@ export class PromoCourseComponent implements OnInit{
     this.outputCourses();
   }
 
-  lc_user:any;
   current_course:any;
   loader:boolean = false;
   current_modules:any[] = [];
@@ -80,14 +79,14 @@ export class PromoCourseComponent implements OnInit{
         })
   }
 
+   idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
+    lc_user:any = localStorage.getItem("user");
+   idUser = JSON.parse(this.lc_user).idUser;
 
 
   joinCourse(){
     if(!this.joinOk){
-      const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
-      this.lc_user = localStorage.getItem("user");
-      const idUser = JSON.parse(this.lc_user).idUser;
-      this.dataService.joinCourse(idUser, idCourse)
+      this.dataService.joinCourse(this.idUser, this.idCourse)
         .pipe(first())
         .subscribe(
           data => {
@@ -100,6 +99,17 @@ export class PromoCourseComponent implements OnInit{
     }
   }
   p:any;
+
+  addCourseFavourite(idCourse:any){
+    this.dataService.addFavourite(idCourse, this.idUser)
+        .pipe(first())
+        .subscribe(
+          data=>{
+
+          },
+          error => {}
+        )
+  }
 
   showSuccessAlert(): void {
     this.alerts

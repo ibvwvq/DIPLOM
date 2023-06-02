@@ -5,7 +5,7 @@ import { LearnRoutingModule } from './learn-routing.module';
 import { LearnComponent } from './learn.component';
 import {AppbarModule} from "../appbar/appbar.module";
 
-import {TuiDialogModule} from '@taiga-ui/core';
+import {TuiDialogModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -19,11 +19,13 @@ import {
   TuiHostedDropdownModule,
   TuiLinkModule, TuiSvgModule
 } from "@taiga-ui/core";
-import {TuiIslandModule} from "@taiga-ui/kit";
+import {TuiInputCountModule, TuiInputModule, TuiIslandModule} from "@taiga-ui/kit";
 import {ConfirmationCourseDeletionModule} from "../confirmation-course-deletion/confirmation-course-deletion.module";
 import {
   ConfirmationLeaveCourseDeletionModule
 } from "../confirmation-leave-course-deletion/confirmation-leave-course-deletion.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CreatedCoursesModule} from "../created-courses/created-courses.module";
 
 
 @NgModule({
@@ -46,7 +48,13 @@ import {
     TuiDialogModule,
     TuiAlertModule,
     ConfirmationCourseDeletionModule,
-    ConfirmationLeaveCourseDeletionModule
+    ConfirmationLeaveCourseDeletionModule,
+    ReactiveFormsModule,
+    TuiInputCountModule,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
+    CreatedCoursesModule,
+    FormsModule
   ]
 })
 export class LearnModule { }

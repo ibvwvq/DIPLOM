@@ -34,7 +34,8 @@
           </button>
         </ng-template>
 
-      <button title="Добавить в избранное" size="m" tuiButton type="button" appearance="outline" class="m-2 btn-add_like">
+      <button title="Добавить в избранное" (click)="addCourseFavourite(current_course.idCourse)"
+              size="m" tuiButton type="button" appearance="outline" class="m-2 btn-add_like">
         <tui-svg src="tuiIconHeartLarge" class="icon m-1"></tui-svg>
         Избранное
       </button>

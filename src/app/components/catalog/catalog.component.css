@@ -13,18 +13,31 @@
   margin: auto;
 }
 
+.btn-favourite{
+  color: red;
+
+}
+
+
 .title{
   text-align: center;
   margin: auto;
   font-size: 20px;
 }
+
+.title-main{
+  text-align: center;
+  margin: auto;
+  font-size: 28px;
+}
 .card:hover{
     cursor: pointer;
 }
 .card{
-  width: 220px;
-  height: 150px;
+  width: 270px;
+  height: 250px;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .info-course{
