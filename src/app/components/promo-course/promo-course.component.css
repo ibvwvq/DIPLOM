@@ -9,6 +9,13 @@
   max-width: 1000px;
 }
 
+
+.icon-trash{
+    color: #FC2847;
+}
+
+
+
 .course-promo_btn-start{
   display: flex;
   flex-direction: column;

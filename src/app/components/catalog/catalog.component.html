@@ -12,20 +12,14 @@
   </form>
   <tui-loader [showLoader]="loader"></tui-loader>
 
-  <div class="cards">
+  <div class="cards" *ngIf ="!loader">
     <div  *ngFor="let item of courses | FilterPipe: valueSearch | paginate: { itemsPerPage: 6, currentPage: p }" >
-
       <a tuiIsland [hoverable]="true" class="card info-course">
-
         <div *ngFor="let fav of FAVOURITES" class="btn-favourite" >
-
               <button *ngIf="fav == item.idCourse" title="Добавлено в избранное" size="s" class="btn-favourite"  tuiButton appearance="custom">
                 <tui-svg  style="color:red;" src="tuiIconHeartLarge" class="btn-heart"></tui-svg>
               </button>
-
         </div>
-
-
 
         <div class="title" routerLink="/course/{{item.idCourse}}/promo">
           <span >{{item.name}}</span>
@@ -44,8 +38,6 @@
   <pagination-controls  previousLabel="Назад"
                         nextLabel="След."
                         class="paginate-courses p-2" (pageChange)="p = $event"></pagination-controls>
-
-
 
 </div>
 

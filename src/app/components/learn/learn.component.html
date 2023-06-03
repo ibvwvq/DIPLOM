@@ -7,15 +7,17 @@
 
   <tui-loader [showLoader]="loader"></tui-loader>
 
-  <ng-template [ngIf]="isNull" >
-    <a class="courses-null m-2"  tuiLink routerLink="/catalog">Добавьте свой первый курс :)</a>
-   <br><br><br>  <br><br><br>
-  </ng-template>
+
 
     <tui-input  tuiTextfieldSize="m" [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search m-2">
       Поиск по названию курса
       <input tuiTextfield type="text" />
     </tui-input>
+
+  <ng-template [ngIf]="isNull" >
+    <a class="courses-null m-2"  tuiLink routerLink="/catalog">Добавьте свой первый курс :)</a>
+    <br><br><br>  <br><br><br>
+  </ng-template>
 
   <div class="cards"
        *ngFor="let item of user_courses | FilterPipe: valueSearch | paginate: { itemsPerPage: 3, currentPage: p }">

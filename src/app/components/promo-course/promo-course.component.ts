@@ -24,6 +24,7 @@ export class PromoCourseComponent implements OnInit{
   loader:boolean = false;
   current_modules:any[] = [];
 
+  isFavourite:boolean = false;
   getCourse(id:any){
     this.loader = true;
       this.dataService.getCourse(id)
@@ -32,7 +33,21 @@ export class PromoCourseComponent implements OnInit{
           data => {
                 console.log(data);
                 this.current_course = data[0];
-                this.loader = false;
+
+                this.dataService.getFavouriteCourses(this.idUser)
+                  .pipe(first())
+                  .subscribe(
+                    data=>{
+                      console.log(data);
+                      this.courses_fav = data;
+                      for(let i =0;i<this.courses_fav.length;i++){
+                        if(this.courses_fav[i].idCourse == this.current_course.idCourse){
+                            this.isFavourite = true;
+                        }
+                      }
+                    },
+                    error => {console.log(error);})
+                  this.loader = false;
           },
         error => {
                 console.log(error);
@@ -90,7 +105,6 @@ export class PromoCourseComponent implements OnInit{
         .pipe(first())
         .subscribe(
           data => {
-            this.showSuccessAlert();
             window.location.reload();
           },
           error => {
@@ -104,31 +118,44 @@ export class PromoCourseComponent implements OnInit{
     this.dataService.addFavourite(idCourse, this.idUser)
         .pipe(first())
         .subscribe(
-          data=>{
+          data=>{this.showAlertSuccess("Курс успешно добавлен в избранное")
+          window.location.reload();},
+          error => {this.showAlertError("Что-то пошло не так")}
+        )}
 
-          },
-          error => {}
-        )
-  }
+  trashCourseFavourite(idCourse:any){
+    this.dataService.trashFavouriteCourses( this.idUser,idCourse,)
+      .pipe(first())
+      .subscribe(
+        data=>{this.showAlertSuccess("Курс успешно удален")
+          window.location.reload();},
+        error => {this.showAlertError("Что-то пошло не так")}
+      )}
 
-  showSuccessAlert(): void {
+
+
+
+  showAlertSuccess(label:string):void{
     this.alerts
       .open('    ',{
-        label: 'Вы записаны на курс!',
+        label: label,
         status: TuiNotification.Success,
         autoClose: false,
       })
       .subscribe();
   }
 
-  showErrorAlert(): void {
+  showAlertError(label:string):void{
     this.alerts
       .open('    ',{
-        label: 'Вы записаны на курс!',
+        label: label,
         status: TuiNotification.Error,
         autoClose: false,
       })
       .subscribe();
   }
+
+
+  courses_fav:any[]=[];
 }
 

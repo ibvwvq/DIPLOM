@@ -4,7 +4,7 @@
 <div class="main-content" *ngIf="!loader">
   <div class="course-promo_head" >
     <div class="course-promo_head-content">
-      <h1 class="course-promo_head-title p-4">{{current_course.name}}</h1>
+      <h1 class="course-promo_head-title p-3">{{current_course.name}}</h1>
       <div class="course-promo_head-description p-3"> {{current_course.description}}</div>
     </div>
   </div>
@@ -34,11 +34,20 @@
           </button>
         </ng-template>
 
-      <button title="Добавить в избранное" (click)="addCourseFavourite(current_course.idCourse)"
-              size="m" tuiButton type="button" appearance="outline" class="m-2 btn-add_like">
-        <tui-svg src="tuiIconHeartLarge" class="icon m-1"></tui-svg>
-        Избранное
-      </button>
+      <ng-template [ngIf]="!isFavourite">
+        <button title="Добавить в избранное" (click)="addCourseFavourite(current_course.idCourse)"
+                size="m" tuiButton type="button" appearance="outline" class="m-2 btn-add_like">
+          <tui-svg src="tuiIconHeartLarge" class="icon-add m-1"></tui-svg>
+        </button>
+      </ng-template>
+
+      <ng-template [ngIf]="isFavourite">
+        <button title="Убрать в избранное" (click)="trashCourseFavourite(current_course.idCourse)"
+                size="m" tuiButton type="button" appearance="outline" class="m-2 btn-trash_like">
+          <tui-svg  src="tuiIconHeartLarge" class="icon-trash m-1"></tui-svg>
+        </button>
+      </ng-template>
+
       <h5 class="m-2">Учиться можно сразу</h5>
     </div>
   </div>

@@ -33,33 +33,23 @@ export class CatalogComponent  implements OnInit{
       .subscribe(
         data => {
           this.courses = data;
-          console.log(data);
-          this.loader = false;
           this.dataService.getFavouriteCourses(this.idUser)
             .pipe(first())
             .subscribe(
               data=>{
-
                 this.courses_fav = data;
-                console.log(this.courses_fav);
-
                 for(let i = 0; i<this.courses.length;i++){
                   for(let j =0;j<this.courses_fav.length;j++){
                     if(this.courses[i].idCourse == this.courses_fav[j].idCourse){
                       this.FAVOURITES.push(this.courses[i].idCourse);
                     }
-
                   }
                 }
+                this.loader = false;
               },
-              error => {
-                console.log(error);
-              })
-
+              error => {console.log(error);})
         },
-        error => {
-          this.loader = false;
-        });
+        error => {this.loader = false;});
   }
 
 
@@ -70,21 +60,5 @@ export class CatalogComponent  implements OnInit{
   })
 
   valueSearch = '';
-  addCourseFavourite(idCourse:any){
-    console.log(this.FAVOURITES);
 
-  }
-
-  getFavouriteCourses(){
-    this.dataService.getFavouriteCourses(this.idUser)
-      .pipe(first())
-      .subscribe(
-        data=>{
-          console.log(data);
-          this.courses_fav = data;
-        },
-        error => {
-          console.log(error);
-        })
-  }
 }
