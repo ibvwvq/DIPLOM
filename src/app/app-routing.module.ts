@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'checking-lessons', loadChildren: () => import('./components/checking-lessons/checking-lessons.module').then(m => m.CheckingLessonsModule),canActivate: [AuthguardGuard,TeacherguardGuard] },
   { path: 'course/:idCourse/promo', loadChildren: () => import('./components/promo-course/promo-course.module').then(m => m.PromoCourseModule) ,canActivate: [AuthguardGuard,StudentguardGuard]},
   { path: 'learn', loadChildren: () => import('./components/learn/learn.module').then(m => m.LearnModule) },
-  { path: 'study/:idCourse/module/:idModule/lesson/:idLesson/step/:idTask', loadChildren: () => import('./components/study-course/study-course.module').then(m => m.StudyCourseModule) },
+  { path: 'study/:idCourse/module/:idModule/lesson/:idLesson/step/:idTask', loadChildren: () => import('./components/study-course/study-course.module').then(m => m.StudyCourseModule),canActivate: [AuthguardGuard,StudentguardGuard] },
   { path: 'confirmation-leave-course-deletion', loadChildren: () => import('./components/confirmation-leave-course-deletion/confirmation-leave-course-deletion.module').then(m => m.ConfirmationLeaveCourseDeletionModule) },
 ];
 
