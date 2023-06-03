@@ -29,7 +29,7 @@
        </ng-template>
 
         <ng-template [ngIf]="joinOk">
-          <button  title="Записаться на курс" size="m" tuiButton type="button" class="m-2">
+          <button (click)="resumeCourse(current_course.idCourse)"  title="Записаться на курс" size="m" tuiButton type="button" class="m-2">
           Продолжить
           </button>
         </ng-template>

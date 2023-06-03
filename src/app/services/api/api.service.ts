@@ -212,6 +212,20 @@ export class ApiService {
       }));
   }
 
+  public addLastChanges(idUser :any,idCourse:any,idModule:any,idLesson :any,idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/addLastChages.php', {idUser,idCourse,idModule,idLesson,idTask})
+      .pipe(map(Res => {
+        return Res;
+      }));
+  }
+
+  public getLastChanges(idUser :any,idCourse:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getLastChanges.php', {idUser,idCourse})
+      .pipe(map(Res => {
+        return Res;
+      }));
+  }
+
 
   public getOffCourse(idUser:any,idCourse:any){
     return this.httpClient.post<any>(this.baseUrl + '/getOffCourse.php', {idUser,idCourse})

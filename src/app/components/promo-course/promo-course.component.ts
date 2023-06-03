@@ -9,10 +9,7 @@ import {TuiAlertService, TuiNotification} from "@taiga-ui/core";
   styleUrls: ['./promo-course.component.css']
 })
 export class PromoCourseComponent implements OnInit{
-  constructor(
-    @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
-    private dataService:ApiService,
-    private route: ActivatedRoute) {}
+
   ngOnInit(){
     const id = Number(this.route.snapshot.paramMap.get('idCourse'));
     this.getCourse(id);
@@ -20,20 +17,33 @@ export class PromoCourseComponent implements OnInit{
     this.outputCourses();
   }
 
+  constructor(
+    private router: Router,
+    @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
+    private dataService:ApiService,
+    private route: ActivatedRoute) {}
+
+  courses_fav:any[]=[];
   current_course:any;
   loader:boolean = false;
   current_modules:any[] = [];
-
+  current_lessons:any[] = [];
+  current_tasks:any[]=[];
+  joinOk:boolean = false;
+  p:any;
+  user_courses:any[]=[];
   isFavourite:boolean = false;
+  idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
+  lc_user:any = localStorage.getItem("user");
+  idUser = JSON.parse(this.lc_user).idUser;
+
   getCourse(id:any){
     this.loader = true;
       this.dataService.getCourse(id)
         .pipe(first())
         .subscribe(
           data => {
-                console.log(data);
                 this.current_course = data[0];
-
                 this.dataService.getFavouriteCourses(this.idUser)
                   .pipe(first())
                   .subscribe(
@@ -45,14 +55,9 @@ export class PromoCourseComponent implements OnInit{
                             this.isFavourite = true;
                         }
                       }
-                    },
-                    error => {console.log(error);})
-                  this.loader = false;
-          },
-        error => {
-                console.log(error);
-                this.loader = false;
-        })
+                    }, error => {console.log(error);})
+                  this.loader = false;},
+        error => {this.loader = false;})
   }
 
   getModules(idCourse: any) {
@@ -62,14 +67,36 @@ export class PromoCourseComponent implements OnInit{
         data => {
           console.log(data);
           this.current_modules = data;
+          this.getLessons(this.current_modules[0].idModule);
         },
         error => {
           console.log(error);
         });
   }
-  joinOk:boolean = false;
 
-  user_courses:any[]=[];
+  getLessons(idModule: any) {
+    this.dataService.getLessons(idModule)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.current_lessons = data;
+          this.getTasks(this.current_lessons[0].idLesson)
+          console.log(this.current_lessons);
+        },
+        error => {console.log(error);});
+  }
+
+  getTasks(idLesson: any) {
+    this.dataService.getTasks(idLesson)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.current_tasks = data;
+          console.log(this.current_tasks);
+        },
+        error => {console.log(error);});
+  }
+
   outputCourses() {
     this.lc_user = localStorage.getItem("user");
     const idUser = JSON.parse(this.lc_user).idUser;
@@ -79,7 +106,6 @@ export class PromoCourseComponent implements OnInit{
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           this.user_courses = data;
           for(let i=0;i<this.user_courses.length;i++){
             if(this.user_courses[i].idCourse == id){
@@ -87,17 +113,8 @@ export class PromoCourseComponent implements OnInit{
             }
           }
         },
-        error => {
-          console.log(error);
-          this.loader = false;
-
-        })
+        error => {this.loader = false;})
   }
-
-   idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
-    lc_user:any = localStorage.getItem("user");
-   idUser = JSON.parse(this.lc_user).idUser;
-
 
   joinCourse(){
     if(!this.joinOk){
@@ -105,15 +122,18 @@ export class PromoCourseComponent implements OnInit{
         .pipe(first())
         .subscribe(
           data => {
-            window.location.reload();
-          },
-          error => {
-            console.log(error);
-          });
+            this.dataService.addLastChanges(
+              this.idUser,
+              this.current_course.idCourse,
+              this.current_modules[0].idModule,
+              this.current_lessons[0].idLesson,
+              this.current_tasks[0].idTask).pipe(first())
+              .subscribe(
+                data=>{window.location.reload();},
+                error => {console.log(error);})
+              }, error => {});
     }
   }
-  p:any;
-
   addCourseFavourite(idCourse:any){
     this.dataService.addFavourite(idCourse, this.idUser)
         .pipe(first())
@@ -131,9 +151,6 @@ export class PromoCourseComponent implements OnInit{
           window.location.reload();},
         error => {this.showAlertError("Что-то пошло не так")}
       )}
-
-
-
 
   showAlertSuccess(label:string):void{
     this.alerts
@@ -154,8 +171,36 @@ export class PromoCourseComponent implements OnInit{
       })
       .subscribe();
   }
+  lastChanges:any;
+  resumeCourse(idCourse:any){
+      this.dataService.getLastChanges(this.idUser,idCourse)
+        .pipe(first())
+        .subscribe(
+          data=>{
+            this.lastChanges = data[0];
+            this.urlResumeCourse();
+            },
+          error => {console.log(error);}
+        )
+  }
+
+  urlResumeCourse(){
+    console.log(this.lastChanges.idModule)
+    this.router.navigate([
+      'study', this.lastChanges.idCourse,
+      'module',  this.lastChanges.idModule,
+      'lesson',this.lastChanges.idLesson,
+      'step',this.lastChanges.idTask], {
+      queryParams: {
+        idCourse: this.lastChanges.idCourse,
+        idModule: this.lastChanges.idModule,
+        idLesson: this.lastChanges.idLesson,
+        step: this.lastChanges.idTask},
+      fragment: 'address',
+    })
+
+  }
 
 
-  courses_fav:any[]=[];
 }
 

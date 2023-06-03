@@ -4,15 +4,11 @@
   <div class="main-title">
     <span class="title m-2"> Моё обучение </span>
   </div>
-
+  <tui-input  tuiTextfieldSize="m" [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search m-2">
+    Поиск по названию курса
+    <input tuiTextfield type="text" />
+  </tui-input>
   <tui-loader [showLoader]="loader"></tui-loader>
-
-
-
-    <tui-input  tuiTextfieldSize="m" [(ngModel)]="valueSearch"  tuiTextfieldIconLeft="tuiIconSearchLarge" class="input-search m-2">
-      Поиск по названию курса
-      <input tuiTextfield type="text" />
-    </tui-input>
 
   <ng-template [ngIf]="isNull" >
     <a class="courses-null m-2"  tuiLink routerLink="/catalog">Добавьте свой первый курс :)</a>
