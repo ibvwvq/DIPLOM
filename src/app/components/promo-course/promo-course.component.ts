@@ -26,9 +26,9 @@ export class PromoCourseComponent implements OnInit{
   courses_fav:any[]=[];
   current_course:any;
   loader:boolean = false;
-  current_modules:any[] = [];
-  current_lessons:any[] = [];
-  current_tasks:any[]=[];
+  current_modules:any;
+  current_lessons:any;
+  current_tasks:any;
   joinOk:boolean = false;
   p:any;
   user_courses:any[]=[];
@@ -66,8 +66,8 @@ export class PromoCourseComponent implements OnInit{
       .subscribe(
         data => {
           console.log(data);
-          this.current_modules = data;
-          this.getLessons(this.current_modules[0].idModule);
+          this.current_modules = data[0];
+          this.getLessons(this.current_modules.idModule);
         },
         error => {
           console.log(error);
@@ -79,8 +79,8 @@ export class PromoCourseComponent implements OnInit{
       .pipe(first())
       .subscribe(
         data => {
-          this.current_lessons = data;
-          this.getTasks(this.current_lessons[0].idLesson)
+          this.current_lessons = data[0];
+          this.getTasks(this.current_lessons.idLesson)
           console.log(this.current_lessons);
         },
         error => {console.log(error);});
@@ -91,7 +91,7 @@ export class PromoCourseComponent implements OnInit{
       .pipe(first())
       .subscribe(
         data => {
-          this.current_tasks = data;
+          this.current_tasks = data[0];
           console.log(this.current_tasks);
         },
         error => {console.log(error);});
@@ -117,21 +117,29 @@ export class PromoCourseComponent implements OnInit{
   }
 
   joinCourse(){
+    console.log(
+      this.idUser,
+      this.current_course.idCourse,
+      this.current_modules.idModule,
+      this.current_lessons.idLesson,
+      this.current_tasks.idTask);
     if(!this.joinOk){
-      this.dataService.joinCourse(this.idUser, this.idCourse)
-        .pipe(first())
-        .subscribe(
-          data => {
             this.dataService.addLastChanges(
               this.idUser,
               this.current_course.idCourse,
-              this.current_modules[0].idModule,
-              this.current_lessons[0].idLesson,
-              this.current_tasks[0].idTask).pipe(first())
+              this.current_modules.idModule,
+              this.current_lessons.idLesson,
+              this.current_tasks.idTask)
+              .pipe(first())
               .subscribe(
-                data=>{window.location.reload();},
+                data=> {
+                  console.log(data);
+                  this.dataService.joinCourse(this.idUser, this.idCourse)
+                    .pipe(first()).subscribe(
+                      data => {console.log(data)},
+                      error => {console.log(error)});
+                },
                 error => {console.log(error);})
-              }, error => {});
     }
   }
   addCourseFavourite(idCourse:any){

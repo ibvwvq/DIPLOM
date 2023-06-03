@@ -11,81 +11,106 @@ import * as ace from "ace-builds";
 })
 export class StudyCourseComponent implements OnInit, AfterViewInit {
 
-  // 3️⃣
-    @ViewChild("editor") private editor: ElementRef<HTMLElement> | undefined;
-
-  // 4️⃣
+  @ViewChild("editor") private editor: ElementRef<HTMLElement> | undefined ;
+  value:any;
+  valueLang:any = '';
+  current_task:any;
+  languages:any[]=[
+    'csharp',
+    'javascript',
+    'python'
+  ]
+  typeTask:any;
+  readonly testValue = new FormControl(this.languages[0]);
+  ngOnInit():void {
+    this.getTask();
+    if(this.typeTask == 'Лекция'){
+      let myContainer = document.getElementById('lecture') as HTMLInputElement;
+      myContainer.innerHTML = this.current_task.textTask;
+    }
+  }
   ngAfterViewInit(): void {
     ace.config.set("fontSize", "14px");
     // @ts-ignore
     const aceEditor = ace.edit(this.editor.nativeElement);
     aceEditor.session.setValue("");
-
     aceEditor.on("change", () => {
       // console.log(aceEditor.getValue());
      this.value = aceEditor.getValue();
     });
   }
 
-  value:any;
-
-  formTest:any = FormGroup;
-
+  output='';
+  inputData ='';
+  nameFile='';
   constructor(
-    private fb:FormBuilder,
     private route: ActivatedRoute,
     private dataService: ApiService) {
-    this.formTest = this.fb.group({
-       code: [],
-       input: []
-    })
   }
-
-  public ngOnInit() {
-  }
-
-    submit()
+    submit():void
     {
-      const obj = {
-        code: this.value,
-        input:23 ,
+      if(this.testValue.value=='csharp'){
+        this.nameFile = 'main.cs';
+      }
+      if(this.testValue.value=='javascript'){
+        this.nameFile = 'main.js';
+      }
+      if(this.testValue.value=='python'){
+        this.nameFile = 'main.py';
+      }
+
+      const codeJson = {
+        language: this.testValue.value,
+        stdin: this.inputData,
+        name: this.nameFile,
+        content: this.value
       };
 
-      // // @ts-ignore
-      // const aceEditor = ace.edit(this.editor.nativeElement);
-      // aceEditor.session.setValue("");
-      //
-      // aceEditor.on("change", () => {
-      //   console.log(aceEditor.getValue());
-      //   this.value = aceEditor.getValue();
-      // });
-
-      console.log(obj);
-      this.dataService.testCompile(obj)
+      this.dataService.testCompile(codeJson)
         .pipe(first())
         .subscribe(
           data => {
-            console.log(data);
-          },
-          error => {
-            console.log(error);
-
-          });
+            this.output = data.stdout;
+            console.log(this.output);
+            },
+          error => {console.log(error);});
     }
 
-    getHistory()
+    getTask()
     {
-      const id = Number(this.route.snapshot.paramMap.get('id'));
-
-      this.dataService.getHistoryCourse(id)
+      const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
+      const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
+      const idLesson = Number(this.route.snapshot.paramMap.get('idLesson'));
+      const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+      console.log(idTask);
+      this.dataService.getTask(idTask)
         .pipe(first())
         .subscribe(
-          data => {
+          data=>{
+            this.current_task = data[0]
+            this.determineTypeTask(this.current_task.idVariantTask)
+            console.log(this.typeTask);
             console.log(data);
-          },
-          error => {
-            console.log(error);
-          }
-        )
+           },
+          error=>{console.log(error);})
     }
+
+  determineTypeTask(type:any){
+    if(type==2){
+      this.typeTask = 'Лекция';
+      let myContainer = document.getElementById('lecture') as HTMLInputElement;
+      myContainer.innerHTML = this.current_task.textTask;
+
+    }
+    if(type==1){
+      this.typeTask = 'Тест';
+    }
+    if(type==3){
+      this.typeTask = 'Программирование';
+    }
+    if(type==4){
+      this.typeTask = 'Тест с вариантами ответов';
+    }
+  }
+
   }

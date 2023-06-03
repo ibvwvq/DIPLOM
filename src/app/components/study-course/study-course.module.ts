@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { StudyCourseRoutingModule } from './study-course-routing.module';
 import { StudyCourseComponent } from './study-course.component';
-import {TuiTextAreaModule} from "@taiga-ui/kit";
+import {TuiFilterByInputPipeModule, TuiTextAreaModule} from "@taiga-ui/kit";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CodemirrorModule } from '@nomadreservations/ngx-codemirror';
 import {AppbarModule} from "../appbar/appbar.module";
 import {TuiButtonModule} from "@taiga-ui/core";
+
+import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
 @NgModule({
   declarations: [
     StudyCourseComponent
@@ -20,7 +23,11 @@ import {TuiButtonModule} from "@taiga-ui/core";
     CodemirrorModule,
     FormsModule,
     AppbarModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule
   ]
 })
 export class StudyCourseModule { }

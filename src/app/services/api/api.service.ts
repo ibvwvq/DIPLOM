@@ -242,6 +242,13 @@ export class ApiService {
       }));
   }
 
+  getTask(idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getTask.php', {idTask})
+      .pipe(map(Task => {
+        return Task;
+      }));
+  }
+
   public getHistoryCourse(idUser:any){
     return this.httpClient.post<any>(this.baseUrl + '/getHistory.php', {idUser})
       .pipe(map(History => {
