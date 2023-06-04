@@ -18,8 +18,7 @@
 }
 
 .choose-lang{
-  display:flex;
-  justify-content:flex-end;
+  max-width: 300px;
 }
 
 .btns-main{

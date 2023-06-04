@@ -20,7 +20,8 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
   languages:any[]=[
     'csharp',
     'javascript',
-    'python'
+    'python',
+    'java'
   ]
   typeTask:any;
   readonly testValue = new FormControl(this.languages[0]);
@@ -32,7 +33,7 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
     // @ts-ignore
     const aceEditor = ace.edit(this.editor.nativeElement);
     if(this.testValue.value =='csharp'){
-      aceEditor.session.setValue(this.code);
+      aceEditor.session.setValue(this.startCodeCsharp);
     }
 
     aceEditor.on("change", () => {
@@ -59,6 +60,9 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
     if(this.testValue.value=='python'){
       this.nameFile = 'main.py';
     }
+    if(this.testValue.value=='java'){
+      this.nameFile = 'Test.java';
+    }
 
     const codeJson = {
       language: this.testValue.value,
@@ -67,7 +71,7 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
       content: this.value
     };
 
-    this.dataService.testCompile(codeJson)
+    this.dataService.compileCode(codeJson)
       .pipe(first())
       .subscribe(
         data => {
@@ -92,7 +96,7 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
         },
         error=>{console.log(error);})
   }
-  code:any = 'using System;\n' +
+  startCodeCsharp:any = 'using System;\n' +
     'using System.Collections.Generic;\n' +
     'using System.Linq;\n' +
     'using System.Text;\n' +
@@ -108,11 +112,21 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
     '        }\n' +
     '    }\n' +
     '}\n';
+
+  startCodeJava:any =
+    'public class Test { \n' +
+    '  \n' +
+    '   public static void main(String[] args) { \n' +
+    '                                           \n' +
+    '  \n' +
+    '      System.out.println("Hello world"); \n' +
+    '   } \n' +
+    '}'
   keyup(event:any){
    // @ts-ignore
     const aceEditor = ace.edit(this.editor.nativeElement);
     if(this.testValue.value =='csharp'){
-      aceEditor.session.setValue(this.code);
+      aceEditor.session.setValue(this.startCodeCsharp);
     }
 
     if(this.testValue.value =='javascript'){
@@ -121,6 +135,10 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
 
     if(this.testValue.value =='python'){
       aceEditor.session.setValue('');
+    }
+
+    if(this.testValue.value =='java'){
+      aceEditor.session.setValue(this.startCodeJava);
     }
   }
 }

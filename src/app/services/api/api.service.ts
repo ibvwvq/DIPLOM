@@ -184,7 +184,7 @@ export class ApiService {
       }));
   }
 
-  public testCompile(json:any){
+  public compileCode(json:any){
     return this.httpClient.post<any>(this.baseUrl + '/compilerFile.php', {json})
       .pipe(map(Res => {
         return Res;

@@ -1,10 +1,48 @@
 <app-appbar></app-appbar>
 <div class="container">
+
+  <div class="title-lesson">{{titleCurrentLesson}}</div>
+  <div class="type-task">{{typeTask}}</div>
+
+  <br>
+
+  <tui-loader [showLoader]="loader"></tui-loader>
+  <br>
+
+  <div class="items">
+    <div class="items-task" *ngFor="let item of current_tasks;let index=index">
+      <div *ngIf="item.idTask != idTask;else el" >
+        <button (click)="getUrlTask(item)" tuiButton class="item-task" appearance="custom"  title="Шаг {{index +1}}">
+          <p class="index">{{index + 1}}</p>
+        </button>
+      </div>
+
+      <ng-template #el>
+        <button tuiButton class="item-task current" appearance="custom"  title="Шаг {{index +1}}">
+          <p class="index">{{index + 1}}</p>
+        </button>
+      </ng-template>
+
+    </div>
+  </div>
+
+
+  <div *ngId="!loader" class="create-line"></div>
+
+  <br>
+  <br>
+
   <div class="task-programming" *ngIf="typeTask == 'Программирование'">
       <app-study-programming></app-study-programming>
   </div>
 
   <div id="lecture" class="task-lecture"></div>
+
+  <br><br>
+
+  <button tuiButton appearance="primary" >
+      Далее
+  </button>
 </div>
 
 

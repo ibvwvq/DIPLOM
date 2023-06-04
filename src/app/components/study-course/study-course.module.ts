@@ -12,6 +12,10 @@ import {TuiButtonModule} from "@taiga-ui/core";
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
 import {StudyProgrammingModule} from "../study-programming/study-programming.module";
+
+import {TuiLoaderModule} from '@taiga-ui/core';
+
+import {TuiRadioModule} from '@taiga-ui/kit';
 @NgModule({
   declarations: [
     StudyCourseComponent
@@ -29,7 +33,9 @@ import {StudyProgrammingModule} from "../study-programming/study-programming.mod
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
-    StudyProgrammingModule
+    StudyProgrammingModule,
+    TuiLoaderModule,
+    TuiRadioModule
   ]
 })
 export class StudyCourseModule { }

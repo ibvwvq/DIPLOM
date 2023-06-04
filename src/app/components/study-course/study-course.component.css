@@ -1,0 +1,34 @@
+.container{
+  max-width: 1000px;
+}
+.title-lesson{
+  font-size: 30px;
+}
+
+.create-line {
+  border-top: 1px solid #d5d4d4;
+}
+
+.items-task{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(50px,auto));
+  font-size: 20px;
+}
+
+.item-task{
+  height: 50px;
+  margin: 5px;
+  width: 50px;
+  background-color: var(--tui-support-03);
+}
+
+.items{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(60px,auto));
+}
+
+.current{
+  background-color: var(--tui-success-bg);
+  border: 1px solid #d5d4d4;
+
+}

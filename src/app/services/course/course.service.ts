@@ -61,13 +61,6 @@ export class CourseService  {
       'module', lastChanges.idModule,
       'lesson', lastChanges.idLesson,
       'step', lastChanges.idTask], {
-      queryParams: {
-        idCourse: lastChanges.idCourse,
-        idModule: lastChanges.idModule,
-        idLesson: lastChanges.idLesson,
-        step: lastChanges.idTask
-      },
-      fragment: 'address',
     })
   }
 }
