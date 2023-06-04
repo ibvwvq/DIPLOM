@@ -38,9 +38,9 @@
         </div>
       </div>
 
-      <p  routerLink="/course/study/{{item.idCourse}}/lesson/1/step/1" class="tui-island__paragraph">{{item.description}}</p>
-      <p routerLink="/course/study/{{item.idCourse}}/lesson/1/step/1" class="tui-island__paragraph tui-island__paragraph_button">
-        <a class="link-card_course" tuiLink routerLink="/course/study/{{item.idCourse}}/lesson/1/step/1">Продолжить</a>
+      <p class="tui-island__paragraph">{{item.description}}</p>
+      <p class="tui-island__paragraph tui-island__paragraph_button">
+        <a (click)="resumeCourse(item.idCourse)" class="link-card_course" tuiLink>Продолжить</a>
       </p>
     </a>
   </div>

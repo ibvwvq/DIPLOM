@@ -14,7 +14,7 @@ export class PromoCourseComponent implements OnInit{
     const id = Number(this.route.snapshot.paramMap.get('idCourse'));
     this.getCourse(id);
     this.getModules(id);
-    this.outputCourses();
+    this.checkJoinCourse();
   }
 
   constructor(
@@ -109,7 +109,7 @@ export class PromoCourseComponent implements OnInit{
         });
   }
 
-  outputCourses() {
+  checkJoinCourse() {
     this.lc_user = localStorage.getItem("user");
     const idUser = JSON.parse(this.lc_user).idUser;
     const id = Number(this.route.snapshot.paramMap.get('idCourse'));
@@ -185,6 +185,5 @@ export class PromoCourseComponent implements OnInit{
   resumeCourse(idCourse: any) {
    this.courseService.resumeCourse(idCourse);
   }
-
 }
 
