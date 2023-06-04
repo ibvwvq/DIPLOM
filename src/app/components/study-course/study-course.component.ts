@@ -89,12 +89,9 @@ export class StudyCourseComponent implements OnInit, AfterViewInit {
           data=>{
             this.current_task = data[0]
             this.determineTypeTask(this.current_task.idVariantTask)
-            console.log(this.typeTask);
-            console.log(data);
            },
           error=>{console.log(error);})
     }
-
   determineTypeTask(type:any){
     if(type==2){
       this.typeTask = 'Лекция';
@@ -112,5 +109,6 @@ export class StudyCourseComponent implements OnInit, AfterViewInit {
       this.typeTask = 'Тест с вариантами ответов';
     }
   }
+
 
   }

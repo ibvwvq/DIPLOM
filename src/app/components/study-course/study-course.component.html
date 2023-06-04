@@ -1,48 +1,7 @@
 <app-appbar></app-appbar>
 <div class="container">
-  <div class="app-ace-editor m-2"  #editor
-       style="max-width: 1000px;height: 250px;">
-  </div>
   <div class="task-programming" *ngIf="typeTask == 'Программирование'">
-
-    <form>
-      <tui-combo-box [formControl]="testValue" class="choose-lang b-form" >
-        Выберите язык программирования
-        <input
-          tuiTextfield
-          placeholder=/>
-        <tui-data-list-wrapper
-          *tuiDataList
-          [items]="languages | tuiFilterByInput"
-        ></tui-data-list-wrapper>
-      </tui-combo-box>
-    </form>
-
-    <div class="test-task">
-      {{current_task.textTask}}
-    </div>
-
-
-    <div class="input-output-data">
-      <tui-text-area name="inputData" ngDefaultControl [(ngModel)]="inputData" class="input-data m-2">
-        Input
-      </tui-text-area>
-
-      <tui-text-area name="output" ngDefaultControl [(ngModel)]="output" class="output-data m-2">
-        Output
-      </tui-text-area>
-    </div>
-
-    <div class="btns-main">
-      <button size="m" tuiButton appearance="custom" class="btn-submit-code" >
-        Отправить
-      </button>
-
-      <button size="m" tuiButton appearance="custom" class="btn-run-code" (click)="submit()">
-        Запустить
-      </button>
-    </div>
-
+      <app-study-programming></app-study-programming>
   </div>
 
   <div id="lecture" class="task-lecture"></div>
