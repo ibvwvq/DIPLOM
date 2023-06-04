@@ -1,1 +1,17 @@
-<p>study-testing works!</p>
+
+<div class="test-task p-2">
+  <span style="font-size: 24px;">Задача:</span> <br>
+  {{current_name_task}}
+</div>
+<br>
+<br>
+
+<form class="formAnswer" [formGroup]="formAnswer">
+  <tui-input class="formAnswer" formControlName="testValue">
+    Введите ответ
+    <input formControlName="valueAnswer"
+      tuiTextfield
+      type="text"
+    />
+  </tui-input>
+</form>

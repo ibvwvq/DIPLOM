@@ -38,11 +38,11 @@
 
   <div id="lecture" class="task-lecture"></div>
 
-  <br><br>
+  <div class="task-testing" *ngIf="typeTask == 'Тест'">
+   <app-study-testing></app-study-testing>
+  </div>
 
-  <button tuiButton appearance="primary" >
-      Далее
-  </button>
+  <br><br>
 </div>
 
 

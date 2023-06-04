@@ -15,7 +15,7 @@ import {StudyProgrammingModule} from "../study-programming/study-programming.mod
 
 import {TuiLoaderModule} from '@taiga-ui/core';
 
-import {TuiRadioModule} from '@taiga-ui/kit';
+import {StudyTestingModule} from "../study-testing/study-testing.module";
 @NgModule({
   declarations: [
     StudyCourseComponent
@@ -35,7 +35,7 @@ import {TuiRadioModule} from '@taiga-ui/kit';
     TuiFilterByInputPipeModule,
     StudyProgrammingModule,
     TuiLoaderModule,
-    TuiRadioModule
+    StudyTestingModule
   ]
 })
 export class StudyCourseModule { }
