@@ -5,7 +5,10 @@
 </div>
 
 <br><br>
-<form [formGroup]="formMultipleTest" class="p-2">
+
+<tui-loader [showLoader]="loader"></tui-loader>
+
+<form *ngIf="!loader" [formGroup]="formMultipleTest" class="p-2">
   <tui-radio-labeled
     formControlName="valueTesting"
     size="l"

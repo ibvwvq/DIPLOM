@@ -28,6 +28,7 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
   ngOnInit():void {
     this.getTask();
   }
+
   ngAfterViewInit(): void {
     ace.config.set("fontSize", "14px");
     // @ts-ignore

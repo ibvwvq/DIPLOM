@@ -16,6 +16,7 @@ export class StudyMultipleTestingComponent implements OnInit{
   formMultipleTest = new FormGroup({
     valueTesting: new FormControl(),
   });
+  loader = true;
 
   ngOnInit(){
     this.getAnswers();
@@ -42,6 +43,7 @@ export class StudyMultipleTestingComponent implements OnInit{
             .subscribe(
               data=>{
                 this.wrong_answers = data;
+                this.loader = false;
               },
               error => {})
         }, error => {console.log(error);})
