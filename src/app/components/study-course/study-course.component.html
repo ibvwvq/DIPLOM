@@ -27,7 +27,7 @@
   </div>
 
 
-  <div *ngId="!loader" class="create-line"></div>
+  <div *ngIf="!loader" class="create-line"></div>
 
   <br>
   <br>
@@ -40,6 +40,10 @@
 
   <div class="task-testing" *ngIf="typeTask == 'Тест'">
    <app-study-testing></app-study-testing>
+  </div>
+
+  <div class="task-testing" *ngIf="typeTask == 'Тест с вариантами ответов'">
+   <app-study-multiple-testing></app-study-multiple-testing>
   </div>
 
   <br><br>

@@ -1,1 +1,27 @@
-<p>study-multiple-testing works!</p>
+
+<div class="test-task p-2">
+  <span style="font-size: 24px;">Задача:</span> <br>
+  {{test_task}}
+</div>
+
+<br><br>
+<form [formGroup]="formMultipleTest" class="p-2">
+  <tui-radio-labeled
+    formControlName="valueTesting"
+    size="l"
+    class="tui-space_bottom-5"
+    [item]="items[0]"
+  >
+    {{name_right_answer}}
+  </tui-radio-labeled>
+
+  <tui-radio-labeled *ngFor="let wrong of wrong_answers;let index = index"
+    formControlName="valueTesting"
+    size="l"
+    class="tui-space_bottom-5"
+   [item]="items[index+1]"
+
+  >
+    {{wrong.textAnswer}}
+  </tui-radio-labeled>
+</form>

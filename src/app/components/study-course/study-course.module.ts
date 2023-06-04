@@ -16,6 +16,7 @@ import {StudyProgrammingModule} from "../study-programming/study-programming.mod
 import {TuiLoaderModule} from '@taiga-ui/core';
 
 import {StudyTestingModule} from "../study-testing/study-testing.module";
+import {StudyMultipleTestingModule} from "../study-multiple-testing/study-multiple-testing.module";
 @NgModule({
   declarations: [
     StudyCourseComponent
@@ -35,7 +36,8 @@ import {StudyTestingModule} from "../study-testing/study-testing.module";
     TuiFilterByInputPipeModule,
     StudyProgrammingModule,
     TuiLoaderModule,
-    StudyTestingModule
+    StudyTestingModule,
+    StudyMultipleTestingModule
   ]
 })
 export class StudyCourseModule { }

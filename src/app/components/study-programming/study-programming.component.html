@@ -3,7 +3,7 @@
   <span style="font-size: 24px;">Задача:</span> <br>
   {{test_task}}
 </div>
-<form>
+
   <tui-combo-box (tuiValueChanges)="keyup($event)" id="testValue" [formControl]="testValue"  class="choose-lang p-2" >
     Выберите язык программирования
     <input
@@ -14,7 +14,7 @@
       [items]="languages | tuiFilterByInput"
     ></tui-data-list-wrapper>
   </tui-combo-box>
-</form>
+
 <div class="app-ace-editor p-2"  #editor
      style="max-width: 1400px;height: 400px;">
 </div>
