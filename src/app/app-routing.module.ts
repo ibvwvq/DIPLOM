@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'study-programming', loadChildren: () => import('./components/study-programming/study-programming.module').then(m => m.StudyProgrammingModule) },
   { path: 'study-testing', loadChildren: () => import('./components/study-testing/study-testing.module').then(m => m.StudyTestingModule) },
   { path: 'study-multiple-testing', loadChildren: () => import('./components/study-multiple-testing/study-multiple-testing.module').then(m => m.StudyMultipleTestingModule) },
+  { path: 'check-lesson/:idAnswer', loadChildren: () => import('./components/check-lesson/check-lesson.module').then(m => m.CheckLessonModule) },
 ];
 
 @NgModule({

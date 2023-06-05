@@ -270,6 +270,20 @@ export class ApiService {
       }));
   }
 
+  public addCodeForTeacher(idTask :any,idUser :any,textAnswer :any,idCourse :any){
+    return this.httpClient.post<any>(this.baseUrl + '/createAnswerByStudent.php', {idTask, idUser, textAnswer, idCourse })
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
+  public getAnswerForTeacher(idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getAnsByStForTeacher.php', {idUser})
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

@@ -1,1 +1,21 @@
 <app-appbar></app-appbar>
+<div class="container">
+  <div class="title checking-lesson">
+    <span style="font-size: 26px;">Проверка студентов</span>
+  </div>
+
+  <div *ngFor="let item of answers_checking;let index=index">
+    <a routerLink="/check-lesson/{{item.idAnswer}}" tuiIsland [hoverable]="true" class="info-course">
+      <h5>{{index+1}}</h5>
+
+      <div class="line_title_btn-settings">
+        <div class="btn-settings" style="float:right;">
+        </div>
+      </div>
+
+      <p class="tui-island__paragraph p-3">{{item.code}}</p>
+      <a class="m-3" routerLink="/check-lesson/{{item.idAnswer}}" tuiLink>Проверить</a>
+    </a>
+  </div>
+
+</div>

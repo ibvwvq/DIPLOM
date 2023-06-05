@@ -81,6 +81,26 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
         },
         error => {console.log(error);});
   }
+  lc_user: any = localStorage.getItem("user");
+  idUser = JSON.parse(this.lc_user).idUser;
+
+  submitTeacher(){
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+    const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
+    console.log(this.value);
+    this.dataService.addCodeForTeacher(idTask,this.idUser,this.value,idCourse)
+      .pipe(first())
+      .subscribe(
+        data=>{
+          console.log("ok")
+        },
+        error => {
+          console.log("not ok")
+
+        }
+      )
+  }
+
   test_task:any;
   getTask()
   {
