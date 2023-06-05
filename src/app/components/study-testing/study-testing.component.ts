@@ -93,12 +93,8 @@ export class StudyTestingComponent implements OnInit{
     this.dataService.addCompletedTask(this.idUser,idTask)
       .pipe(first())
       .subscribe(
-        data=>{
-          console.log("qw")
-        },
-        error=>{
-          console.log("no qw")
-        }
+        data=>{},
+        error=>{console.log(error)}
       )
   }
   completed_tasks:any[] =[];

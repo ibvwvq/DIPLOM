@@ -10,7 +10,9 @@
     Не верно:( Повторите попытку
   </tui-notification>
 </ng-template>
-
+<ng-template [ngIf]="TASK_COMPLETED">
+  <span style="color: green;">РЕШЕНО</span> <br>
+</ng-template>
 <div class="test-task p-2">
   <span style="font-size: 24px;">Задача:</span> <br>
   {{test_task}}
@@ -20,24 +22,30 @@
 
 <tui-loader [showLoader]="loader"></tui-loader>
 
-<form *ngIf="!loader" [formGroup]="formMultipleTest" class="p-2">
-  <tui-radio-labeled
-    formControlName="valueTesting"
-    size="l"
-    class="tui-space_bottom-5"
-    [item]="items[0]"
-  >
-    {{name_right_answer}}
-  </tui-radio-labeled>
+<ng-template [ngIf]="!TASK_COMPLETED">
+  <form *ngIf="!loader" [formGroup]="formMultipleTest" class="p-2">
+    <tui-radio-labeled
+      formControlName="valueTesting"
+      size="l"
+      class="tui-space_bottom-5"
+      [item]="items[0]"
+    >
+      {{name_right_answer}}
+    </tui-radio-labeled>
 
-  <tui-radio-labeled *ngFor="let wrong of wrong_answers;let index = index"
-    formControlName="valueTesting"
-    size="l"
-    class="tui-space_bottom-5"
-   [item]="items[index+1]">
-    {{wrong.textAnswer}}
-  </tui-radio-labeled>
-</form>
+    <tui-radio-labeled *ngFor="let wrong of wrong_answers;let index = index"
+                       formControlName="valueTesting"
+                       size="l"
+                       class="tui-space_bottom-5"
+                       [item]="items[index+1]">
+      {{wrong.textAnswer}}
+    </tui-radio-labeled>
+  </form>
+</ng-template>
+
+<ng-template [ngIf]="TASK_COMPLETED">
+      <div class="m-2">Правильный ответ: <br> {{name_right_answer}}</div>
+</ng-template>
 
 <button [disabled]="disabledSubmitBtn" (click)="submitAnswer()" size="m" tuiButton class="btn-submit" appearance="custom">
   Отправить

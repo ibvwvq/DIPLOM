@@ -20,6 +20,7 @@ export class StudyMultipleTestingComponent implements OnInit{
 
   ngOnInit(){
     this.getAnswers();
+    this.checkCompletedTask();
     this.getTask();
   }
 
@@ -72,13 +73,50 @@ export class StudyMultipleTestingComponent implements OnInit{
     if(this.formMultipleTest.value.valueTesting.name == 'answer 1'){
       this.isCorrectAnswer = true;
       this.idNotCorrectAnswer = false;
-
       this.disabledSubmitBtn = true;
+      this.addCompletedTask();
     }
     else{
       this.idNotCorrectAnswer = true;
       this.isCorrectAnswer = false;
 
     }
+  }
+  addCompletedTask(){
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+    const idLesson = Number(this.route.snapshot.paramMap.get('idLesson'));
+    console.log(idTask);
+    this.dataService.addCompletedTask(this.idUser,idTask)
+      .pipe(first())
+      .subscribe(
+        data=>{},
+        error=>{console.log(error)}
+      )
+  }
+  completed_tasks:any[] =[];
+  TASK_COMPLETED = false;
+
+  lc_user: any = localStorage.getItem("user");
+  idUser = JSON.parse(this.lc_user).idUser;
+
+  checkCompletedTask(){
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+    const idLesson = Number(this.route.snapshot.paramMap.get('idLesson'));
+    this.dataService.getCompletedTasks(this.idUser,idLesson)
+      .pipe(first())
+      .subscribe(
+        data=>{
+          this.completed_tasks = data;
+          console.log(data);
+          for(let i=0;i<this.completed_tasks.length;i++){
+            if(this.completed_tasks[i].idTask == idTask){
+              this.TASK_COMPLETED = true;
+              this.disabledSubmitBtn = true;
+              this.loader = false;
+            }
+          }
+          this.loader = false;
+        },error => {console.log(error)}
+      )
   }
 }
