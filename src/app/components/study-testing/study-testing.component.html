@@ -1,3 +1,15 @@
+<ng-template [ngIf] = "isCorrectAnswer">
+  <tui-notification status="success" class="m-2">
+    Правильно!
+  </tui-notification>
+</ng-template>
+
+<ng-template [ngIf] = "idNotCorrectAnswer">
+  <tui-notification status="error" class="m-2">
+    Не верно:( Повторите попытку
+  </tui-notification>
+</ng-template>
+
 
 <div class="test-task p-2">
   <span style="font-size: 24px;">Задача:</span> <br>
@@ -6,7 +18,7 @@
 <br>
 <br>
 
-<form class="formAnswer" [formGroup]="formAnswer">
+<form [formGroup]="formAnswer">
   <tui-input class="formAnswer" formControlName="testValue">
     Введите ответ
     <input formControlName="valueAnswer"
@@ -15,3 +27,8 @@
     />
   </tui-input>
 </form>
+
+
+<button [disabled]="disabledSubmitBtn" (click)="submitTest()" size="m" tuiButton class="btn-submit" appearance="custom">
+  Отправить
+</button>

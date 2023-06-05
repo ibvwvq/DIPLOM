@@ -6,6 +6,7 @@ import { StudyTestingComponent } from './study-testing.component';
 
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiButtonModule, TuiNotificationModule} from "@taiga-ui/core";
 @NgModule({
     declarations: [
         StudyTestingComponent
@@ -13,11 +14,13 @@ import {TuiInputModule} from '@taiga-ui/kit';
     exports: [
         StudyTestingComponent
     ],
-    imports: [
-        CommonModule,
-        StudyTestingRoutingModule,
-        TuiInputModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    StudyTestingRoutingModule,
+    TuiInputModule,
+    ReactiveFormsModule,
+    TuiButtonModule,
+    TuiNotificationModule
+  ]
 })
 export class StudyTestingModule { }

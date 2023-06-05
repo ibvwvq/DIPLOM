@@ -1,4 +1,11 @@
 
 .formAnswer{
   max-width: 500px;
+  margin: 10px;
+}
+
+.btn-submit{
+  background-color: var(--tui-success-fill);
+  color: white;
+  margin: 10px;
 }

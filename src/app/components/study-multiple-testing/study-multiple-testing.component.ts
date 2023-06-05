@@ -11,7 +11,7 @@ import {first} from "rxjs";
 })
 export class StudyMultipleTestingComponent implements OnInit{
   // @ts-ignore
-  items = [{name: 'tariff1'}, {name: 'tariff2'}, {name: 'tariff3'}];
+  items = [{name: 'answer 1'}, {name: 'answer 3'}, {name: 'answer 3'},{name:'answer4'}];
 
   formMultipleTest = new FormGroup({
     valueTesting: new FormControl(),
@@ -50,8 +50,7 @@ export class StudyMultipleTestingComponent implements OnInit{
   }
   current_task:any;
   test_task:any;
-  getTask()
-  {
+  getTask() {
     const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
     console.log(idTask);
     this.dataService.getTask(idTask)
@@ -64,5 +63,22 @@ export class StudyMultipleTestingComponent implements OnInit{
         error=>{console.log(error);})
   }
 
+  disabledSubmitBtn = false;
+  idNotCorrectAnswer = false;
+  isCorrectAnswer = false;
 
+  submitAnswer(){
+    console.log(this.formMultipleTest.value.valueTesting);
+    if(this.formMultipleTest.value.valueTesting.name == 'answer 1'){
+      this.isCorrectAnswer = true;
+      this.idNotCorrectAnswer = false;
+
+      this.disabledSubmitBtn = true;
+    }
+    else{
+      this.idNotCorrectAnswer = true;
+      this.isCorrectAnswer = false;
+
+    }
+  }
 }
