@@ -256,6 +256,20 @@ export class ApiService {
       }));
   }
 
+  public getCompletedTasks(idUser :any,idLesson:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getCompletedTasks.php', {idUser,idLesson})
+      .pipe(map(Tasks => {
+        return Tasks;
+      }));
+  }
+
+  public addCompletedTask(idUser:any,idTask: any){
+    return this.httpClient.post<any>(this.baseUrl + '/addHistoryCompleted.php', {idUser,idTask })
+      .pipe(map(Task => {
+        return Task;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

@@ -12,21 +12,35 @@
 
 
 <div class="test-task p-2">
+
+  <ng-template [ngIf]="TASK_COMPLETED">
+    <span style="color: green;">РЕШЕНО</span> <br>
+  </ng-template>
   <span style="font-size: 24px;">Задача:</span> <br>
   {{current_name_task}}
 </div>
 <br>
 <br>
 
+<tui-loader [showLoader]="loader"></tui-loader>
+
+
+<ng-template [ngIf]="!TASK_COMPLETED && !loader">
 <form [formGroup]="formAnswer">
-  <tui-input class="formAnswer" formControlName="testValue">
+  <tui-input class="formAnswer" formControlName="valueAnswer">
     Введите ответ
-    <input formControlName="valueAnswer"
+    <input
       tuiTextfield
       type="text"
     />
   </tui-input>
 </form>
+</ng-template>
+
+<ng-template [ngIf]="TASK_COMPLETED && !loader">
+    <div class="right-answer m-2">Ваш ответ: {{right_answer}}</div>
+</ng-template>
+
 
 
 <button [disabled]="disabledSubmitBtn" (click)="submitTest()" size="m" tuiButton class="btn-submit" appearance="custom">
