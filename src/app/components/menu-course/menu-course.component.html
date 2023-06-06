@@ -1,0 +1,18 @@
+<div class="cards-modules" *ngFor="let module of modules; let index = index">
+  <div class="card-module">
+    <a tuiIsland [hoverable]="true" class="info-course m-2">
+      <div>
+        <span class="title-module m-3">{{index+1}}. {{module.name}}</span>
+      </div>
+    </a>
+  </div>
+  <div *ngFor="let lesson of lessons[index]; let lessonIndex = index" class = "info-course-lesson">
+    <tui-island (click)="goOverLesson(module.idModule,lesson.idLesson)" class = "card-lesson m-2">
+      <div class="title-settings">
+        <span class = "lesson tui-space_left-5" style="font-size: 18px">{{index + 1}}.{{lessonIndex+1}} {{lesson.text}}</span>
+        <div class="btn-settings">
+        </div>
+      </div>
+    </tui-island>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+
+
+.info-course{
+  max-width: 800px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+
+}
+.info-course-lesson{
+  max-width: 750px;
+  margin-left: 30px;
+}
+
+.card-lesson:hover{
+  box-shadow: 0 5px 20px rgb(144, 187, 239);
+  cursor: pointer;
+}
+
+.info-course:hover{
+  cursor: pointer;
+}
+
+.title-settings{
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.main-syllabus{
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+.title_syllabus-course{
+  font-size: 28px;
+}
+
+.open-create-module{
+  background: var(--tui-link-hover);
+  color: #fff;
+  transition: 1s;
+  opacity: 80%;
+}
+.open-create-module:hover{
+  background: #a381ff;
+}
+
+.open-create-module:active{
+  background: #8f75d1;
+}
+
+.open-create-module:disabled{
+  background: #eaecee;
+}
+
+.main_title_btnCreateModule{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.error-valueNameLesson{
+  color: red;
+  font-size: small;
+}
+
+
+.formCreateLesson{
+  display: grid;
+  grid-template-columns: minmax(100px, 500px) minmax(30px, 200px);
+}
+
+.title-module{
+  font-size: 22px;
+}
