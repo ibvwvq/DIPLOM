@@ -8,7 +8,6 @@ import {TuiButtonModule, TuiSvgModule} from "@taiga-ui/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TuiTextAreaModule} from "@taiga-ui/kit";
 
-
 @NgModule({
   declarations: [
     CheckLessonComponent

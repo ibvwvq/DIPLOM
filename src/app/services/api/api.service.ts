@@ -291,6 +291,29 @@ export class ApiService {
       }));
   }
 
+  public createAnswerByTeacher(idAnswerByStudent:any,
+                               commentTeacher:any,
+                               statusAnswerNumber:any,
+                               idStudent:any,
+                               idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getCodeFromAnsBySt.php', {
+      idAnswerByStudent,
+      commentTeacher,
+      statusAnswerNumber,
+      idStudent,
+      idTask})
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
+  public getUser(idUser:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getUser.php', {idUser})
+      .pipe(map(User => {
+        return User;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

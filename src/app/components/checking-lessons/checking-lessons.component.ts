@@ -13,23 +13,26 @@ export class CheckingLessonsComponent implements OnInit{
     }
   lc_user: any = localStorage.getItem("user");
   idUser = JSON.parse(this.lc_user).idUser;
-
-ngOnInit(){
-  this.getAnswerForTeacher();
-}
-
+  name_student:any[] =[];
+  id_student:any;
   answers_checking:any[]=[];
+
+  ngOnInit(){
+    this.getAnswerForTeacher();
+  }
   getAnswerForTeacher(){
       this.dataService.getAnswerForTeacher(this.idUser)
         .pipe(first())
         .subscribe(
           data=>{
             this.answers_checking = data;
-            console.log(data);},
+            for(let i=0;i<this.answers_checking.length;i++){
+              this.dataService.getUser(this.answers_checking[i].idStudent)
+                .pipe(first())
+                .subscribe(
+                  data=>{this.name_student[i] = data[0].fullName;},
+                  error=>{console.log(error);})
+            }},
           error => {console.log(error)})
-  }
-
-  getNameStudent(){
-
   }
 }

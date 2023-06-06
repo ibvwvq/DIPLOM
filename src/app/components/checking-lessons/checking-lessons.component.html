@@ -6,7 +6,7 @@
 
   <div *ngFor="let item of answers_checking;let index=index">
     <a routerLink="/check-lesson/{{item.idAnswer}}" tuiIsland [hoverable]="true" class="card-check m-2">
-      <h5>{{index+1}}</h5>
+      <h5>{{name_student[index]}}</h5>
 
       <div class="line_title_btn-settings">
         <div class="btn-settings" style="float:right;">

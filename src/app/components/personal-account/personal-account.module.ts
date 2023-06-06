@@ -8,6 +8,7 @@ import {AppbarModule} from "../appbar/appbar.module";
 import {TuiAvatarModule} from '@taiga-ui/kit';
 import {TuiIslandModule} from '@taiga-ui/kit';
 import {FooterModule} from "../footer/footer.module";
+import {TuiButtonModule, TuiDataListModule, TuiHostedDropdownModule, TuiLinkModule, TuiSvgModule} from "@taiga-ui/core";
 @NgModule({
   declarations: [
     PersonalAccountComponent
@@ -19,7 +20,12 @@ import {FooterModule} from "../footer/footer.module";
         AppbarModule,
         TuiAvatarModule,
         TuiIslandModule,
-        FooterModule
+        FooterModule,
+        TuiButtonModule,
+        TuiDataListModule,
+        TuiHostedDropdownModule,
+        TuiLinkModule,
+        TuiSvgModule
     ]
 })
 export class PersonalAccountModule { }

@@ -1,44 +1,29 @@
-<div class="content">
-  <app-appbar></app-appbar>
-  <tui-tabs tuiMobileTabs [(activeItemIndex)]="activeItemIndex">
-    <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
-      Ваши данные
-    </button>
-    <ng-template [ngIf]="isAdmin == false">
-      <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2" (click)="this.apiService.getUsers()">
-        Курсы
-      </button>
-      <button tuiTab tuiRipple="var(--tui-text-01)" class="tab-personal-account p-2">
-        Избранное
-      </button>
-    </ng-template>
-  </tui-tabs>
+<app-appbar></app-appbar>
+<div class="container p-3">
+    <a
+      tuiIsland
+      size="l"
+      rel="noreferrer"
+      target="_blank"
+      [hoverable]="true">
 
-  <ng-template [ngIf]="activeItemIndex==0">
-    <tui-island class="main-personal m-2">
-      <tui-avatar
-        new
-        text="alex inkin"
-        size="xl"
-        avatarUrl="tuiIconUser"
-        class="avatar-user tui-space_left-2 tui-space_top-2"
-      ></tui-avatar>
-      <div class="title-personal tui-space_left-2 tui-space_top-2">
-        <h3 class="name">{{name}}</h3>
-        <span class="email">{{email}}</span>
-        <span class="email">{{id}}</span>
-        <span class="email">{{role}}</span>
+      <h3 class="title title_size_s">{{name}}</h3>
+      <br>
+      <p class="text">
+         Your email: {{email}}
+      </p>
+      <br>
+      <p class="text">
+         You are {{role}}
+      </p>
+      <br>
+      <p class="text">
+        <a tuiLink routerLink="\" >Изменить данные</a>
+      </p>
 
-      </div>
-    </tui-island>
-  </ng-template>
-
-  <ng-template [ngIf]="activeItemIndex==1">
-    <span class="m-3">Вы пока не записались ни на один курс...</span>
-  </ng-template>
-
-  <ng-template [ngIf]="activeItemIndex==2">
-    <span class="m-3">Вы пока не добавлили ни один курс в избранное....</span>
-  </ng-template>
-
+    </a>
 </div>
+
+
+
+

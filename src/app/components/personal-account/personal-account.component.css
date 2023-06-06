@@ -11,6 +11,20 @@
   min-width: auto;
 }
 
+.container{
+  max-width: 800px;
+
+}
+
 .content {
   flex: 1 0 auto;
+}
+
+.title{
+  text-align: center;
+}
+
+.text{
+  text-align: center;
+
 }

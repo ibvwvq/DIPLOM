@@ -52,18 +52,10 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
   }
   submit():void
   {
-    if(this.testValue.value=='csharp'){
-      this.nameFile = 'main.cs';
-    }
-    if(this.testValue.value=='javascript'){
-      this.nameFile = 'main.js';
-    }
-    if(this.testValue.value=='python'){
-      this.nameFile = 'main.py';
-    }
-    if(this.testValue.value=='java'){
-      this.nameFile = 'Test.java';
-    }
+    if(this.testValue.value=='csharp'){this.nameFile = 'main.cs';}
+    if(this.testValue.value=='javascript'){this.nameFile = 'main.js';}
+    if(this.testValue.value=='python'){this.nameFile = 'main.py';}
+    if(this.testValue.value=='java'){this.nameFile = 'Test.java';}
 
     const codeJson = {
       language: this.testValue.value,
