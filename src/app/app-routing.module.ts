@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'study-multiple-testing', loadChildren: () => import('./components/study-multiple-testing/study-multiple-testing.module').then(m => m.StudyMultipleTestingModule) },
   { path: 'check-lesson/:idAnswer', loadChildren: () => import('./components/check-lesson/check-lesson.module').then(m => m.CheckLessonModule) },
   { path: 'menu-course', loadChildren: () => import('./components/menu-course/menu-course.module').then(m => m.MenuCourseModule) },
+  { path: 'change-user', loadChildren: () => import('./components/change-user/change-user.module').then(m => m.ChangeUserModule) },
 ];
 
 @NgModule({
