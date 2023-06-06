@@ -1,3 +1,23 @@
 .container{
   max-width: 1000px;
 }
+
+.btn-right{
+  background-color: var(--tui-positive);
+}
+
+.btn-wrong{
+  background-color: var(--tui-negative-hover);
+}
+
+.btns-right-wrong{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(100px,auto));
+  grid-gap: 10px;
+  padding: 20px;
+}
+.input-output-data{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px,auto));
+  grid-gap: 10px;
+}

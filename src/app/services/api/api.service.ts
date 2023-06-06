@@ -284,6 +284,13 @@ export class ApiService {
       }));
   }
 
+  public getCodeFromAnsBySt(idAns:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getCodeFromAnsBySt.php', {idAns})
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
   getUsers(){
     const CURRENT:any = this.current_user;
     console.log(CURRENT);

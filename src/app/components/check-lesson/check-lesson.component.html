@@ -1,7 +1,42 @@
 <app-appbar></app-appbar>
 
 <div class="container">
+
+  <div class="name-task">
+    <span>Задача: <br> {{text_task}} </span>
+  </div>
+
+  <br>
+  <div class="name-student">
+    <span>Решил студент: <br> {{text_task}} </span>
+  </div>
+
   <div class="app-ace-editor p-2"  #editor
        style="max-width: 1400px;height: 400px;">
   </div>
+
+  <div class="input-output-data">
+    <tui-text-area name="inputData" ngDefaultControl [(ngModel)]="inputData" class="input-data m-2">
+      Input
+    </tui-text-area>
+
+    <tui-text-area name="output" ngDefaultControl [(ngModel)]="output" class="output-data m-2">
+      Output
+    </tui-text-area>
+  </div>
+
+  <div class="btns-right-wrong">
+    <div class="right">
+      <button size="m" tuiButton class="btn-right m-2" appearance="custom">
+        <tui-svg src="tuiIconCheck" class="btn-heart"></tui-svg>
+      </button>
+    </div>
+
+    <div class="wrong">
+      <button  size="m" tuiButton class="btn-wrong m-2" appearance="custom">
+        <tui-svg src="tuiIconClose" class="btn-heart"></tui-svg>
+      </button>
+    </div>
+  </div>
+
 </div>
