@@ -4,8 +4,12 @@
     <span style="font-size: 26px;">Проверка студентов</span>
   </div>
 
-  <div *ngFor="let item of answers_checking;let index=index">
-    <a routerLink="/check-lesson/{{item.idAnswer}}" tuiIsland [hoverable]="true" class="card-check m-2">
+<ng-template [ngIf]="isNull">
+    <span class="p-2">Пусто. Задач на проверку нет.</span>
+</ng-template>
+
+  <div  *ngFor="let item of answers_checking;let index=index">
+    <a *ngIf="!isNull" routerLink="/check-lesson/{{item.idAnswer}}" tuiIsland [hoverable]="true" class="card-check m-2">
       <h5>{{name_student[index]}}</h5>
 
       <div class="line_title_btn-settings">

@@ -70,30 +70,14 @@ export class CheckLessonComponent implements AfterViewInit,OnInit{
           data=>{
             this.name_student = data[0].fullName;
           },
-          error=>{
-            console.log(error);
-          }
-        )
+          error=>{console.log(error);})
   }
 
-  submitRight(){
+  submit(status:any){
     this.dataService.createAnswerByTeacher(
       this.id_answer,
       this.formComment.value.valueComment,
-      3,
-      this.id_student,
-      this.id_task)
-      .pipe(first())
-      .subscribe(
-        data=>{console.log(data);
-        },error=>{console.log(error);})
-  }
-
-  submitWrong(){
-    this.dataService.createAnswerByTeacher(
-      this.id_answer,
-      this.formComment.value.valueComment,
-      2,
+      status,
       this.id_student,
       this.id_task)
       .pipe(first())

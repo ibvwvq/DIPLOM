@@ -9,7 +9,7 @@ import * as ace from "ace-builds";
   templateUrl: './study-course.component.html',
   styleUrls: ['./study-course.component.css']
 })
-export class StudyCourseComponent implements OnInit, AfterViewInit {
+export class StudyCourseComponent implements OnInit {
 
   @ViewChild("editor") private editor: ElementRef<HTMLElement> | undefined ;
   valueCode:any;
@@ -33,19 +33,11 @@ export class StudyCourseComponent implements OnInit, AfterViewInit {
   ngOnInit():void {
     this.getTask();
     this.getTasks();
+    this.getCourse();
     this.getLesson();
     this.addLastChanges();
   }
-  ngAfterViewInit(): void {
-    ace.config.set("fontSize", "14px");
-    // @ts-ignore
-    const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.session.setValue("");
-    aceEditor.on("change", () => {
-      // console.log(aceEditor.getValue());
-     this.valueCode = aceEditor.getValue();
-    });
-  }
+
   constructor(
     private router:Router,
     private route: ActivatedRoute,
@@ -72,18 +64,25 @@ export class StudyCourseComponent implements OnInit, AfterViewInit {
     }
 
     getTask() {
-      const idCourse = Number(this.route.snapshot.paramMap.get('idCourse'));
-      const idModule = Number(this.route.snapshot.paramMap.get('idModule'));
-      const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
-      this.dataService.getTask(idTask)
+      this.dataService.getTask(this.idTask)
         .pipe(first())
         .subscribe(
           data=>{
-            this.current_task = data[0]
+            this.current_task = data[0];
             this.loader = false;
             this.determineTypeTask(this.current_task.idVariantTask)
            },
           error=>{console.log(error);})
+    }
+
+    name_course:any;
+
+    getCourse(){
+        this.dataService.getCourse(this.idCourse)
+          .pipe(first())
+          .subscribe(
+            data=>{this.name_course = data[0].name;},
+            error => {})
     }
 
     getLesson(){
@@ -103,7 +102,6 @@ export class StudyCourseComponent implements OnInit, AfterViewInit {
         this.typeTask = 'Лекция';
         let myContainer = document.getElementById('lecture') as HTMLInputElement;
         myContainer.innerHTML = this.current_task.textTask;
-
       }
       if(type==1){this.typeTask = 'Тест';}
       if(type==3){this.typeTask = 'Программирование';}
@@ -149,5 +147,9 @@ export class StudyCourseComponent implements OnInit, AfterViewInit {
         },
         error => {
         })
+  }
+  pageMenu=false;
+  openDialogMenuCourse(){
+    this.pageMenu = true;
   }
 }

@@ -37,7 +37,7 @@ export class StudyTestingComponent implements OnInit{
   current_name_task:any;
 
   getTask() {
- const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
     console.log(idTask);
     this.dataService.getTask(idTask)
       .pipe(first())
@@ -119,4 +119,6 @@ export class StudyTestingComponent implements OnInit{
         },error => {console.log(error)}
       )
   }
+
+
 }

@@ -4,6 +4,7 @@ import * as ace from "ace-builds";
 import {ActivatedRoute} from "@angular/router";
 import {ApiService} from "../../services/api/api.service";
 import {first} from "rxjs";
+import {startCodeCsharp, startCodeJava} from "../../services/CONSTANT";
 
 @Component({
   selector: 'app-study-programming',
@@ -15,7 +16,6 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
   @ViewChild("lang") private lang: ElementRef<HTMLElement> | undefined ;
   // @ts-ignore
   value:any;
-  valueLang:any = '';
   current_task:any;
   languages:any[]=[
     'csharp',
@@ -27,6 +27,8 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
   readonly testValue = new FormControl(this.languages[0]);
   ngOnInit():void {
     this.getTask();
+    this.checkCompletedTask();
+    this.getStatusCode();
   }
 
   ngAfterViewInit(): void {
@@ -34,7 +36,7 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
     // @ts-ignore
     const aceEditor = ace.edit(this.editor.nativeElement);
     if(this.testValue.value =='csharp'){
-      aceEditor.session.setValue(this.startCodeCsharp);
+      aceEditor.session.setValue(startCodeCsharp);
     }
 
     aceEditor.on("change", () => {
@@ -84,18 +86,15 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
       .pipe(first())
       .subscribe(
         data=>{
-          console.log("ok")
+        // window.location.reload();
         },
         error => {
-          console.log("not ok")
-
-        }
-      )
+        // window.location.reload();
+          })
   }
 
   test_task:any;
-  getTask()
-  {
+  getTask() {
     const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
     console.log(idTask);
     this.dataService.getTask(idTask)
@@ -109,49 +108,103 @@ export class StudyProgrammingComponent implements OnInit,AfterViewInit{
         },
         error=>{console.log(error);})
   }
-  startCodeCsharp:any = 'using System;\n' +
-    'using System.Collections.Generic;\n' +
-    'using System.Linq;\n' +
-    'using System.Text;\n' +
-    'using System.Threading.Tasks;\n' +
-    '\n' +
-    'namespace ConsoleApp\n' +
-    '{\n' +
-    '    internal class Program\n' +
-    '    {\n' +
-    '        static void Main(string[] args)\n' +
-    '        {\n' +
-    '\n' +
-    '        }\n' +
-    '    }\n' +
-    '}\n';
 
-  startCodeJava:any =
-    'public class Test { \n' +
-    '  \n' +
-    '   public static void main(String[] args) { \n' +
-    '                                           \n' +
-    '  \n' +
-    '      System.out.println("Hello world"); \n' +
-    '   } \n' +
-    '}'
   keyup(event:any){
    // @ts-ignore
     const aceEditor = ace.edit(this.editor.nativeElement);
-    if(this.testValue.value =='csharp'){
-      aceEditor.session.setValue(this.startCodeCsharp);
-    }
+    if(this.testValue.value =='javascript'){aceEditor.session.setValue('');}
+    if(this.testValue.value =='python'){aceEditor.session.setValue('');}
+    if(this.testValue.value =='java'){aceEditor.session.setValue(startCodeJava);}
+  }
+  completed_tasks:any;
+  TASK_COMPLETED: boolean = false;
+  disabledSubmitBtn:boolean = false;
+  loader:any = true;
+  answers_checking:any[] = [];
+  checkCompletedTask(){
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+    const idLesson = Number(this.route.snapshot.paramMap.get('idLesson'));
 
-    if(this.testValue.value =='javascript'){
-      aceEditor.session.setValue('');
-    }
+    this.dataService.getCompletedTasks(this.idUser,idLesson)
+      .pipe(first())
+      .subscribe(
+        data=>{
+          this.completed_tasks = data;
+          console.log(data);
+          this.getStatusCode();
 
-    if(this.testValue.value =='python'){
-      aceEditor.session.setValue('');
-    }
+          for(let i=0;i<this.completed_tasks.length;i++){
+            if(this.completed_tasks[i].idTask == idTask){
+              this.TASK_COMPLETED = true;
+              this.disabledSubmitBtn = true;
+              this.loader = false;
+            }
+          }
+          // this.loader = false;
 
-    if(this.testValue.value =='java'){
-      aceEditor.session.setValue(this.startCodeJava);
+        },error => {console.log(error)}
+      )
+  }
+
+
+  code:any;
+  status?:number;
+  getStatusCode(){
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+    this.dataService.getStatusCode(idTask)
+      .pipe(first())
+      .subscribe(
+        data=>{
+          this.code = data[0].code;
+          this.status = data[0].idStatusAnswer;
+          console.log(data[0].idStatusAnswer);
+          this.determineStatus();
+        },
+        error => {
+          console.log(error);})
+  }
+  onInspection = false;
+  successfully = false;
+  unSuccessfully=false;
+  CommentTeacher:any;
+  getComment(){
+    const idTask = Number(this.route.snapshot.paramMap.get('idTask'));
+
+    this.dataService.getCheckAnsForStudents(idTask)
+      .pipe(first())
+      .subscribe(data=>{
+        this.CommentTeacher = data[0].CommentTeacher;
+      },error=>{
+        console.log(error);
+      })
+  }
+  determineStatus(){
+    // @ts-ignore
+    const aceEditor = ace.edit(this.editor.nativeElement);
+
+    if(this.status == 2){
+      this.disabledSubmitBtn = true;
+      aceEditor.session.setValue(this.code);
+      this.successfully = true;
+
+      this.unSuccessfully = false;
+      this.onInspection = false;
+  }
+    if(this.status == 3){
+      this.getComment();
+      aceEditor.session.setValue(this.code);
+      this.unSuccessfully = true;
+
+      this.successfully = false;
+      this.onInspection = false;
+  }
+    if(this.status == 1){
+      this.disabledSubmitBtn = true;
+      aceEditor.session.setValue(this.code);
+      this.onInspection = true;
+
+      this.unSuccessfully = false;
+      this.successfully = false;
     }
   }
 }

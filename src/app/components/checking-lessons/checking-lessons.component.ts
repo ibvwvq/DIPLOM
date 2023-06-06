@@ -16,6 +16,7 @@ export class CheckingLessonsComponent implements OnInit{
   name_student:any[] =[];
   id_student:any;
   answers_checking:any[]=[];
+  isNull = false;
 
   ngOnInit(){
     this.getAnswerForTeacher();
@@ -26,6 +27,9 @@ export class CheckingLessonsComponent implements OnInit{
         .subscribe(
           data=>{
             this.answers_checking = data;
+            if(this.answers_checking.length < 1){
+              this.isNull = true;
+            }
             for(let i=0;i<this.answers_checking.length;i++){
               this.dataService.getUser(this.answers_checking[i].idStudent)
                 .pipe(first())

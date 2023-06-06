@@ -1,9 +1,22 @@
 
 <div class="test-task p-2">
+  <ng-template [ngIf]="TASK_COMPLETED">
+    <span style="color: green;">РЕШЕНО</span> <br>
+  </ng-template>
+  <ng-template [ngIf]="unSuccessfully">
+    <span style="color: red;">РЕШЕНО НЕ ВЕРНО</span> <br>
+    <div class="comments">
+    Комментарий преподавателя: <br> {{CommentTeacher}}
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="onInspection">
+    <span style="color: black;">ПРОВЕРЯЕТСЯ ПРЕПОДАВАТЕЛЕМ КУРСА</span> <br>
+  </ng-template>
+
   <span style="font-size: 24px;">Задача:</span> <br>
   {{test_task}}
 </div>
-
+<ng-template [ngIf]="!successfully  && !onInspection">
   <tui-combo-box (tuiValueChanges)="keyup($event)" id="testValue" [formControl]="testValue"  class="choose-lang p-2" >
     Выберите язык программирования
     <input
@@ -14,10 +27,13 @@
       [items]="languages | tuiFilterByInput"
     ></tui-data-list-wrapper>
   </tui-combo-box>
+</ng-template>
+
 
 <div class="app-ace-editor p-2"  #editor
      style="max-width: 1400px;height: 400px;">
 </div>
+<ng-template [ngIf]="!successfully  && !onInspection">
 
 <div class="input-output-data">
   <tui-text-area name="inputData" ngDefaultControl [(ngModel)]="inputData" class="input-data m-2">
@@ -28,13 +44,14 @@
     Output
   </tui-text-area>
 </div>
+</ng-template>
 
 <div class="btns-main">
-  <button (click)="submitTeacher()" size="m" tuiButton appearance="custom" class="btn-submit-code" >
+  <button [disabled]="disabledSubmitBtn" (click)="submitTeacher()" size="m" tuiButton appearance="custom" class="btn-submit-code" >
     Отправить
   </button>
 
-  <button size="m" tuiButton appearance="custom" class="btn-run-code" (click)="submit()">
+  <button [disabled]="disabledSubmitBtn" size="m" tuiButton appearance="custom" class="btn-run-code" (click)="submit()">
     Запустить
   </button>
 </div>

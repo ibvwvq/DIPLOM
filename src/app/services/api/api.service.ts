@@ -293,15 +293,29 @@ export class ApiService {
 
   public createAnswerByTeacher(idAnswerByStudent:any,
                                commentTeacher:any,
-                               statusAnswerNumber:any,
+                               numberStatus:any,
                                idStudent:any,
                                idTask:any){
-    return this.httpClient.post<any>(this.baseUrl + '/getCodeFromAnsBySt.php', {
+    return this.httpClient.post<any>(this.baseUrl + '/createAnswerByTeacher.php', {
       idAnswerByStudent,
       commentTeacher,
-      statusAnswerNumber,
+      numberStatus,
       idStudent,
       idTask})
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
+  public getStatusCode(idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getStatusTask.php', {idTask })
+      .pipe(map(Response => {
+        return Response;
+      }));
+  }
+
+  public getCheckAnsForStudents(idTask:any){
+    return this.httpClient.post<any>(this.baseUrl + '/getCheckAnsForStudents.php', {idTask })
       .pipe(map(Response => {
         return Response;
       }));

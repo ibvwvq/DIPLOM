@@ -1,37 +1,30 @@
 <app-appbar></app-appbar>
 <div class="container">
-
+  <div class="title-course">
+    <a tuiLink class="source-menu" (click)="openDialogMenuCourse()">{{name_course}}</a>
+  </div>
+  <br>
   <div class="title-lesson">{{titleCurrentLesson}}</div>
   <div class="type-task">{{typeTask}}</div>
-
   <br>
-
   <tui-loader [showLoader]="loader"></tui-loader>
   <br>
-
   <div class="items">
     <div class="items-task" *ngFor="let item of current_tasks;let index=index">
-      <div *ngIf="item.idTask != idTask;else el" >
+      <div *ngIf="item.idTask != idTask;else el">
         <button (click)="getUrlTask(item)" tuiButton class="item-task" appearance="custom"  title="Шаг {{index +1}}">
           <p class="index">{{index + 1}}</p>
         </button>
       </div>
-
       <ng-template #el>
         <button tuiButton class="item-task current" appearance="custom"  title="Шаг {{index +1}}">
           <p class="index">{{index + 1}}</p>
         </button>
       </ng-template>
-
     </div>
   </div>
-
-
   <div *ngIf="!loader" class="create-line"></div>
-
   <br>
-  <br>
-
   <div class="task-programming" *ngIf="typeTask == 'Программирование'">
       <app-study-programming></app-study-programming>
   </div>
@@ -45,11 +38,10 @@
   <div class="task-testing" *ngIf="typeTask == 'Тест с вариантами ответов'">
    <app-study-multiple-testing></app-study-multiple-testing>
   </div>
-
   <br><br>
 </div>
 
-
-
-
+<ng-template [tuiDialogOptions]="{ size: 'l'}" [(tuiDialog)]="pageMenu" let-observer>
+  <app-menu-course></app-menu-course>
+</ng-template>
 

@@ -1,29 +1,19 @@
 <app-appbar></app-appbar>
-<div class="container p-3">
-    <a
-      tuiIsland
-      size="l"
-      rel="noreferrer"
-      target="_blank"
-      [hoverable]="true">
 
-      <h3 class="title title_size_s">{{name}}</h3>
-      <br>
-      <p class="text">
-         Your email: {{email}}
-      </p>
-      <br>
-      <p class="text">
-         You are {{role}}
-      </p>
-      <br>
-      <p class="text">
-        <a tuiLink routerLink="\" >Изменить данные</a>
-      </p>
+<ng-template [ngIf]="activeItemIndex==0">
+  <tui-island class="main-personal m-2">
+    <tui-avatar
+      new
+      text="alex inkin"
+      size="xl"
+      avatarUrl="tuiIconUser"
+      class="m-4"
+      class="tui-space_left-2 tui-space_top-2"
+    ></tui-avatar>
 
-    </a>
-</div>
-
-
-
-
+    <div class="title-personal m-3">
+      <h3 class="name">{{name}}</h3>
+      <span class="email">{{email}}</span>
+    </div>
+  </tui-island>
+</ng-template>

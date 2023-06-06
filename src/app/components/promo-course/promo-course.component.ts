@@ -163,7 +163,7 @@ export class PromoCourseComponent implements OnInit{
           window.location.reload();
         },
         error => {
-          this.courseService.showAlertError("Что-то пошло не так")
+          window.location.reload();
         }
       )
   }
