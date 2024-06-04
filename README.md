@@ -1,3 +1,5 @@
+# ВНИМАНИЕ! ПРОЕКТ ПЕРЕЕХАЛ НА GITFLIC git@gitflic.ru:solo-it/diplom.git
+
 # StudyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
